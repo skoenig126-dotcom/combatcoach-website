@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – Combat Coach</title>
+  <meta name="description" content="Privacy Policy for the Combat Coach app." />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Google Fonts: Anton (Marke), Montserrat (Headings), Inter (Text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== Marken-Tokens (identisch zur Hauptseite) ===== */
+    :root{
+      --red:#E42B24; --cream:#FFFDE4; --cream-dim:rgba(255,253,228,.62);
+      --black:#000; --surface:#0e0e0e; --surface-2:#272727; --border:rgba(255,253,228,.12);
+      --font-head:'Montserrat',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif;
+      --maxw-read:780px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--black);color:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    a{color:var(--red);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{width:100%;max-width:1140px;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
+
+    /* ===== Header ===== */
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(0,0,0,.72);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;align-items:center;gap:.6rem}
+    .brand__mark{width:40px;height:40px;object-fit:contain;flex:0 0 auto}
+    .brand__wordmark{height:46px;width:auto;flex:0 0 auto}
+    .back-link{font-family:var(--font-head);font-weight:800;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+    .back-link:hover{color:var(--red);text-decoration:none}
+
+    /* ===== Lesbereich ===== */
+    .legal{max-width:var(--maxw-read);margin-inline:auto;padding-block:clamp(2.5rem,6vw,4.5rem)}
+    .legal .eyebrow{display:inline-block;font-family:var(--font-head);font-weight:800;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem}
+    .legal h1{font-family:var(--font-head);font-weight:900;font-size:clamp(2rem,6vw,3rem);line-height:1.05;letter-spacing:-.02em}
+    .legal .updated{color:var(--cream-dim);font-size:.95rem;margin-top:.8rem}
+    .legal h2{font-family:var(--font-head);font-weight:800;font-size:1.3rem;margin-top:2.6rem;margin-bottom:.6rem;padding-left:.9rem;border-left:4px solid var(--red);text-transform:uppercase;letter-spacing:.01em}
+    .legal p{color:var(--cream-dim);margin-bottom:1rem}
+    .legal ul{list-style:none;margin:0 0 1rem;display:grid;gap:.55rem}
+    .legal li{color:var(--cream-dim);padding-left:1.4rem;position:relative}
+    .legal li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--red)}
+    .legal strong{color:var(--cream)}
+    .legal .quote{border-left:3px solid var(--border);padding:.2rem 0 .2rem 1.1rem;font-style:italic;color:var(--cream)}
+    .legal .intro{font-size:1.1rem;color:var(--cream);margin-top:1.6rem}
+
+    /* ===== Footer ===== */
+    .site-footer{border-top:1px solid var(--border);padding-block:2.5rem;margin-top:2rem}
+    .footer__row{display:flex;flex-wrap:wrap;gap:1rem 1.8rem;justify-content:space-between;align-items:center;color:var(--cream-dim);font-size:.85rem}
+    .footer__nav{display:flex;flex-wrap:wrap;gap:1.2rem}
+    .footer__nav a{color:var(--cream-dim)}
+    .footer__nav a:hover{color:var(--red);text-decoration:none}
+
+    @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+
+  <!-- Header (Logo verlinkt zurück zur Startseite) -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="Combat Coach home">
+        <img class="brand__mark" src="CombatCoach_Avata_Logo.png" alt="" />
+        <img class="brand__wordmark" src="Combat_Coach_FontLogo.png" alt="Combat Coach" />
+      </a>
+      <a href="index.html" class="back-link">← Back to home</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="legal">
+      <span class="eyebrow">Legal</span>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Effective date: June 22, 2025</p>
+
+      <p class="intro">Welcome to Combat Coach. We value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application (the “App”).</p>
+
+      <h2>1. Who We Are</h2>
+      <p>This app is operated by:</p>
+      <ul>
+        <li><strong>Combat Coach</strong></li>
+        <li>Website: <a href="https://www.combatcoach.org">https://www.combatcoach.org</a></li>
+        <!-- TODO: echte Kontakt-E-Mail eintragen -->
+        <li>Contact: <a href="mailto:info@combatcoach.org">info@combatcoach.org</a></li>
+        <li>Location: Berlin, Germany</li>
+      </ul>
+
+      <h2>2. What Data We Collect</h2>
+      <p>When using our app, we may collect the following information:</p>
+      <ul>
+        <li><strong>Name</strong> – for account personalization</li>
+        <li><strong>Email address</strong> – for communication and user account functionality</li>
+        <li><strong>Device information</strong> – such as device type, OS version, and crash reports</li>
+        <li><strong>Usage data</strong> – collected via Google Analytics and Firebase for performance analysis</li>
+        <li><strong>Location data</strong> – to offer location-based features</li>
+      </ul>
+      <p class="quote">We do not collect any health data or media (photos/videos) from users.</p>
+
+      <h2>3. Children's Privacy</h2>
+      <p>Our app is not specifically directed at children under the age of 13. We do not knowingly collect personal information from children. If such information is inadvertently collected, it will be deleted promptly.</p>
+
+      <h2>4. Third-Party Services</h2>
+      <p>Supported services include Firebase (Google LLC), Google Analytics, and RevenueCat, which operate under their respective privacy policies.</p>
+
+      <h2>5. How We Use Your Data</h2>
+      <ul>
+        <li>Provide and improve the app experience</li>
+        <li>Understand user behavior to optimize features</li>
+        <li>Respond to customer inquiries and technical support</li>
+        <li>Ensure security and monitor performance</li>
+      </ul>
+
+      <h2>6. Data Protection</h2>
+      <p>Technical and organizational measures protect data against unauthorized access, loss, or misuse.</p>
+
+      <h2>7. Your Rights (EU/GDPR)</h2>
+      <!-- TODO: echte Kontakt-E-Mail eintragen -->
+      <p>EU users may access, correct, or delete their data, object to processing, or lodge complaints with the relevant authorities. To exercise these rights, contact us at <a href="mailto:info@combatcoach.org">info@combatcoach.org</a>.</p>
+
+      <h2>8. Changes to This Privacy Policy</h2>
+      <p>Updates will be notified via date changes and in-app notifications.</p>
+
+      <h2>9. Contact</h2>
+      <!-- TODO: echte Kontakt-E-Mail eintragen -->
+      <p>Combat Coach · <a href="mailto:info@combatcoach.org">info@combatcoach.org</a> · <a href="https://www.combatcoach.org">https://www.combatcoach.org</a></p>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer__row">
+      <span>© 2026 Combat Coach. All rights reserved.</span>
+      <nav class="footer__nav" aria-label="Legal">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="legal.html#terms">Terms of Use</a>
+        <a href="legal.html#imprint">Legal Notice</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
