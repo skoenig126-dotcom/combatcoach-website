@@ -65,13 +65,14 @@
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
-    /* --- Globaler, dezenter Hintergrund: weiche rote Lichtflächen --- */
+    /* --- Globaler, dezenter Hintergrund: warmer Creme-Schimmer (Tertiary)
+           mit einem subtilen roten Marken-Akzent unten --- */
     body::before {
       content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
       background:
-        radial-gradient(38% 44% at 12% 8%, rgba(228,43,36,0.16), transparent 60%),
-        radial-gradient(42% 50% at 92% 14%, rgba(228,43,36,0.10), transparent 64%),
-        radial-gradient(60% 60% at 50% 110%, rgba(228,43,36,0.08), transparent 60%),
+        radial-gradient(40% 46% at 12% 6%, rgba(255,253,228,0.07), transparent 62%),
+        radial-gradient(44% 52% at 90% 12%, rgba(255,253,228,0.05), transparent 66%),
+        radial-gradient(55% 55% at 50% 112%, rgba(228,43,36,0.07), transparent 60%),
         var(--black);
     }
     /* --- Transparente Foto-Textur, die nach unten ausblendet --- */

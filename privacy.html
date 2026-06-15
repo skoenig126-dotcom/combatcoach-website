@@ -1,59 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – Combat Coach</title>
-  <meta name="description" content="Privacy Policy for the Combat Coach app." />
+  <title>Datenschutzerklärung – Combat Coach</title>
+  <meta name="description" content="Datenschutzerklärung der Combat-Coach-App." />
   <meta name="theme-color" content="#000000" />
 
-  <!-- Google Fonts: Anton (Marke), Montserrat (Headings), Inter (Text) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ===== Marken-Tokens (identisch zur Hauptseite) ===== */
     :root{
-      --red:#E42B24; --cream:#FFFDE4; --cream-dim:rgba(255,253,228,.62);
-      --black:#000; --surface:#0e0e0e; --surface-2:#272727; --border:rgba(255,253,228,.12);
-      --font-head:'Roboto Mono',ui-monospace,monospace; --font-body:'Roboto Mono',ui-monospace,monospace;
-      --maxw-read:780px;
+      --red:#E42B24; --cream:#FFFDE4; --cream-dim:rgba(255,253,228,.62); --cream-faint:rgba(255,253,228,.40);
+      --black:#050505; --glass:rgba(255,253,228,.035); --border:rgba(255,253,228,.10); --border-2:rgba(255,253,228,.16);
+      --font:'Roboto Mono',ui-monospace,monospace; --maxw-read:780px;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:var(--font-body);background:var(--black);color:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--font);background:var(--black);color:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased;position:relative}
+    /* Warmer Creme-Schimmer im Hintergrund (Tertiary) + dezenter roter Akzent */
+    body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background:
+        radial-gradient(45% 40% at 14% 0%, rgba(255,253,228,.06), transparent 62%),
+        radial-gradient(40% 46% at 92% 8%, rgba(255,253,228,.045), transparent 66%),
+        radial-gradient(60% 50% at 50% 114%, rgba(228,43,36,.06), transparent 60%);}
     img{display:block;max-width:100%}
     a{color:var(--red);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{width:100%;max-width:1140px;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
 
-    /* ===== Header ===== */
-    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(0,0,0,.72);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    /* Header */
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,5,5,.55);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
     .brand{display:flex;align-items:center;gap:.6rem}
-    .brand__mark{width:40px;height:40px;object-fit:contain;flex:0 0 auto}
-    .brand__wordmark{height:46px;width:auto;flex:0 0 auto}
-    .back-link{font-family:var(--font-head);font-weight:800;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+    .brand__mark{width:38px;height:38px;object-fit:contain;flex:0 0 auto}
+    .brand__wordmark{height:44px;width:auto;flex:0 0 auto}
+    .nav__right{display:flex;align-items:center;gap:.9rem}
+    .back-link{font-family:var(--font);font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--cream-dim);white-space:nowrap}
     .back-link:hover{color:var(--red);text-decoration:none}
+    .lang-switch{display:inline-flex;gap:.15rem;border:1px solid var(--border-2);border-radius:999px;padding:.22rem;background:var(--glass);backdrop-filter:blur(6px)}
+    .lang-btn{font-family:var(--font);font-weight:600;font-size:.72rem;letter-spacing:.08em;color:var(--cream-dim);background:transparent;border:none;cursor:pointer;padding:.35rem .7rem;border-radius:999px;transition:background .2s,color .2s}
+    .lang-btn:hover{color:var(--cream)}
+    .lang-btn.is-active{background:var(--red);color:var(--cream)}
 
-    /* ===== Lesbereich ===== */
+    /* Lesbereich */
     .legal{max-width:var(--maxw-read);margin-inline:auto;padding-block:clamp(2.5rem,6vw,4.5rem)}
-    .legal .eyebrow{display:inline-block;font-family:var(--font-head);font-weight:800;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem}
-    .legal h1{font-family:var(--font-head);font-weight:900;font-size:clamp(2rem,6vw,3rem);line-height:1.05;letter-spacing:-.02em}
+    .legal .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font);font-weight:600;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-bottom:.8rem}
+    .legal .eyebrow::before{content:"";width:22px;height:1px;background:var(--red)}
+    .legal h1{font-family:var(--font);font-weight:700;font-size:clamp(2rem,6vw,2.9rem);line-height:1.06;letter-spacing:-.02em}
     .legal .updated{color:var(--cream-dim);font-size:.95rem;margin-top:.8rem}
-    .legal h2{font-family:var(--font-head);font-weight:800;font-size:1.3rem;margin-top:2.6rem;margin-bottom:.6rem;padding-left:.9rem;border-left:4px solid var(--red);text-transform:uppercase;letter-spacing:.01em}
+    .legal h2{font-family:var(--font);font-weight:700;font-size:1.22rem;margin-top:2.6rem;margin-bottom:.6rem;padding-left:.9rem;border-left:3px solid var(--red);letter-spacing:.005em}
     .legal p{color:var(--cream-dim);margin-bottom:1rem}
     .legal ul{list-style:none;margin:0 0 1rem;display:grid;gap:.55rem}
     .legal li{color:var(--cream-dim);padding-left:1.4rem;position:relative}
     .legal li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--red)}
     .legal strong{color:var(--cream)}
-    .legal .quote{border-left:3px solid var(--border);padding:.2rem 0 .2rem 1.1rem;font-style:italic;color:var(--cream)}
+    .legal .quote{border-left:3px solid var(--border-2);padding:.2rem 0 .2rem 1.1rem;font-style:italic;color:var(--cream)}
     .legal .intro{font-size:1.1rem;color:var(--cream);margin-top:1.6rem}
 
-    /* ===== Footer ===== */
+    /* Footer */
     .site-footer{border-top:1px solid var(--border);padding-block:2.5rem;margin-top:2rem}
-    .footer__row{display:flex;flex-wrap:wrap;gap:1rem 1.8rem;justify-content:space-between;align-items:center;color:var(--cream-dim);font-size:.85rem}
+    .footer__row{display:flex;flex-wrap:wrap;gap:1rem 1.8rem;justify-content:space-between;align-items:center;color:var(--cream-faint);font-size:.82rem}
     .footer__nav{display:flex;flex-wrap:wrap;gap:1.2rem}
     .footer__nav a{color:var(--cream-dim)}
     .footer__nav a:hover{color:var(--red);text-decoration:none}
@@ -63,88 +72,190 @@
 </head>
 <body>
 
-  <!-- Header (Logo verlinkt zurück zur Startseite) -->
   <header class="site-header">
     <div class="container nav">
       <a href="index.html" class="brand" aria-label="Combat Coach home">
         <img class="brand__mark" src="CombatCoach_Avata_Logo.png" alt="" />
         <img class="brand__wordmark" src="Combat_Coach_FontLogo.png" alt="Combat Coach" />
       </a>
-      <a href="index.html" class="back-link">← Back to home</a>
+      <div class="nav__right">
+        <div class="lang-switch" role="group" aria-label="Sprache / Language">
+          <button class="lang-btn" data-lang="de" type="button">DE</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+        </div>
+        <a href="index.html" class="back-link" data-i18n="nav.back">← Zur Startseite</a>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <article class="legal">
-      <span class="eyebrow">Legal</span>
-      <h1>Privacy Policy</h1>
-      <p class="updated">Effective date: June 22, 2025</p>
+      <span class="eyebrow" data-i18n="eyebrow">Rechtliches</span>
+      <h1 data-i18n="h1">Datenschutzerklärung</h1>
+      <p class="updated" data-i18n="updated">Gültig ab: 22. Juni 2025</p>
 
-      <p class="intro">Welcome to Combat Coach. We value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application (the “App”).</p>
+      <p class="intro" data-i18n="intro">Willkommen bei Combat Coach. Wir legen Wert auf deine Privatsphäre und setzen uns für den Schutz deiner personenbezogenen Daten ein. Diese Datenschutzerklärung erläutert, wie wir deine Informationen erfassen, nutzen und schützen, wenn du unsere mobile App (die „App“) verwendest.</p>
 
-      <h2>1. Who We Are</h2>
-      <p>This app is operated by:</p>
+      <h2 data-i18n="s1.h">1. Wer wir sind</h2>
+      <p data-i18n="s1.lead">Diese App wird betrieben von:</p>
       <ul>
         <li><strong>Combat Coach</strong></li>
         <li>Website: <a href="https://www.combatcoach.org">https://www.combatcoach.org</a></li>
-        <!-- TODO: echte Kontakt-E-Mail eintragen -->
-        <li>Contact: <a href="mailto:info@combatcoach.org">info@combatcoach.org</a></li>
-        <li>Location: Berlin, Germany</li>
+        <li data-i18n="s1.contact">Kontakt: <a href="mailto:info@combatcoach.org">info@combatcoach.org</a></li>
+        <li data-i18n="s1.loc">Standort: Berlin, Deutschland</li>
       </ul>
 
-      <h2>2. What Data We Collect</h2>
-      <p>When using our app, we may collect the following information:</p>
+      <h2 data-i18n="s2.h">2. Welche Daten wir erheben</h2>
+      <p data-i18n="s2.lead">Bei der Nutzung unserer App können wir folgende Informationen erheben:</p>
       <ul>
-        <li><strong>Name</strong> – for account personalization</li>
-        <li><strong>Email address</strong> – for communication and user account functionality</li>
-        <li><strong>Device information</strong> – such as device type, OS version, and crash reports</li>
-        <li><strong>Usage data</strong> – collected via Google Analytics and Firebase for performance analysis</li>
-        <li><strong>Location data</strong> – to offer location-based features</li>
+        <li data-i18n="s2.li1"><strong>Name</strong> – zur Personalisierung des Kontos</li>
+        <li data-i18n="s2.li2"><strong>E-Mail-Adresse</strong> – zur Kommunikation und für die Funktion des Nutzerkontos</li>
+        <li data-i18n="s2.li3"><strong>Geräteinformationen</strong> – z. B. Gerätetyp, Betriebssystemversion und Absturzberichte</li>
+        <li data-i18n="s2.li4"><strong>Nutzungsdaten</strong> – erfasst über Google Analytics und Firebase zur Leistungsanalyse</li>
+        <li data-i18n="s2.li5"><strong>Standortdaten</strong> – um standortbasierte Funktionen anzubieten</li>
       </ul>
-      <p class="quote">We do not collect any health data or media (photos/videos) from users.</p>
+      <p class="quote" data-i18n="s2.quote">Wir erheben keine Gesundheitsdaten und keine Medien (Fotos/Videos) von Nutzern.</p>
 
-      <h2>3. Children's Privacy</h2>
-      <p>Our app is not specifically directed at children under the age of 13. We do not knowingly collect personal information from children. If such information is inadvertently collected, it will be deleted promptly.</p>
+      <h2 data-i18n="s3.h">3. Datenschutz für Kinder</h2>
+      <p data-i18n="s3.p">Unsere App richtet sich nicht gezielt an Kinder unter 13 Jahren. Wir erheben wissentlich keine personenbezogenen Daten von Kindern. Sollten solche Daten versehentlich erfasst werden, werden sie umgehend gelöscht.</p>
 
-      <h2>4. Third-Party Services</h2>
-      <p>Supported services include Firebase (Google LLC), Google Analytics, and RevenueCat, which operate under their respective privacy policies.</p>
+      <h2 data-i18n="s4.h">4. Dienste von Drittanbietern</h2>
+      <p data-i18n="s4.p">Eingesetzte Dienste sind u. a. Firebase (Google LLC), Google Analytics und RevenueCat, die jeweils ihren eigenen Datenschutzbestimmungen unterliegen.</p>
 
-      <h2>5. How We Use Your Data</h2>
+      <h2 data-i18n="s5.h">5. Wie wir deine Daten nutzen</h2>
       <ul>
-        <li>Provide and improve the app experience</li>
-        <li>Understand user behavior to optimize features</li>
-        <li>Respond to customer inquiries and technical support</li>
-        <li>Ensure security and monitor performance</li>
+        <li data-i18n="s5.li1">Die App bereitstellen und verbessern</li>
+        <li data-i18n="s5.li2">Nutzungsverhalten verstehen, um Funktionen zu optimieren</li>
+        <li data-i18n="s5.li3">Kundenanfragen und technischen Support beantworten</li>
+        <li data-i18n="s5.li4">Sicherheit gewährleisten und Leistung überwachen</li>
       </ul>
 
-      <h2>6. Data Protection</h2>
-      <p>Technical and organizational measures protect data against unauthorized access, loss, or misuse.</p>
+      <h2 data-i18n="s6.h">6. Datensicherheit</h2>
+      <p data-i18n="s6.p">Technische und organisatorische Maßnahmen schützen die Daten vor unbefugtem Zugriff, Verlust oder Missbrauch.</p>
 
-      <h2>7. Your Rights (EU/GDPR)</h2>
-      <!-- TODO: echte Kontakt-E-Mail eintragen -->
-      <p>EU users may access, correct, or delete their data, object to processing, or lodge complaints with the relevant authorities. To exercise these rights, contact us at <a href="mailto:info@combatcoach.org">info@combatcoach.org</a>.</p>
+      <h2 data-i18n="s7.h">7. Deine Rechte (EU/DSGVO)</h2>
+      <p data-i18n="s7.p">Nutzer in der EU können auf ihre Daten zugreifen, sie berichtigen oder löschen lassen, der Verarbeitung widersprechen oder Beschwerde bei der zuständigen Aufsichtsbehörde einlegen. Um diese Rechte auszuüben, kontaktiere uns unter <a href="mailto:info@combatcoach.org">info@combatcoach.org</a>.</p>
 
-      <h2>8. Changes to This Privacy Policy</h2>
-      <p>Updates will be notified via date changes and in-app notifications.</p>
+      <h2 data-i18n="s8.h">8. Änderungen dieser Datenschutzerklärung</h2>
+      <p data-i18n="s8.p">Aktualisierungen werden durch Datumsänderungen und In-App-Hinweise bekannt gegeben.</p>
 
-      <h2>9. Contact</h2>
-      <!-- TODO: echte Kontakt-E-Mail eintragen -->
-      <p>Combat Coach · <a href="mailto:info@combatcoach.org">info@combatcoach.org</a> · <a href="https://www.combatcoach.org">https://www.combatcoach.org</a></p>
+      <h2 data-i18n="s9.h">9. Kontakt</h2>
+      <p data-i18n="s9.p">Combat Coach · <a href="mailto:info@combatcoach.org">info@combatcoach.org</a> · <a href="https://www.combatcoach.org">https://www.combatcoach.org</a></p>
     </article>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer__row">
-      <span>© 2026 Combat Coach. All rights reserved.</span>
-      <nav class="footer__nav" aria-label="Legal">
-        <a href="index.html">Home</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="legal.html#terms">Terms of Use</a>
-        <a href="legal.html#imprint">Legal Notice</a>
+      <span data-i18n="foot.copyright">© 2026 Combat Coach. Alle Rechte vorbehalten.</span>
+      <nav class="footer__nav" aria-label="Rechtliches">
+        <a href="index.html" data-i18n="foot.home">Startseite</a>
+        <a href="privacy.html" data-i18n="foot.privacy">Datenschutz</a>
+        <a href="legal.html#terms" data-i18n="foot.terms">Nutzungsbedingungen</a>
+        <a href="legal.html#imprint" data-i18n="foot.imprint">Impressum</a>
       </nav>
     </div>
   </footer>
+
+  <script>
+    const I18N = {
+      de: {
+        "nav.back": "← Zur Startseite",
+        "eyebrow": "Rechtliches",
+        "h1": "Datenschutzerklärung",
+        "updated": "Gültig ab: 22. Juni 2025",
+        "intro": "Willkommen bei Combat Coach. Wir legen Wert auf deine Privatsphäre und setzen uns für den Schutz deiner personenbezogenen Daten ein. Diese Datenschutzerklärung erläutert, wie wir deine Informationen erfassen, nutzen und schützen, wenn du unsere mobile App (die „App“) verwendest.",
+        "s1.h": "1. Wer wir sind",
+        "s1.lead": "Diese App wird betrieben von:",
+        "s1.contact": "Kontakt: <a href=\"mailto:info@combatcoach.org\">info@combatcoach.org</a>",
+        "s1.loc": "Standort: Berlin, Deutschland",
+        "s2.h": "2. Welche Daten wir erheben",
+        "s2.lead": "Bei der Nutzung unserer App können wir folgende Informationen erheben:",
+        "s2.li1": "<strong>Name</strong> – zur Personalisierung des Kontos",
+        "s2.li2": "<strong>E-Mail-Adresse</strong> – zur Kommunikation und für die Funktion des Nutzerkontos",
+        "s2.li3": "<strong>Geräteinformationen</strong> – z. B. Gerätetyp, Betriebssystemversion und Absturzberichte",
+        "s2.li4": "<strong>Nutzungsdaten</strong> – erfasst über Google Analytics und Firebase zur Leistungsanalyse",
+        "s2.li5": "<strong>Standortdaten</strong> – um standortbasierte Funktionen anzubieten",
+        "s2.quote": "Wir erheben keine Gesundheitsdaten und keine Medien (Fotos/Videos) von Nutzern.",
+        "s3.h": "3. Datenschutz für Kinder",
+        "s3.p": "Unsere App richtet sich nicht gezielt an Kinder unter 13 Jahren. Wir erheben wissentlich keine personenbezogenen Daten von Kindern. Sollten solche Daten versehentlich erfasst werden, werden sie umgehend gelöscht.",
+        "s4.h": "4. Dienste von Drittanbietern",
+        "s4.p": "Eingesetzte Dienste sind u. a. Firebase (Google LLC), Google Analytics und RevenueCat, die jeweils ihren eigenen Datenschutzbestimmungen unterliegen.",
+        "s5.h": "5. Wie wir deine Daten nutzen",
+        "s5.li1": "Die App bereitstellen und verbessern",
+        "s5.li2": "Nutzungsverhalten verstehen, um Funktionen zu optimieren",
+        "s5.li3": "Kundenanfragen und technischen Support beantworten",
+        "s5.li4": "Sicherheit gewährleisten und Leistung überwachen",
+        "s6.h": "6. Datensicherheit",
+        "s6.p": "Technische und organisatorische Maßnahmen schützen die Daten vor unbefugtem Zugriff, Verlust oder Missbrauch.",
+        "s7.h": "7. Deine Rechte (EU/DSGVO)",
+        "s7.p": "Nutzer in der EU können auf ihre Daten zugreifen, sie berichtigen oder löschen lassen, der Verarbeitung widersprechen oder Beschwerde bei der zuständigen Aufsichtsbehörde einlegen. Um diese Rechte auszuüben, kontaktiere uns unter <a href=\"mailto:info@combatcoach.org\">info@combatcoach.org</a>.",
+        "s8.h": "8. Änderungen dieser Datenschutzerklärung",
+        "s8.p": "Aktualisierungen werden durch Datumsänderungen und In-App-Hinweise bekannt gegeben.",
+        "s9.h": "9. Kontakt",
+        "s9.p": "Combat Coach · <a href=\"mailto:info@combatcoach.org\">info@combatcoach.org</a> · <a href=\"https://www.combatcoach.org\">https://www.combatcoach.org</a>",
+        "foot.copyright": "© 2026 Combat Coach. Alle Rechte vorbehalten.",
+        "foot.home": "Startseite",
+        "foot.privacy": "Datenschutz",
+        "foot.terms": "Nutzungsbedingungen",
+        "foot.imprint": "Impressum"
+      },
+      en: {
+        "nav.back": "← Back to home",
+        "eyebrow": "Legal",
+        "h1": "Privacy Policy",
+        "updated": "Effective date: June 22, 2025",
+        "intro": "Welcome to Combat Coach. We value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect your information when you use our mobile application (the “App”).",
+        "s1.h": "1. Who We Are",
+        "s1.lead": "This app is operated by:",
+        "s1.contact": "Contact: <a href=\"mailto:info@combatcoach.org\">info@combatcoach.org</a>",
+        "s1.loc": "Location: Berlin, Germany",
+        "s2.h": "2. What Data We Collect",
+        "s2.lead": "When using our app, we may collect the following information:",
+        "s2.li1": "<strong>Name</strong> – for account personalization",
+        "s2.li2": "<strong>Email address</strong> – for communication and user account functionality",
+        "s2.li3": "<strong>Device information</strong> – such as device type, OS version, and crash reports",
+        "s2.li4": "<strong>Usage data</strong> – collected via Google Analytics and Firebase for performance analysis",
+        "s2.li5": "<strong>Location data</strong> – to offer location-based features",
+        "s2.quote": "We do not collect any health data or media (photos/videos) from users.",
+        "s3.h": "3. Children's Privacy",
+        "s3.p": "Our app is not specifically directed at children under the age of 13. We do not knowingly collect personal information from children. If such information is inadvertently collected, it will be deleted promptly.",
+        "s4.h": "4. Third-Party Services",
+        "s4.p": "Supported services include Firebase (Google LLC), Google Analytics, and RevenueCat, which operate under their respective privacy policies.",
+        "s5.h": "5. How We Use Your Data",
+        "s5.li1": "Provide and improve the app experience",
+        "s5.li2": "Understand user behavior to optimize features",
+        "s5.li3": "Respond to customer inquiries and technical support",
+        "s5.li4": "Ensure security and monitor performance",
+        "s6.h": "6. Data Protection",
+        "s6.p": "Technical and organizational measures protect data against unauthorized access, loss, or misuse.",
+        "s7.h": "7. Your Rights (EU/GDPR)",
+        "s7.p": "EU users may access, correct, or delete their data, object to processing, or lodge complaints with the relevant authorities. To exercise these rights, contact us at <a href=\"mailto:info@combatcoach.org\">info@combatcoach.org</a>.",
+        "s8.h": "8. Changes to This Privacy Policy",
+        "s8.p": "Updates will be notified via date changes and in-app notifications.",
+        "s9.h": "9. Contact",
+        "s9.p": "Combat Coach · <a href=\"mailto:info@combatcoach.org\">info@combatcoach.org</a> · <a href=\"https://www.combatcoach.org\">https://www.combatcoach.org</a>",
+        "foot.copyright": "© 2026 Combat Coach. All rights reserved.",
+        "foot.home": "Home",
+        "foot.privacy": "Privacy Policy",
+        "foot.terms": "Terms of Use",
+        "foot.imprint": "Legal Notice"
+      }
+    };
+    function setLang(lang){
+      if(!I18N[lang]) lang='de';
+      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var v=I18N[lang][el.getAttribute('data-i18n')]; if(v!=null) el.innerHTML=v;
+      });
+      document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.toggle('is-active', b.dataset.lang===lang); });
+      try{localStorage.setItem('cc_lang',lang);}catch(e){}
+    }
+    (function(){
+      var saved=null; try{saved=localStorage.getItem('cc_lang');}catch(e){}
+      setLang(saved||'de');
+      document.querySelectorAll('.lang-btn').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.lang); }); });
+    })();
+  </script>
 
 </body>
 </html>

@@ -1,63 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Use & Legal Notice – Combat Coach</title>
-  <meta name="description" content="Terms of Use and Legal Notice / Imprint for the Combat Coach app." />
+  <title>Nutzungsbedingungen & Impressum – Combat Coach</title>
+  <meta name="description" content="Nutzungsbedingungen und Impressum der Combat-Coach-App." />
   <meta name="theme-color" content="#000000" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ===== Marken-Tokens (identisch zur Hauptseite) ===== */
     :root{
-      --red:#E42B24; --cream:#FFFDE4; --cream-dim:rgba(255,253,228,.62);
-      --black:#000; --surface:#0e0e0e; --surface-2:#272727; --border:rgba(255,253,228,.12);
-      --font-head:'Roboto Mono',ui-monospace,monospace; --font-body:'Roboto Mono',ui-monospace,monospace;
-      --maxw-read:780px;
+      --red:#E42B24; --cream:#FFFDE4; --cream-dim:rgba(255,253,228,.62); --cream-faint:rgba(255,253,228,.40);
+      --black:#050505; --glass:rgba(255,253,228,.035); --border:rgba(255,253,228,.10); --border-2:rgba(255,253,228,.16);
+      --font:'Roboto Mono',ui-monospace,monospace; --maxw-read:780px;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{font-family:var(--font-body);background:var(--black);color:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--font);background:var(--black);color:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased;position:relative}
+    body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background:
+        radial-gradient(45% 40% at 14% 0%, rgba(255,253,228,.06), transparent 62%),
+        radial-gradient(40% 46% at 92% 8%, rgba(255,253,228,.045), transparent 66%),
+        radial-gradient(60% 50% at 50% 114%, rgba(228,43,36,.06), transparent 60%);}
     img{display:block;max-width:100%}
     a{color:var(--red);text-decoration:none}
     a:hover{text-decoration:underline}
     .container{width:100%;max-width:1140px;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2.5rem)}
 
-    /* ===== Header ===== */
-    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(0,0,0,.72);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,5,5,.55);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1rem}
     .brand{display:flex;align-items:center;gap:.6rem}
-    .brand__mark{width:40px;height:40px;object-fit:contain;flex:0 0 auto}
-    .brand__wordmark{height:46px;width:auto;flex:0 0 auto}
-    .back-link{font-family:var(--font-head);font-weight:800;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;color:var(--cream)}
+    .brand__mark{width:38px;height:38px;object-fit:contain;flex:0 0 auto}
+    .brand__wordmark{height:44px;width:auto;flex:0 0 auto}
+    .nav__right{display:flex;align-items:center;gap:.9rem}
+    .back-link{font-family:var(--font);font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--cream-dim);white-space:nowrap}
     .back-link:hover{color:var(--red);text-decoration:none}
+    .lang-switch{display:inline-flex;gap:.15rem;border:1px solid var(--border-2);border-radius:999px;padding:.22rem;background:var(--glass);backdrop-filter:blur(6px)}
+    .lang-btn{font-family:var(--font);font-weight:600;font-size:.72rem;letter-spacing:.08em;color:var(--cream-dim);background:transparent;border:none;cursor:pointer;padding:.35rem .7rem;border-radius:999px;transition:background .2s,color .2s}
+    .lang-btn:hover{color:var(--cream)}
+    .lang-btn.is-active{background:var(--red);color:var(--cream)}
 
-    /* ===== Lesbereich ===== */
     .legal{max-width:var(--maxw-read);margin-inline:auto;padding-block:clamp(2.5rem,6vw,4.5rem)}
-    .legal .eyebrow{display:inline-block;font-family:var(--font-head);font-weight:800;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem}
-    .legal h1{font-family:var(--font-head);font-weight:900;font-size:clamp(2rem,6vw,3rem);line-height:1.05;letter-spacing:-.02em}
+    .legal .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font);font-weight:600;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin-bottom:.8rem}
+    .legal .eyebrow::before{content:"";width:22px;height:1px;background:var(--red)}
+    .legal h1{font-family:var(--font);font-weight:700;font-size:clamp(2rem,6vw,2.9rem);line-height:1.06;letter-spacing:-.02em}
     .legal .updated{color:var(--cream-dim);font-size:.95rem;margin-top:.8rem}
-    .legal h2{font-family:var(--font-head);font-weight:800;font-size:1.3rem;margin-top:2.6rem;margin-bottom:.6rem;padding-left:.9rem;border-left:4px solid var(--red);text-transform:uppercase;letter-spacing:.01em}
+    .legal h2{font-family:var(--font);font-weight:700;font-size:1.22rem;margin-top:2.6rem;margin-bottom:.6rem;padding-left:.9rem;border-left:3px solid var(--red);letter-spacing:.005em}
     .legal p{color:var(--cream-dim);margin-bottom:1rem}
     .legal ul{list-style:none;margin:0 0 1rem;display:grid;gap:.55rem}
     .legal li{color:var(--cream-dim);padding-left:1.4rem;position:relative}
     .legal li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;border-radius:50%;background:var(--red)}
     .legal strong{color:var(--cream)}
-    .legal .quote{border-left:3px solid var(--border);padding:.2rem 0 .2rem 1.1rem;font-style:italic;color:var(--cream)}
-    .legal .intro{font-size:1.1rem;color:var(--cream);margin-top:1.6rem}
+    .legal .quote{border-left:3px solid var(--border-2);padding:.2rem 0 .2rem 1.1rem;font-style:italic;color:var(--cream)}
     .legal .divider{height:1px;background:var(--border);margin:clamp(3rem,7vw,4.5rem) 0}
-    .legal .placeholder{color:var(--red);font-weight:600} /* hebt auszufüllende Felder hervor */
-
-    /* Sprungziel-Offset wegen Sticky-Header */
     .anchor{scroll-margin-top:90px}
 
-    /* ===== Footer ===== */
     .site-footer{border-top:1px solid var(--border);padding-block:2.5rem;margin-top:2rem}
-    .footer__row{display:flex;flex-wrap:wrap;gap:1rem 1.8rem;justify-content:space-between;align-items:center;color:var(--cream-dim);font-size:.85rem}
+    .footer__row{display:flex;flex-wrap:wrap;gap:1rem 1.8rem;justify-content:space-between;align-items:center;color:var(--cream-faint);font-size:.82rem}
     .footer__nav{display:flex;flex-wrap:wrap;gap:1.2rem}
     .footer__nav a{color:var(--cream-dim)}
     .footer__nav a:hover{color:var(--red);text-decoration:none}
@@ -73,79 +75,81 @@
         <img class="brand__mark" src="CombatCoach_Avata_Logo.png" alt="" />
         <img class="brand__wordmark" src="Combat_Coach_FontLogo.png" alt="Combat Coach" />
       </a>
-      <a href="index.html" class="back-link">← Back to home</a>
+      <div class="nav__right">
+        <div class="lang-switch" role="group" aria-label="Sprache / Language">
+          <button class="lang-btn" data-lang="de" type="button">DE</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+        </div>
+        <a href="index.html" class="back-link" data-i18n="nav.back">← Zur Startseite</a>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <article class="legal">
 
-      <!-- ========================= TERMS OF USE ========================= -->
+      <!-- ===== NUTZUNGSBEDINGUNGEN ===== -->
       <section id="terms" class="anchor">
-        <span class="eyebrow">Legal</span>
-        <h1>Terms of Use</h1>
+        <span class="eyebrow" data-i18n="t.eyebrow">Rechtliches</span>
+        <h1 data-i18n="t.h1">Nutzungsbedingungen</h1>
 
-        <h2>1. Scope of Application</h2>
-        <!-- TODO: echten Anbieternamen + Adresse eintragen (siehe Impressum unten) -->
-        <p>These Terms apply to the Combat Coach app provided by
-          Stephan Koenig, Charlottenstr. 78, 10117 Berlin, Germany.
-          Downloading or using the app means you agree to these Terms.</p>
+        <h2 data-i18n="t.s1.h">1. Geltungsbereich</h2>
+        <p data-i18n="t.s1.p">Diese Bedingungen gelten für die Combat-Coach-App, bereitgestellt von Stephan Koenig, Charlottenstr. 78, 10117 Berlin, Deutschland. Mit dem Herunterladen oder der Nutzung der App erklärst du dich mit diesen Bedingungen einverstanden.</p>
 
-        <h2>2. Purpose of the App</h2>
-        <p>Combat Coach supports martial arts, fitness, and combat sports training.</p>
-        <p class="quote">The App is not a substitute for professional coaching or medical advice.</p>
+        <h2 data-i18n="t.s2.h">2. Zweck der App</h2>
+        <p data-i18n="t.s2.p">Combat Coach unterstützt Kampfkunst-, Fitness- und Kampfsporttraining.</p>
+        <p class="quote" data-i18n="t.s2.quote">Die App ersetzt kein professionelles Coaching und keine medizinische Beratung.</p>
 
-        <h2>3. Permitted Use</h2>
-        <p>Personal, non-commercial use only. Users must comply with applicable laws and may not infringe third-party rights.</p>
+        <h2 data-i18n="t.s3.h">3. Zulässige Nutzung</h2>
+        <p data-i18n="t.s3.p">Nur private, nicht-kommerzielle Nutzung. Nutzer müssen geltendes Recht einhalten und dürfen keine Rechte Dritter verletzen.</p>
 
-        <h2>4. Availability and Modifications</h2>
-        <p>The provider reserves the right to modify or discontinue the app without notice, though it aims to keep the app accessible.</p>
+        <h2 data-i18n="t.s4.h">4. Verfügbarkeit und Änderungen</h2>
+        <p data-i18n="t.s4.p">Der Anbieter behält sich das Recht vor, die App ohne Vorankündigung zu ändern oder einzustellen, ist jedoch bestrebt, die App verfügbar zu halten.</p>
 
-        <h2>5. In-App Purchases</h2>
-        <p>Payments are processed through the app stores (Google Play, Apple App Store), whose terms govern those transactions.</p>
+        <h2 data-i18n="t.s5.h">5. In-App-Käufe</h2>
+        <p data-i18n="t.s5.p">Zahlungen werden über die App-Stores (Google Play, Apple App Store) abgewickelt, deren Bedingungen für diese Transaktionen gelten.</p>
 
-        <h2>6. Limitation of Liability</h2>
-        <p>The app is provided “as is” without warranties. The provider disclaims liability for damages arising from use or inability to use the app, particularly during physical activity.</p>
+        <h2 data-i18n="t.s6.h">6. Haftungsbeschränkung</h2>
+        <p data-i18n="t.s6.p">Die App wird „wie besehen“ ohne Gewährleistung bereitgestellt. Der Anbieter übernimmt keine Haftung für Schäden, die aus der Nutzung oder Nichtnutzbarkeit der App entstehen, insbesondere während körperlicher Aktivität.</p>
 
-        <h2>7. Data Protection</h2>
-        <p>The handling of personal data is covered in our <a href="privacy.html">Privacy Policy</a>.</p>
+        <h2 data-i18n="t.s7.h">7. Datenschutz</h2>
+        <p data-i18n="t.s7.p">Der Umgang mit personenbezogenen Daten ist in unserer <a href="privacy.html">Datenschutzerklärung</a> geregelt.</p>
 
-        <h2>8. Changes to Terms</h2>
-        <p>Updates may occur from time to time; continued use indicates acceptance.</p>
+        <h2 data-i18n="t.s8.h">8. Änderungen der Bedingungen</h2>
+        <p data-i18n="t.s8.p">Änderungen können von Zeit zu Zeit erfolgen; die fortgesetzte Nutzung gilt als Zustimmung.</p>
 
-        <h2>9. Governing Law</h2>
-        <p>German law applies; jurisdiction is at the provider's location where legally permitted.</p>
+        <h2 data-i18n="t.s9.h">9. Anwendbares Recht</h2>
+        <p data-i18n="t.s9.p">Es gilt deutsches Recht; Gerichtsstand ist, soweit gesetzlich zulässig, der Sitz des Anbieters.</p>
       </section>
 
       <div class="divider"></div>
 
-      <!-- ========================= LEGAL NOTICE / IMPRINT ========================= -->
+      <!-- ===== IMPRESSUM ===== -->
       <section id="imprint" class="anchor">
-        <span class="eyebrow">Imprint</span>
-        <h1>Legal Notice</h1>
-        <p class="updated">Information pursuant to § 5 DDG (formerly § 5 TMG)</p>
+        <span class="eyebrow" data-i18n="i.eyebrow">Impressum</span>
+        <h1 data-i18n="i.h1">Impressum</h1>
+        <p class="updated" data-i18n="i.updated">Angaben gemäß § 5 DDG (ehemals § 5 TMG)</p>
 
-        <h2>Provider</h2>
+        <h2 data-i18n="i.provider.h">Anbieter</h2>
         <ul>
           <li><strong>Stephan Koenig</strong></li>
           <li>Charlottenstr. 78</li>
-          <li>10117 Berlin, Germany</li>
+          <li data-i18n="i.provider.city">10117 Berlin, Deutschland</li>
         </ul>
 
-        <h2>Contact</h2>
+        <h2 data-i18n="i.contact.h">Kontakt</h2>
         <ul>
-          <!-- TODO: echte Kontakt-E-Mail eintragen -->
-          <li>Email: <a href="mailto:info@combatcoach.org">info@combatcoach.org</a></li>
+          <li data-i18n="i.contact.mail">E-Mail: <a href="mailto:info@combatcoach.org">info@combatcoach.org</a></li>
         </ul>
 
-        <h2>Responsible for Content (§ 18 (2) MStV)</h2>
+        <h2 data-i18n="i.resp.h">Verantwortlich für den Inhalt (§ 18 Abs. 2 MStV)</h2>
         <ul>
           <li>Stephan Koenig</li>
-          <li>(address as above)</li>
+          <li data-i18n="i.resp.addr">(Anschrift wie oben)</li>
         </ul>
 
-        <h2>Online Dispute Resolution</h2>
-        <p>The provider is neither obliged nor willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+        <h2 data-i18n="i.odr.h">Online-Streitbeilegung</h2>
+        <p data-i18n="i.odr.p">Der Anbieter ist nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
       </section>
 
     </article>
@@ -153,15 +157,114 @@
 
   <footer class="site-footer">
     <div class="container footer__row">
-      <span>© 2026 Combat Coach. All rights reserved.</span>
-      <nav class="footer__nav" aria-label="Legal">
-        <a href="index.html">Home</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="legal.html#terms">Terms of Use</a>
-        <a href="legal.html#imprint">Legal Notice</a>
+      <span data-i18n="foot.copyright">© 2026 Combat Coach. Alle Rechte vorbehalten.</span>
+      <nav class="footer__nav" aria-label="Rechtliches">
+        <a href="index.html" data-i18n="foot.home">Startseite</a>
+        <a href="privacy.html" data-i18n="foot.privacy">Datenschutz</a>
+        <a href="legal.html#terms" data-i18n="foot.terms">Nutzungsbedingungen</a>
+        <a href="legal.html#imprint" data-i18n="foot.imprint">Impressum</a>
       </nav>
     </div>
   </footer>
+
+  <script>
+    const I18N = {
+      de: {
+        "nav.back": "← Zur Startseite",
+        "t.eyebrow": "Rechtliches",
+        "t.h1": "Nutzungsbedingungen",
+        "t.s1.h": "1. Geltungsbereich",
+        "t.s1.p": "Diese Bedingungen gelten für die Combat-Coach-App, bereitgestellt von Stephan Koenig, Charlottenstr. 78, 10117 Berlin, Deutschland. Mit dem Herunterladen oder der Nutzung der App erklärst du dich mit diesen Bedingungen einverstanden.",
+        "t.s2.h": "2. Zweck der App",
+        "t.s2.p": "Combat Coach unterstützt Kampfkunst-, Fitness- und Kampfsporttraining.",
+        "t.s2.quote": "Die App ersetzt kein professionelles Coaching und keine medizinische Beratung.",
+        "t.s3.h": "3. Zulässige Nutzung",
+        "t.s3.p": "Nur private, nicht-kommerzielle Nutzung. Nutzer müssen geltendes Recht einhalten und dürfen keine Rechte Dritter verletzen.",
+        "t.s4.h": "4. Verfügbarkeit und Änderungen",
+        "t.s4.p": "Der Anbieter behält sich das Recht vor, die App ohne Vorankündigung zu ändern oder einzustellen, ist jedoch bestrebt, die App verfügbar zu halten.",
+        "t.s5.h": "5. In-App-Käufe",
+        "t.s5.p": "Zahlungen werden über die App-Stores (Google Play, Apple App Store) abgewickelt, deren Bedingungen für diese Transaktionen gelten.",
+        "t.s6.h": "6. Haftungsbeschränkung",
+        "t.s6.p": "Die App wird „wie besehen“ ohne Gewährleistung bereitgestellt. Der Anbieter übernimmt keine Haftung für Schäden, die aus der Nutzung oder Nichtnutzbarkeit der App entstehen, insbesondere während körperlicher Aktivität.",
+        "t.s7.h": "7. Datenschutz",
+        "t.s7.p": "Der Umgang mit personenbezogenen Daten ist in unserer <a href=\"privacy.html\">Datenschutzerklärung</a> geregelt.",
+        "t.s8.h": "8. Änderungen der Bedingungen",
+        "t.s8.p": "Änderungen können von Zeit zu Zeit erfolgen; die fortgesetzte Nutzung gilt als Zustimmung.",
+        "t.s9.h": "9. Anwendbares Recht",
+        "t.s9.p": "Es gilt deutsches Recht; Gerichtsstand ist, soweit gesetzlich zulässig, der Sitz des Anbieters.",
+        "i.eyebrow": "Impressum",
+        "i.h1": "Impressum",
+        "i.updated": "Angaben gemäß § 5 DDG (ehemals § 5 TMG)",
+        "i.provider.h": "Anbieter",
+        "i.provider.city": "10117 Berlin, Deutschland",
+        "i.contact.h": "Kontakt",
+        "i.contact.mail": "E-Mail: <a href=\"mailto:info@combatcoach.org\">info@combatcoach.org</a>",
+        "i.resp.h": "Verantwortlich für den Inhalt (§ 18 Abs. 2 MStV)",
+        "i.resp.addr": "(Anschrift wie oben)",
+        "i.odr.h": "Online-Streitbeilegung",
+        "i.odr.p": "Der Anbieter ist nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+        "foot.copyright": "© 2026 Combat Coach. Alle Rechte vorbehalten.",
+        "foot.home": "Startseite",
+        "foot.privacy": "Datenschutz",
+        "foot.terms": "Nutzungsbedingungen",
+        "foot.imprint": "Impressum"
+      },
+      en: {
+        "nav.back": "← Back to home",
+        "t.eyebrow": "Legal",
+        "t.h1": "Terms of Use",
+        "t.s1.h": "1. Scope of Application",
+        "t.s1.p": "These Terms apply to the Combat Coach app provided by Stephan Koenig, Charlottenstr. 78, 10117 Berlin, Germany. Downloading or using the app means you agree to these Terms.",
+        "t.s2.h": "2. Purpose of the App",
+        "t.s2.p": "Combat Coach supports martial arts, fitness, and combat sports training.",
+        "t.s2.quote": "The App is not a substitute for professional coaching or medical advice.",
+        "t.s3.h": "3. Permitted Use",
+        "t.s3.p": "Personal, non-commercial use only. Users must comply with applicable laws and may not infringe third-party rights.",
+        "t.s4.h": "4. Availability and Modifications",
+        "t.s4.p": "The provider reserves the right to modify or discontinue the app without notice, though it aims to keep the app accessible.",
+        "t.s5.h": "5. In-App Purchases",
+        "t.s5.p": "Payments are processed through the app stores (Google Play, Apple App Store), whose terms govern those transactions.",
+        "t.s6.h": "6. Limitation of Liability",
+        "t.s6.p": "The app is provided “as is” without warranties. The provider disclaims liability for damages arising from use or inability to use the app, particularly during physical activity.",
+        "t.s7.h": "7. Data Protection",
+        "t.s7.p": "The handling of personal data is covered in our <a href=\"privacy.html\">Privacy Policy</a>.",
+        "t.s8.h": "8. Changes to Terms",
+        "t.s8.p": "Updates may occur from time to time; continued use indicates acceptance.",
+        "t.s9.h": "9. Governing Law",
+        "t.s9.p": "German law applies; jurisdiction is at the provider's location where legally permitted.",
+        "i.eyebrow": "Imprint",
+        "i.h1": "Legal Notice",
+        "i.updated": "Information pursuant to § 5 DDG (formerly § 5 TMG)",
+        "i.provider.h": "Provider",
+        "i.provider.city": "10117 Berlin, Germany",
+        "i.contact.h": "Contact",
+        "i.contact.mail": "Email: <a href=\"mailto:info@combatcoach.org\">info@combatcoach.org</a>",
+        "i.resp.h": "Responsible for Content (§ 18 (2) MStV)",
+        "i.resp.addr": "(address as above)",
+        "i.odr.h": "Online Dispute Resolution",
+        "i.odr.p": "The provider is neither obliged nor willing to participate in dispute resolution proceedings before a consumer arbitration board.",
+        "foot.copyright": "© 2026 Combat Coach. All rights reserved.",
+        "foot.home": "Home",
+        "foot.privacy": "Privacy Policy",
+        "foot.terms": "Terms of Use",
+        "foot.imprint": "Legal Notice"
+      }
+    };
+    function setLang(lang){
+      if(!I18N[lang]) lang='de';
+      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-i18n]').forEach(function(el){
+        var v=I18N[lang][el.getAttribute('data-i18n')]; if(v!=null) el.innerHTML=v;
+      });
+      document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.toggle('is-active', b.dataset.lang===lang); });
+      try{localStorage.setItem('cc_lang',lang);}catch(e){}
+    }
+    (function(){
+      var saved=null; try{saved=localStorage.getItem('cc_lang');}catch(e){}
+      setLang(saved||'de');
+      document.querySelectorAll('.lang-btn').forEach(function(b){ b.addEventListener('click',function(){ setLang(b.dataset.lang); }); });
+    })();
+  </script>
 
 </body>
 </html>
