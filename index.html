@@ -117,8 +117,16 @@
        ========================================================= */
     .site-header {
       position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(14px); background: rgba(5, 5, 5, 0.55);
-      border-bottom: 1px solid var(--border);
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background .35s ease, border-color .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+    }
+    /* Beim Scrollen: warmes, cremefarbenes Milchglas (Tertiary-Schimmer) */
+    .site-header.is-scrolled {
+      backdrop-filter: blur(16px) saturate(1.2);
+      background: linear-gradient(180deg, rgba(255, 253, 228, 0.07), rgba(255, 253, 228, 0.03));
+      border-bottom: 1px solid rgba(255, 253, 228, 0.12);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
     }
     .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; }
     .brand { display: flex; align-items: center; gap: 0.65rem; }
@@ -528,27 +536,6 @@
           </div>
         </details>
 
-        <!-- Eigene Combos -->
-        <details class="acc__item">
-          <summary class="acc__sum">
-            <span class="acc__head">
-              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span>
-              <span class="acc__titles">
-                <span class="acc__t" data-i18n="f.custom.t">Eigene Combos</span>
-                <span class="acc__pre" data-i18n="f.custom.pre">Erstelle eigene Kombinationen — der Timer sagt sie dir an.</span>
-              </span>
-            </span>
-            <span class="acc__chev" aria-hidden="true"></span>
-          </summary>
-          <div class="acc__body">
-            <div class="acc__grid">
-              <div><p data-i18n="f.custom.body">Lege deine eigenen Kombinationen an, gib ihnen Namen und Länge — und ComboSim ruft sie dir im Training zu. Deine Combos, an dein Konto gebunden, jederzeit abrufbar. Dein Coach spricht jetzt deine Sprache.</p></div>
-              <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
-              <!-- Screenshot ersetzen: <img src="screenshots/custom_combos.png" alt="" style="width:100%;border-radius:18px;"> -->
-            </div>
-          </div>
-        </details>
-
         <!-- Trainingspläne -->
         <details class="acc__item">
           <summary class="acc__sum">
@@ -807,9 +794,6 @@
         "f.camp.body": "Combat Camp ist deine Technik-Akademie: kuratierte Kurse zu Grund- und Fortgeschrittenen-Techniken, klar strukturiert und Schritt für Schritt aufgebaut. Statt nur zu reagieren, siehst du genau, wie eine Technik korrekt aussieht — in eigens produzierten 3D-Lernvideos.",
         "f.timers.t": "Die Timer-Suite",
         "f.timers.pre": "Countdown, Intervall, Tabata, Stretching & Drills — jedes Workout-Format in einer App.",
-        "f.custom.t": "Eigene Combos",
-        "f.custom.pre": "Erstelle eigene Kombinationen — der Timer sagt sie dir an.",
-        "f.custom.body": "Lege deine eigenen Kombinationen an, gib ihnen Namen und Länge — und ComboSim ruft sie dir im Training zu. Deine Combos, an dein Konto gebunden, jederzeit abrufbar. Dein Coach spricht jetzt deine Sprache.",
         "f.plans.t": "Trainingspläne & Kalender",
         "f.plans.pre": "Baue, speichere und durchlaufe komplette Workouts — und plane sie im Kalender.",
         "f.plans.body": "Kombiniere ComboSim, Countdown, Intervall und mehr zu kompletten Sessions, speichere sie als wiederverwendbare Pläne und durchlaufe sie im geführten Workout-Flow. Mit Timer-Presets und Kalender-Einträgen wird aus Zufall ein Plan — und aus Plan Fortschritt.",
@@ -898,9 +882,6 @@
         "f.camp.body": "Combat Camp is your technique academy: curated courses on basic and advanced techniques, clearly structured and built step by step. Instead of just reacting, you see exactly how a technique is supposed to look — in custom-made 3D learning videos.",
         "f.timers.t": "The timer suite",
         "f.timers.pre": "Countdown, Interval, Tabata, Stretching & Drills — every workout format in one app.",
-        "f.custom.t": "Custom combos",
-        "f.custom.pre": "Create your own combinations — the timer calls them out.",
-        "f.custom.body": "Create your own combinations, give them a name and length — and ComboSim calls them out during your workout. Your combos, tied to your account, available anytime. Your coach now speaks your language.",
         "f.plans.t": "Training plans & calendar",
         "f.plans.pre": "Build, save and run complete workouts — and schedule them in the calendar.",
         "f.plans.body": "Combine ComboSim, Countdown, Interval and more into complete sessions, save them as reusable plans and run them in the guided workout flow. With timer presets and calendar entries, chance becomes a plan — and a plan becomes progress.",
@@ -935,6 +916,14 @@
       document.querySelectorAll('.lang-btn').forEach(function (b) {
         b.addEventListener('click', function () { setLang(b.dataset.lang); });
       });
+
+      // Header: cremefarbenes Milchglas erst beim Scrollen einblenden
+      var header = document.querySelector('.site-header');
+      if (header) {
+        var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 12); };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
 
       // Sanfte Einblendung beim Scrollen
       var els = document.querySelectorAll('.reveal');
