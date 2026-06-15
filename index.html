@@ -328,6 +328,31 @@
     @media (min-width:820px){ .timer-grid{grid-template-columns:repeat(5,1fr)} }
 
     /* =========================================================
+       11c) AKKORDEON (Funktionen) + Screenshot-Platzhalter
+       ========================================================= */
+    .acc { display:flex; flex-direction:column; gap:1rem; max-width:940px; margin-inline:auto; }
+    .acc__item { border:1px solid var(--border); border-radius:var(--radius); background:var(--glass); backdrop-filter:blur(8px); overflow:hidden; transition:border-color .25s ease, background .25s ease; }
+    .acc__item:hover { border-color:var(--border-2); }
+    .acc__item[open] { border-color:var(--border-2); background:var(--glass-2); }
+    .acc__sum { list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 1.4rem; }
+    .acc__sum::-webkit-details-marker { display:none; }
+    .acc__head { display:flex; align-items:center; gap:1rem; min-width:0; }
+    .acc__icon { flex:0 0 auto; width:44px; height:44px; display:grid; place-items:center; border-radius:13px; background:var(--red-soft); color:var(--red); border:1px solid rgba(228,43,36,0.25); }
+    .acc__icon svg { width:22px; height:22px; }
+    .acc__titles { display:flex; flex-direction:column; gap:.2rem; min-width:0; }
+    .acc__t { font-weight:700; font-size:1.02rem; color:var(--cream); }
+    .acc__pre { font-size:.9rem; color:var(--cream-dim); }
+    .acc__chev { flex:0 0 auto; width:10px; height:10px; border-right:2px solid var(--cream-dim); border-bottom:2px solid var(--cream-dim); transform:rotate(45deg); transition:transform .25s ease; margin-right:4px; }
+    .acc__item[open] .acc__chev { transform:rotate(-135deg); }
+    .acc__body { padding:0 1.4rem 1.7rem; }
+    .acc__body p { color:var(--cream-dim); }
+    .acc__grid { display:grid; grid-template-columns:1fr; gap:1.6rem; align-items:start; }
+    @media (min-width:820px){ .acc__grid { grid-template-columns:1fr 1fr; gap:2.2rem; align-items:center; } }
+    /* Screenshot-Platzhalter — später durch echtes <img> ersetzen */
+    .shot { border:1.5px dashed var(--border-2); border-radius:18px; min-height:240px; display:grid; place-items:center; text-align:center; padding:1.2rem; color:var(--cream-faint); font-size:.74rem; letter-spacing:.14em; text-transform:uppercase; background:rgba(255,253,228,0.02); }
+    .shot::before { content:""; display:block; width:34px; height:28px; margin:0 auto .8rem; border-radius:6px; border:2px solid var(--cream-faint); box-shadow:0 -6px 0 -3px var(--cream-faint); }
+
+    /* =========================================================
        12) SCROLL-REVEAL
        ========================================================= */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
@@ -398,149 +423,195 @@
     </div>
   </div>
 
-  <!-- ====================== FEATURES ====================== -->
+  <!-- ====================== FUNKTIONEN (Akkordeon) ====================== -->
   <section id="features">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow" data-i18n="feat.eyebrow">Das steckt drin</span>
-        <h2 data-i18n="feat.h2">Alles, was du brauchst, um dein Training aufs nächste Level zu bringen.</h2>
-        <p data-i18n="feat.p">Eine App für deinen Plan, deine Technik und deinen Timer — wo auch immer du trainierst.</p>
+        <span class="eyebrow" data-i18n="acc.eyebrow">Alles, was drinsteckt</span>
+        <h2 data-i18n="acc.h2">Funktionen im Detail.</h2>
+        <p data-i18n="acc.hint">Tippe auf eine Funktion, um Details, Visualisierungen und Screenshots zu sehen.</p>
       </div>
 
-      <div class="features__grid">
-        <article class="card reveal">
-          <span class="card__num">01</span>
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-          </div>
-          <h3 data-i18n="card1.h3">Maßgeschneiderter Trainingsplan</h3>
-          <p data-i18n="card1.p">Verwalte deine Routinen, direkt integriert mit unserem Timer und den Combo-Sims. Mehr nötig? Hol dir deinen individuellen, KI-gestützten Trainingsplan.</p>
-        </article>
+      <div class="acc reveal">
 
-        <article class="card reveal">
-          <span class="card__num">02</span>
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="m22 8-6 4 6 4V8z"/></svg>
-          </div>
-          <h3 data-i18n="card2.h3">Unser Combat Camp</h3>
-          <p data-i18n="card2.p">Schärfe deine Skills. Begib dich auf deine Lernreise und verbessere alle Grund- und Fortgeschrittenen-Techniken mit unseren eigens produzierten 3D-Lernvideos.</p>
-        </article>
-
-        <article class="card reveal">
-          <span class="card__num">03</span>
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6M12 5V2"/></svg>
-          </div>
-          <h3 data-i18n="card3.h3">Trainiere jederzeit, überall</h3>
-          <p data-i18n="card3.p">Timer & Combo-Simulator. Rundentimer, Intervalle und zufällige Kombinationen — bereit, wann und wo immer du den Sandsack bearbeitest.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================== COMBOSIM SPOTLIGHT ====================== -->
-  <section id="combosim">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow" data-i18n="cs.eyebrow">Das Herzstück</span>
-        <h2 data-i18n="cs.h2">ComboSim — dein digitaler Sparringspartner.</h2>
-        <p data-i18n="cs.p">Stell dein Workout ein, drück Start — und der Timer ruft dir per Stimme Kombinationen zu. Du reagierst, schlägst, wiederholst. Runden, Pausen und Tempo laufen automatisch.</p>
-      </div>
-      <div class="spotlight__grid">
-        <div class="mode-grid">
-          <article class="card reveal">
-            <div class="card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7M21 16v5h-5M21 21l-6-6M3 8V3h5M3 3l6 6"/></svg>
-            </div>
-            <h3 data-i18n="cs.shuffle.h">Shuffle-Modus</h3>
-            <p data-i18n="cs.shuffle.p">Zufällige Combos aus dem ganzen Pool — du weißt nie, was kommt. Wie echtes Sparring: spontan, reaktiv, ohne Muster.</p>
-          </article>
-          <article class="card reveal">
-            <div class="card__icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h4l3-12h4M14 6h6M11 18h9"/></svg>
-            </div>
-            <h3 data-i18n="cs.seq.h">Sequenced-Modus</h3>
-            <p data-i18n="cs.seq.p">Strukturierte Lernsequenzen, Schritt für Schritt aufgebaut: erst Jab, dann Jab–Cross, dann Jab–Cross–Hook. Für gezieltes Techniktraining.</p>
-          </article>
-        </div>
-        <div class="reveal">
-          <div class="phone">
-            <div class="phone__screen">
-              <div class="phone__appbar"><img src="CombatCoach_Avata_Logo.png" alt="" /><span>ComboSim</span></div>
-              <div class="combo-demo">
-                <div class="cd-top"><span data-i18n="cs.demo.round">Runde 1 / 3</span><span class="cd-time">02:00</span></div>
-                <div class="cd-next" data-i18n="cs.demo.label">Nächste Combo</div>
-                <div class="cd-combo" data-i18n="cs.demo.combo">Jab · Cross · Low Kick</div>
-                <div class="cd-speedlabel" data-i18n="cs.demo.speed">Combo-Tempo</div>
-                <div class="speed-chips">
-                  <span class="chip">9s</span><span class="chip">8s</span><span class="chip">7s</span><span class="chip">6s</span><span class="chip">5s</span><span class="chip hot">4s</span>
+        <!-- ComboSim (offen) -->
+        <details class="acc__item" open>
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-12h-7l2-8z"/></svg></span>
+              <span class="acc__titles">
+                <span class="acc__t" data-i18n="f.combosim.t">ComboSim — der ansagende Combo-Timer</span>
+                <span class="acc__pre" data-i18n="f.combosim.pre">Dein digitaler Sparringspartner ruft dir Kombinationen zu — du reagierst, schlägst, wiederholst.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="acc__grid">
+              <div>
+                <p data-i18n="cs.p">Stell dein Workout ein, drück Start — und der Timer ruft dir per Stimme Kombinationen zu. Du reagierst, schlägst, wiederholst. Runden, Pausen und Tempo laufen automatisch.</p>
+                <div class="mode-grid" style="margin-top:1.4rem;">
+                  <article class="card">
+                    <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7M21 16v5h-5M21 21l-6-6M3 8V3h5M3 3l6 6"/></svg></div>
+                    <h3 data-i18n="cs.shuffle.h">Shuffle-Modus</h3>
+                    <p data-i18n="cs.shuffle.p">Zufällige Combos aus dem ganzen Pool — du weißt nie, was kommt. Wie echtes Sparring: spontan, reaktiv, ohne Muster.</p>
+                  </article>
+                  <article class="card">
+                    <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h4l3-12h4M14 6h6M11 18h9"/></svg></div>
+                    <h3 data-i18n="cs.seq.h">Sequenced-Modus</h3>
+                    <p data-i18n="cs.seq.p">Strukturierte Lernsequenzen, Schritt für Schritt aufgebaut: erst Jab, dann Jab–Cross, dann Jab–Cross–Hook. Für gezieltes Techniktraining.</p>
+                  </article>
                 </div>
                 <div class="filters-line" data-i18n="cs.filters">Du wählst, was angesagt wird: <strong>Strikes · Kicks · Blocks · Footwork · eigene Combos</strong></div>
               </div>
+              <div>
+                <div class="phone">
+                  <div class="phone__screen">
+                    <div class="phone__appbar"><img src="CombatCoach_Avata_Logo.png" alt="" /><span>ComboSim</span></div>
+                    <div class="combo-demo">
+                      <div class="cd-top"><span data-i18n="cs.demo.round">Runde 1 / 3</span><span class="cd-time">02:00</span></div>
+                      <div class="cd-next" data-i18n="cs.demo.label">Nächste Combo</div>
+                      <div class="cd-combo" data-i18n="cs.demo.combo">Jab · Cross · Low Kick</div>
+                      <div class="cd-speedlabel" data-i18n="cs.demo.speed">Combo-Tempo</div>
+                      <div class="speed-chips">
+                        <span class="chip">9s</span><span class="chip">8s</span><span class="chip">7s</span><span class="chip">6s</span><span class="chip">5s</span><span class="chip hot">4s</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        </details>
 
-  <!-- ====================== TIMER-SUITE ====================== -->
-  <section id="timers">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow" data-i18n="ts.eyebrow">Die Timer-Suite</span>
-        <h2 data-i18n="ts.h2">Jedes Workout-Format. Eine App.</h2>
-        <p data-i18n="ts.p">Mehr als Combos: deine komplette Trainingsuhr für jede Session.</p>
-      </div>
-      <div class="timer-grid">
-        <article class="card timer-card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></div>
-          <h3 data-i18n="ts.c1.h">Countdown</h3>
-          <p data-i18n="ts.c1.p">Klassische Runden mit Pausen — wie im Boxgym.</p>
-        </article>
-        <article class="card timer-card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M9 20V4M14 20v-7M19 20V8"/></svg></div>
-          <h3 data-i18n="ts.c2.h">Intervall</h3>
-          <p data-i18n="ts.c2.p">HIIT-Style: Belastung und Erholung im Wechsel.</p>
-        </article>
-        <article class="card timer-card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-12h-7l2-8z"/></svg></div>
-          <h3 data-i18n="ts.c3.h">Tabata</h3>
-          <p data-i18n="ts.c3.p">Das berühmte 20/10-Protokoll für maximale Intensität.</p>
-        </article>
-        <article class="card timer-card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 8v6m0 0-3 6m3-6 3 6M7 11h10"/></svg></div>
-          <h3 data-i18n="ts.c4.h">Stretching</h3>
-          <p data-i18n="ts.c4.p">Geführte Dehn-Routinen nach Körperregion.</p>
-        </article>
-        <article class="card timer-card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
-          <h3 data-i18n="ts.c5.h">Drills</h3>
-          <p data-i18n="ts.c5.p">Strukturierte Übungseinheiten mit Fokus und Anleitung.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+        <!-- Combat Camp -->
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="m22 8-6 4 6 4V8z"/></svg></span>
+              <span class="acc__titles">
+                <span class="acc__t" data-i18n="f.camp.t">Combat Camp — 3D-Lernvideos</span>
+                <span class="acc__pre" data-i18n="f.camp.pre">Lerne jede Technik richtig — mit eigens produzierten 3D-Videos.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="acc__grid">
+              <div><p data-i18n="f.camp.body">Combat Camp ist deine Technik-Akademie: kuratierte Kurse zu Grund- und Fortgeschrittenen-Techniken, klar strukturiert und Schritt für Schritt aufgebaut. Statt nur zu reagieren, siehst du genau, wie eine Technik korrekt aussieht — in eigens produzierten 3D-Lernvideos.</p></div>
+              <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
+              <!-- Screenshot ersetzen: <img src="screenshots/combat_camp.png" alt="" style="width:100%;border-radius:18px;"> -->
+            </div>
+          </div>
+        </details>
 
-  <!-- ====================== POWERED BY AI ====================== -->
-  <section id="ai">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow" data-i18n="ai.eyebrow">Powered by AI</span>
-        <h2 data-i18n="ai.h2">Ein Coach, der nie schläft.</h2>
-        <p data-i18n="ai.p">Künstliche Intelligenz, die dich trainiert — nicht irgendwen.</p>
-      </div>
-      <div class="two-col">
-        <article class="card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 0 1-.9-3.8A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></div>
-          <h3 data-i18n="ai.c1.h">SmartCoach</h3>
-          <p data-i18n="ai.c1.p">Dein KI-Chatcoach beantwortet jede Frage zu Technik, Taktik und Training — jederzeit.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.8L12 15.5l-1.8-4.7L5.5 9l4.7-1.3L12 3zM19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8L19 14z"/></svg></div>
-          <h3 data-i18n="ai.c2.h">KI-Trainingsplan</h3>
-          <p data-i18n="ai.c2.p">Sag, was du willst — „30 Min Muay Thai, Fokus Kondition“ — und bekomm deinen maßgeschneiderten Plan.</p>
-        </article>
+        <!-- Timer-Suite -->
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></span>
+              <span class="acc__titles">
+                <span class="acc__t" data-i18n="f.timers.t">Die Timer-Suite</span>
+                <span class="acc__pre" data-i18n="f.timers.pre">Countdown, Intervall, Tabata, Stretching &amp; Drills — jedes Workout-Format in einer App.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="timer-grid">
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></div><h3 data-i18n="ts.c1.h">Countdown</h3><p data-i18n="ts.c1.p">Klassische Runden mit Pausen — wie im Boxgym.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M9 20V4M14 20v-7M19 20V8"/></svg></div><h3 data-i18n="ts.c2.h">Intervall</h3><p data-i18n="ts.c2.p">HIIT-Style: Belastung und Erholung im Wechsel.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-12h-7l2-8z"/></svg></div><h3 data-i18n="ts.c3.h">Tabata</h3><p data-i18n="ts.c3.p">Das berühmte 20/10-Protokoll für maximale Intensität.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 8v6m0 0-3 6m3-6 3 6M7 11h10"/></svg></div><h3 data-i18n="ts.c4.h">Stretching</h3><p data-i18n="ts.c4.p">Geführte Dehn-Routinen nach Körperregion.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div><h3 data-i18n="ts.c5.h">Drills</h3><p data-i18n="ts.c5.p">Strukturierte Übungseinheiten mit Fokus und Anleitung.</p></article>
+            </div>
+          </div>
+        </details>
+
+        <!-- Eigene Combos -->
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></span>
+              <span class="acc__titles">
+                <span class="acc__t" data-i18n="f.custom.t">Eigene Combos</span>
+                <span class="acc__pre" data-i18n="f.custom.pre">Erstelle eigene Kombinationen — der Timer sagt sie dir an.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="acc__grid">
+              <div><p data-i18n="f.custom.body">Lege deine eigenen Kombinationen an, gib ihnen Namen und Länge — und ComboSim ruft sie dir im Training zu. Deine Combos, an dein Konto gebunden, jederzeit abrufbar. Dein Coach spricht jetzt deine Sprache.</p></div>
+              <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
+              <!-- Screenshot ersetzen: <img src="screenshots/custom_combos.png" alt="" style="width:100%;border-radius:18px;"> -->
+            </div>
+          </div>
+        </details>
+
+        <!-- Trainingspläne -->
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+              <span class="acc__titles">
+                <span class="acc__t" data-i18n="f.plans.t">Trainingspläne &amp; Kalender</span>
+                <span class="acc__pre" data-i18n="f.plans.pre">Baue, speichere und durchlaufe komplette Workouts — und plane sie im Kalender.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="acc__grid">
+              <div><p data-i18n="f.plans.body">Kombiniere ComboSim, Countdown, Intervall und mehr zu kompletten Sessions, speichere sie als wiederverwendbare Pläne und durchlaufe sie im geführten Workout-Flow. Mit Timer-Presets und Kalender-Einträgen wird aus Zufall ein Plan — und aus Plan Fortschritt.</p></div>
+              <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
+              <!-- Screenshot ersetzen: <img src="screenshots/training_plans.png" alt="" style="width:100%;border-radius:18px;"> -->
+            </div>
+          </div>
+        </details>
+
+        <!-- SmartCoach -->
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 0 1-.9-3.8A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></span>
+              <span class="acc__titles">
+                <span class="acc__t" data-i18n="f.coach.t">SmartCoach — dein KI-Coach</span>
+                <span class="acc__pre" data-i18n="f.coach.pre">Ein KI-Chatcoach, der jede Frage zu Technik, Taktik und Training beantwortet.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="acc__grid">
+              <div><p data-i18n="f.coach.body">Der SmartCoach (powered by Google Gemini) beantwortet deine Kampfsport-Fragen rund um die Uhr — zu Technik, Taktik, Training, Ernährung oder Motivation. Dein Chatverlauf wird gespeichert, sodass du jederzeit zurückblättern kannst. Ein Coach, der nie schläft.</p></div>
+              <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
+              <!-- Screenshot ersetzen: <img src="screenshots/smartcoach.png" alt="" style="width:100%;border-radius:18px;"> -->
+            </div>
+          </div>
+        </details>
+
+        <!-- KI-Trainingsplan -->
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.8L12 15.5l-1.8-4.7L5.5 9l4.7-1.3L12 3z"/></svg></span>
+              <span class="acc__titles">
+                <span class="acc__t" data-i18n="f.plan.t">KI-Trainingsplan-Generator</span>
+                <span class="acc__pre" data-i18n="f.plan.pre">Sag, was du willst — und bekomm deinen maßgeschneiderten Plan.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="acc__grid">
+              <div><p data-i18n="f.plan.body">Beschreibe dein Ziel — „30 Minuten Muay Thai, Fokus Kondition, mittleres Level“ — und die KI baut dir daraus einen durchstrukturierten Trainingsplan, den du direkt durchlaufen kannst. Personalisiertes Coaching auf Knopfdruck.</p></div>
+              <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
+              <!-- Screenshot ersetzen: <img src="screenshots/ai_plan.png" alt="" style="width:100%;border-radius:18px;"> -->
+            </div>
+          </div>
+        </details>
+
       </div>
     </div>
   </section>
@@ -722,6 +793,29 @@
         "who.c1.h": "Einsteiger", "who.c1.p": "Lerne Standardkombinationen strukturiert und aufbauend — ohne dich überfordert zu fühlen.",
         "who.c2.h": "Profis", "who.c2.p": "4 Sekunden pro Combo. Keine Muster. Nur Reaktion. Bist du schnell genug?",
         "who.c3.h": "Coaches", "who.c3.p": "Gib deinen Athleten strukturierte Hausaufgaben und Drills — und behalte den Überblick.",
+        "acc.eyebrow": "Alles, was drinsteckt",
+        "acc.h2": "Funktionen im Detail.",
+        "acc.hint": "Tippe auf eine Funktion, um Details, Visualisierungen und Screenshots zu sehen.",
+        "shot.soon": "Screenshot folgt",
+        "f.combosim.t": "ComboSim — der ansagende Combo-Timer",
+        "f.combosim.pre": "Dein digitaler Sparringspartner ruft dir Kombinationen zu — du reagierst, schlägst, wiederholst.",
+        "f.camp.t": "Combat Camp — 3D-Lernvideos",
+        "f.camp.pre": "Lerne jede Technik richtig — mit eigens produzierten 3D-Videos.",
+        "f.camp.body": "Combat Camp ist deine Technik-Akademie: kuratierte Kurse zu Grund- und Fortgeschrittenen-Techniken, klar strukturiert und Schritt für Schritt aufgebaut. Statt nur zu reagieren, siehst du genau, wie eine Technik korrekt aussieht — in eigens produzierten 3D-Lernvideos.",
+        "f.timers.t": "Die Timer-Suite",
+        "f.timers.pre": "Countdown, Intervall, Tabata, Stretching & Drills — jedes Workout-Format in einer App.",
+        "f.custom.t": "Eigene Combos",
+        "f.custom.pre": "Erstelle eigene Kombinationen — der Timer sagt sie dir an.",
+        "f.custom.body": "Lege deine eigenen Kombinationen an, gib ihnen Namen und Länge — und ComboSim ruft sie dir im Training zu. Deine Combos, an dein Konto gebunden, jederzeit abrufbar. Dein Coach spricht jetzt deine Sprache.",
+        "f.plans.t": "Trainingspläne & Kalender",
+        "f.plans.pre": "Baue, speichere und durchlaufe komplette Workouts — und plane sie im Kalender.",
+        "f.plans.body": "Kombiniere ComboSim, Countdown, Intervall und mehr zu kompletten Sessions, speichere sie als wiederverwendbare Pläne und durchlaufe sie im geführten Workout-Flow. Mit Timer-Presets und Kalender-Einträgen wird aus Zufall ein Plan — und aus Plan Fortschritt.",
+        "f.coach.t": "SmartCoach — dein KI-Coach",
+        "f.coach.pre": "Ein KI-Chatcoach, der jede Frage zu Technik, Taktik und Training beantwortet.",
+        "f.coach.body": "Der SmartCoach (powered by Google Gemini) beantwortet deine Kampfsport-Fragen rund um die Uhr — zu Technik, Taktik, Training, Ernährung oder Motivation. Dein Chatverlauf wird gespeichert, sodass du jederzeit zurückblättern kannst. Ein Coach, der nie schläft.",
+        "f.plan.t": "KI-Trainingsplan-Generator",
+        "f.plan.pre": "Sag, was du willst — und bekomm deinen maßgeschneiderten Plan.",
+        "f.plan.body": "Beschreibe dein Ziel — „30 Minuten Muay Thai, Fokus Kondition, mittleres Level“ — und die KI baut dir daraus einen durchstrukturierten Trainingsplan, den du direkt durchlaufen kannst. Personalisiertes Coaching auf Knopfdruck.",
         "foot.copyright": "© 2026 Combat Coach. Alle Rechte vorbehalten.",
         "foot.photos": "Fotos via <a href=\"https://www.pexels.com\" style=\"color:var(--cream);\">Pexels</a> (RDNE, Glebkrs)"
       },
@@ -790,6 +884,29 @@
         "who.c1.h": "Beginners", "who.c1.p": "Learn standard combinations structured and step by step — without feeling overwhelmed.",
         "who.c2.h": "Professionals", "who.c2.p": "4 seconds per combo. No patterns. Pure reaction. Are you fast enough?",
         "who.c3.h": "Coaches", "who.c3.p": "Give your athletes structured homework and drills — and keep the overview.",
+        "acc.eyebrow": "Everything inside",
+        "acc.h2": "Features in detail.",
+        "acc.hint": "Tap a feature to reveal details, visuals and screenshots.",
+        "shot.soon": "Screenshot coming soon",
+        "f.combosim.t": "ComboSim — the calling combo timer",
+        "f.combosim.pre": "Your digital sparring partner calls out combinations — you react, strike, repeat.",
+        "f.camp.t": "Combat Camp — 3D learning videos",
+        "f.camp.pre": "Learn every technique properly — with custom-made 3D videos.",
+        "f.camp.body": "Combat Camp is your technique academy: curated courses on basic and advanced techniques, clearly structured and built step by step. Instead of just reacting, you see exactly how a technique is supposed to look — in custom-made 3D learning videos.",
+        "f.timers.t": "The timer suite",
+        "f.timers.pre": "Countdown, Interval, Tabata, Stretching & Drills — every workout format in one app.",
+        "f.custom.t": "Custom combos",
+        "f.custom.pre": "Create your own combinations — the timer calls them out.",
+        "f.custom.body": "Create your own combinations, give them a name and length — and ComboSim calls them out during your workout. Your combos, tied to your account, available anytime. Your coach now speaks your language.",
+        "f.plans.t": "Training plans & calendar",
+        "f.plans.pre": "Build, save and run complete workouts — and schedule them in the calendar.",
+        "f.plans.body": "Combine ComboSim, Countdown, Interval and more into complete sessions, save them as reusable plans and run them in the guided workout flow. With timer presets and calendar entries, chance becomes a plan — and a plan becomes progress.",
+        "f.coach.t": "SmartCoach — your AI coach",
+        "f.coach.pre": "An AI chat coach that answers every question on technique, tactics and training.",
+        "f.coach.body": "The SmartCoach (powered by Google Gemini) answers your martial arts questions around the clock — on technique, tactics, training, nutrition or motivation. Your chat history is saved so you can scroll back anytime. A coach that never sleeps.",
+        "f.plan.t": "AI training plan generator",
+        "f.plan.pre": "Say what you want — and get your tailored plan.",
+        "f.plan.body": "Describe your goal — “30 minutes Muay Thai, focus conditioning, intermediate level” — and the AI builds a fully structured training plan you can run right away. Personalized coaching at the push of a button.",
         "foot.copyright": "© 2026 Combat Coach. All rights reserved.",
         "foot.photos": "Photos via <a href=\"https://www.pexels.com\" style=\"color:var(--cream);\">Pexels</a> (RDNE, Glebkrs)"
       }
