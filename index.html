@@ -317,6 +317,13 @@
     .phone__appbar span { font-size:.82rem; font-weight:600; letter-spacing:.03em; color:var(--cream); }
     .phone .combo-demo { border:none; border-radius:0; background:transparent; backdrop-filter:none; padding:1.1rem 1.3rem 2rem; }
     .phone .combo-demo::before { border-radius:0; }
+    /* Phone-Rahmen mit echtem Screenshot */
+    .phone--img::before { display:none; }
+    .phone--img .phone__screen { min-height:0; background:#000; }
+    .phone--img .phone__screen img { width:100%; display:block; }
+    .acc__grid .phone { width:min(270px,76vw); }
+    .shots { display:flex; flex-wrap:wrap; gap:1.1rem; justify-content:center; }
+    .shots .phone { width:min(210px,44vw); }
     /* Timer-Suite */
     .timer-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap); }
     .timer-card { text-align:center; padding:1.8rem 1.2rem; }
@@ -465,19 +472,8 @@
                 <div class="filters-line" data-i18n="cs.filters">Du wählst, was angesagt wird: <strong>Strikes · Kicks · Blocks · Footwork · eigene Combos</strong></div>
               </div>
               <div>
-                <div class="phone">
-                  <div class="phone__screen">
-                    <div class="phone__appbar"><img src="CombatCoach_Avata_Logo.png" alt="" /><span>ComboSim</span></div>
-                    <div class="combo-demo">
-                      <div class="cd-top"><span data-i18n="cs.demo.round">Runde 1 / 3</span><span class="cd-time">02:00</span></div>
-                      <div class="cd-next" data-i18n="cs.demo.label">Nächste Combo</div>
-                      <div class="cd-combo" data-i18n="cs.demo.combo">Jab · Cross · Low Kick</div>
-                      <div class="cd-speedlabel" data-i18n="cs.demo.speed">Combo-Tempo</div>
-                      <div class="speed-chips">
-                        <span class="chip">9s</span><span class="chip">8s</span><span class="chip">7s</span><span class="chip">6s</span><span class="chip">5s</span><span class="chip hot">4s</span>
-                      </div>
-                    </div>
-                  </div>
+                <div class="phone phone--img">
+                  <div class="phone__screen"><img src="screenshots/combosim.png" alt="ComboSim – Combo-Timer im Combat Coach" loading="lazy" /></div>
                 </div>
               </div>
             </div>
@@ -525,6 +521,10 @@
               <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 8v6m0 0-3 6m3-6 3 6M7 11h10"/></svg></div><h3 data-i18n="ts.c4.h">Stretching</h3><p data-i18n="ts.c4.p">Geführte Dehn-Routinen nach Körperregion.</p></article>
               <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div><h3 data-i18n="ts.c5.h">Drills</h3><p data-i18n="ts.c5.p">Strukturierte Übungseinheiten mit Fokus und Anleitung.</p></article>
             </div>
+            <div class="shots" style="margin-top:1.7rem;">
+              <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/stretching.png" alt="Stretching-Timer im Combat Coach" loading="lazy" /></div></div>
+              <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/power_drills.png" alt="Power Drills im Combat Coach" loading="lazy" /></div></div>
+            </div>
           </div>
         </details>
 
@@ -564,8 +564,10 @@
           <div class="acc__body">
             <div class="acc__grid">
               <div><p data-i18n="f.plans.body">Kombiniere ComboSim, Countdown, Intervall und mehr zu kompletten Sessions, speichere sie als wiederverwendbare Pläne und durchlaufe sie im geführten Workout-Flow. Mit Timer-Presets und Kalender-Einträgen wird aus Zufall ein Plan — und aus Plan Fortschritt.</p></div>
-              <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
-              <!-- Screenshot ersetzen: <img src="screenshots/training_plans.png" alt="" style="width:100%;border-radius:18px;"> -->
+              <div class="shots">
+                <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/trainingplans.png" alt="Trainingspläne im Combat Coach" loading="lazy" /></div></div>
+                <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/single_exercises.png" alt="Einzelübung im Combat Coach" loading="lazy" /></div></div>
+              </div>
             </div>
           </div>
         </details>
@@ -585,8 +587,9 @@
           <div class="acc__body">
             <div class="acc__grid">
               <div><p data-i18n="f.coach.body">Der SmartCoach (powered by Google Gemini) beantwortet deine Kampfsport-Fragen rund um die Uhr — zu Technik, Taktik, Training, Ernährung oder Motivation. Dein Chatverlauf wird gespeichert, sodass du jederzeit zurückblättern kannst. Ein Coach, der nie schläft.</p></div>
-              <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
-              <!-- Screenshot ersetzen: <img src="screenshots/smartcoach.png" alt="" style="width:100%;border-radius:18px;"> -->
+              <div class="phone phone--img">
+                <div class="phone__screen"><img src="screenshots/smartcoach.png" alt="SmartCoach – KI-Chat im Combat Coach" loading="lazy" /></div>
+              </div>
             </div>
           </div>
         </details>
