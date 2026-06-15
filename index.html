@@ -17,292 +17,310 @@
   <meta property="og:url" content="https://combatcoach.org" />
 
   <!-- =========================================================
-       GOOGLE FONT: Roboto Mono (Headlines + Fließtext)
+       GOOGLE FONT: Roboto Mono
        ========================================================= -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     /* =========================================================
-       1) DESIGN-TOKENS  –  exakt aus der Combat-Coach-App-Theme
+       1) DESIGN-TOKENS  (Combat-Coach-App-Theme)
        ========================================================= */
     :root {
       --red:        #E42B24;
-      --red-deep:   #b81c16;
-      --red-glow:   rgba(228, 43, 36, 0.45);
+      --red-soft:   rgba(228, 43, 36, 0.14);
+      --red-glow:   rgba(228, 43, 36, 0.35);
       --cream:      #FFFDE4;
-      --cream-dim:  rgba(255, 253, 228, 0.60);
-      --black:      #000000;
-      --surface:    #0e0e0e;
-      --surface-2:  #272727;
-      --border:     rgba(255, 253, 228, 0.12);
+      --cream-dim:  rgba(255, 253, 228, 0.58);
+      --cream-faint:rgba(255, 253, 228, 0.40);
+      --black:      #050505;
+      --glass:      rgba(255, 253, 228, 0.035);  /* helles Glas auf Schwarz */
+      --glass-2:    rgba(255, 253, 228, 0.06);
+      --border:     rgba(255, 253, 228, 0.10);
+      --border-2:   rgba(255, 253, 228, 0.16);
 
-      /* Eine Schrift für alles: Roboto Mono */
-      --font-head: 'Roboto Mono', ui-monospace, monospace;
-      --font-body: 'Roboto Mono', ui-monospace, monospace;
+      --font: 'Roboto Mono', ui-monospace, monospace;
 
-      --maxw: 1140px;
-      --radius: 14px;
-      --gap: clamp(1rem, 3vw, 2rem);
+      --maxw: 1180px;
+      --radius: 22px;          /* runder & weicher */
+      --radius-lg: 32px;
+      --gap: clamp(1rem, 3vw, 1.75rem);
     }
 
     /* =========================================================
-       2) RESET / GRUNDLAGEN
+       2) RESET / BASIS
        ========================================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: var(--font-body);
+      font-family: var(--font);
       background: var(--black);
       color: var(--cream);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      position: relative;
     }
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
 
-    .container {
-      width: 100%; max-width: var(--maxw); margin-inline: auto;
-      padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+    /* --- Globaler, dezenter Hintergrund: weiche rote Lichtflächen --- */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background:
+        radial-gradient(38% 44% at 12% 8%, rgba(228,43,36,0.16), transparent 60%),
+        radial-gradient(42% 50% at 92% 14%, rgba(228,43,36,0.10), transparent 64%),
+        radial-gradient(60% 60% at 50% 110%, rgba(228,43,36,0.08), transparent 60%),
+        var(--black);
     }
-    h1, h2, h3 { font-family: var(--font-head); font-weight: 700; line-height: 1.12; letter-spacing: -0.01em; }
+    /* --- Transparente Foto-Textur, die nach unten ausblendet --- */
+    body::after {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background: url('https://images.pexels.com/photos/11045334/pexels-photo-11045334.jpeg?auto=compress&cs=tinysrgb&w=1600') center top / cover no-repeat;
+      opacity: 0.09;
+      filter: grayscale(1) contrast(1.05);
+      -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.35) 45%, transparent 80%);
+              mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.35) 45%, transparent 80%);
+    }
+
+    .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 2.5rem); }
+
+    h1, h2, h3 { font-family: var(--font); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
 
     .eyebrow {
-      display: inline-block; font-family: var(--font-head); font-weight: 700;
-      font-size: 0.74rem; letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--red); margin-bottom: 0.85rem;
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: var(--font); font-weight: 600; font-size: 0.72rem;
+      letter-spacing: 0.26em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 1rem;
     }
+    .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--red); display: inline-block; }
 
     /* =========================================================
-       3) BUTTONS
+       3) BUTTONS (Pill)
        ========================================================= */
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
-      font-family: var(--font-head); font-weight: 700; font-size: 0.92rem;
-      padding: 0.9rem 1.7rem; border-radius: var(--radius);
-      border: 2px solid transparent; cursor: pointer;
-      transition: transform .15s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+      font-family: var(--font); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.02em;
+      padding: 0.85rem 1.6rem; border-radius: 999px; border: 1px solid transparent; cursor: pointer;
+      transition: transform .18s ease, background .22s ease, box-shadow .22s ease, border-color .22s ease, color .22s ease;
       white-space: nowrap;
     }
-    .btn--primary { background: var(--red); color: var(--cream); box-shadow: 0 8px 30px var(--red-glow); }
-    .btn--primary:hover { background: #ff352d; transform: translateY(-2px); }
-    .btn--ghost { background: transparent; color: var(--cream); border-color: var(--border); }
+    .btn--primary { background: var(--red); color: var(--cream); box-shadow: 0 10px 34px var(--red-glow); }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 44px var(--red-glow); }
+    .btn--ghost { background: var(--glass); color: var(--cream); border-color: var(--border-2); backdrop-filter: blur(6px); }
     .btn--ghost:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
 
     /* =========================================================
-       4) HEADER / NAVIGATION  + Sprachumschalter
+       4) HEADER + Sprachumschalter
        ========================================================= */
     .site-header {
       position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(12px); background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(14px); background: rgba(5, 5, 5, 0.55);
       border-bottom: 1px solid var(--border);
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; }
     .brand { display: flex; align-items: center; gap: 0.65rem; }
-    .brand__mark { width: 42px; height: 42px; flex: 0 0 auto; object-fit: contain; }
-    .brand__wordmark { height: 50px; width: auto; flex: 0 0 auto; }
+    .brand__mark { width: 40px; height: 40px; flex: 0 0 auto; object-fit: contain; }
+    .brand__wordmark { height: 46px; width: auto; flex: 0 0 auto; }
 
-    /* Sprachumschalter (DE | EN) */
-    .lang-switch { display: inline-flex; gap: 0.2rem; border: 1px solid var(--border); border-radius: 999px; padding: 0.25rem; }
+    .lang-switch { display: inline-flex; gap: 0.15rem; border: 1px solid var(--border-2); border-radius: 999px; padding: 0.22rem; background: var(--glass); backdrop-filter: blur(6px); }
     .lang-btn {
-      font-family: var(--font-head); font-weight: 700; font-size: 0.74rem; letter-spacing: 0.08em;
+      font-family: var(--font); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.08em;
       color: var(--cream-dim); background: transparent; border: none; cursor: pointer;
-      padding: 0.35rem 0.7rem; border-radius: 999px; transition: background .2s, color .2s;
+      padding: 0.35rem 0.75rem; border-radius: 999px; transition: background .2s, color .2s;
     }
     .lang-btn:hover { color: var(--cream); }
     .lang-btn.is-active { background: var(--red); color: var(--cream); }
 
     /* =========================================================
-       5) HERO
+       5) HERO  (luftig, transparent, aufgeräumt)
        ========================================================= */
-    .hero {
-      position: relative; min-height: 92vh; display: flex; align-items: center;
-      background-image:
-        linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.82) 55%, var(--black) 100%),
-        url('https://images.pexels.com/photos/11045334/pexels-photo-11045334.jpeg?auto=compress&cs=tinysrgb&w=1600');
-      background-size: cover; background-position: center;
-    }
-    .hero::after {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(55% 50% at 82% 5%, var(--red-glow), transparent 70%);
-      opacity: 0.55; pointer-events: none;
-    }
+    .hero { position: relative; }
     .hero__grid {
-      position: relative; z-index: 2; display: grid; grid-template-columns: 1fr; gap: 2.5rem;
-      align-items: center; padding-block: 4.5rem; width: 100%;
+      display: grid; grid-template-columns: 1fr; gap: clamp(2.5rem, 6vw, 4rem);
+      align-items: center; padding-block: clamp(4rem, 11vw, 8rem); width: 100%;
     }
     .hero__badge {
-      display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.4rem;
-      padding: 0.45rem 0.9rem; border: 1px solid var(--red); border-radius: 999px;
-      font-family: var(--font-head); font-weight: 700; font-size: 0.72rem;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--red);
+      display: inline-flex; align-items: center; gap: 0.55rem; margin-bottom: 1.6rem;
+      padding: 0.5rem 0.95rem; border: 1px solid var(--border-2); border-radius: 999px;
+      background: var(--glass); backdrop-filter: blur(6px);
+      font-family: var(--font); font-weight: 600; font-size: 0.7rem;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim);
     }
-    .hero__badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: pulse 2s infinite; }
+    .hero__badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); animation: pulse 2.4s infinite; }
     @keyframes pulse {
-      0%   { box-shadow: 0 0 0 0 var(--red-glow); }
-      70%  { box-shadow: 0 0 0 10px rgba(228,43,36,0); }
-      100% { box-shadow: 0 0 0 0 rgba(228,43,36,0); }
+      0% { box-shadow: 0 0 0 0 var(--red-glow); } 70% { box-shadow: 0 0 0 9px rgba(228,43,36,0); } 100% { box-shadow: 0 0 0 0 rgba(228,43,36,0); }
     }
-    .hero h1 { font-size: clamp(2.3rem, 6.5vw, 4.2rem); font-weight: 700; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(2.4rem, 6.4vw, 4.4rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; }
     .hero h1 .accent { color: var(--red); }
-    .hero__sub { margin-top: 1.4rem; font-size: clamp(1rem, 2.2vw, 1.2rem); color: var(--cream-dim); max-width: 560px; }
-    .hero__actions { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 0.9rem; }
+    .hero__sub { margin-top: 1.5rem; font-size: clamp(1rem, 2.1vw, 1.2rem); color: var(--cream-dim); max-width: 540px; }
+    .hero__actions { margin-top: 2.4rem; display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
-    /* Emblem-Seite des Hero – jetzt deutlich kleiner */
-    .hero__emblem { display: none; justify-self: center; width: min(200px, 46vw); aspect-ratio: 1; position: relative; }
-    .hero__emblem::before {
-      content: ""; position: absolute; inset: -8%; border-radius: 50%;
-      background: radial-gradient(circle, var(--red-glow), transparent 65%); filter: blur(8px);
+    /* Emblem: ruhig, mit weichem Ring statt hartem Block */
+    .hero__emblem { justify-self: center; width: min(300px, 72vw); aspect-ratio: 1; position: relative; display: grid; place-items: center; }
+    .hero__emblem::before { /* weicher Glow-Ring */
+      content: ""; position: absolute; inset: 0; border-radius: 50%;
+      background: radial-gradient(circle at 50% 45%, rgba(228,43,36,0.30), transparent 62%);
+      filter: blur(14px);
     }
-    .hero__emblem .emblem { position: relative; width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 16px 32px rgba(0,0,0,0.5)); }
+    .hero__emblem::after { /* dünner Kreis-Rahmen */
+      content: ""; position: absolute; inset: -6%; border-radius: 50%;
+      border: 1px solid var(--border-2);
+    }
+    .hero__emblem img { position: relative; width: 78%; height: 78%; object-fit: contain; filter: drop-shadow(0 18px 38px rgba(0,0,0,0.55)); }
 
     /* =========================================================
-       6) ZIELGRUPPEN-BAND
+       6) MARQUEE-ZIELGRUPPE (dezente Trennleiste)
        ========================================================= */
-    .audience { border-block: 1px solid var(--border); background: var(--surface); }
+    .audience { border-block: 1px solid var(--border); background: var(--glass); }
     .audience__row {
       display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-      gap: clamp(1rem, 5vw, 3.5rem); padding-block: 1.8rem; text-align: center;
+      gap: clamp(0.9rem, 4vw, 2.8rem); padding-block: 1.6rem; text-align: center;
     }
-    .audience__item {
-      font-family: var(--font-head); font-weight: 700;
-      font-size: clamp(1rem, 2.8vw, 1.4rem); text-transform: uppercase; color: var(--cream);
-    }
-    .audience__sep { color: var(--red); font-weight: 700; }
+    .audience__item { font-family: var(--font); font-weight: 600; font-size: clamp(0.92rem, 2.4vw, 1.25rem); text-transform: uppercase; letter-spacing: 0.04em; color: var(--cream); }
+    .audience__sep { color: var(--red); }
 
     /* =========================================================
-       7) ABSCHNITTE allgemein
+       7) ABSCHNITTE
        ========================================================= */
-    section { padding-block: clamp(4rem, 9vw, 7rem); }
-    .section-head { max-width: 640px; margin-bottom: clamp(2.2rem, 5vw, 3.5rem); }
-    .section-head h2 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); }
+    section { padding-block: clamp(4.5rem, 10vw, 8rem); }
+    .section-head { max-width: 660px; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+    .section-head h2 { font-size: clamp(1.8rem, 4.4vw, 2.7rem); }
     .section-head p { margin-top: 1rem; color: var(--cream-dim); font-size: 1.05rem; }
 
     /* =========================================================
-       8) FEATURE-GRID (3 Karten)
+       8) FEATURE-GRID (Glas-Karten, editorial)
        ========================================================= */
     .features__grid { display: grid; grid-template-columns: 1fr; gap: var(--gap); }
     .card {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 2rem 1.8rem; position: relative; overflow: hidden;
-      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      position: relative; overflow: hidden;
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2.2rem 2rem 2.1rem;
+      backdrop-filter: blur(8px);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
     }
-    .card:hover { transform: translateY(-6px); border-color: var(--red); box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-    .card::before {
-      content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-      background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+    .card:hover { transform: translateY(-6px); border-color: var(--border-2); background: var(--glass-2); }
+    .card__num {
+      position: absolute; top: 1.2rem; right: 1.4rem;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; color: var(--cream-faint);
     }
-    .card:hover::before { transform: scaleX(1); }
     .card__icon {
-      width: 56px; height: 56px; display: grid; place-items: center; border-radius: 12px;
-      background: rgba(228,43,36,0.14); color: var(--red); margin-bottom: 1.3rem;
+      width: 52px; height: 52px; display: grid; place-items: center; border-radius: 16px;
+      background: var(--red-soft); color: var(--red); margin-bottom: 1.4rem;
+      border: 1px solid rgba(228,43,36,0.25);
     }
-    .card__icon svg { width: 28px; height: 28px; }
-    .card h3 { font-size: 1.25rem; margin-bottom: 0.7rem; color: var(--cream); }
-    .card p { color: var(--cream-dim); font-size: 0.98rem; }
+    .card__icon svg { width: 26px; height: 26px; }
+    .card h3 { font-size: 1.18rem; margin-bottom: 0.7rem; color: var(--cream); }
+    .card p { color: var(--cream-dim); font-size: 0.96rem; }
 
     /* =========================================================
-       9) SHOWCASE
+       9) SHOWCASE  (Bild weich eingeblendet/maskiert)
        ========================================================= */
-    .showcase { background: var(--surface); border-block: 1px solid var(--border); }
-    .showcase__grid { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-    .showcase__media {
-      border-radius: var(--radius); overflow: hidden; position: relative;
-      aspect-ratio: 4 / 3; box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    .showcase__grid { display: grid; grid-template-columns: 1fr; gap: clamp(2.2rem, 5vw, 4.5rem); align-items: center; }
+    .showcase__media { position: relative; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 3; }
+    .showcase__media img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: grayscale(0.25) contrast(1.05);
+      -webkit-mask-image: radial-gradient(120% 100% at 70% 30%, #000 55%, transparent 100%);
+              mask-image: radial-gradient(120% 100% at 70% 30%, #000 55%, transparent 100%);
     }
-    .showcase__media img { width: 100%; height: 100%; object-fit: cover; }
-    .showcase__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 50%, rgba(228,43,36,0.28)); }
-    .checklist { list-style: none; margin-top: 1.5rem; display: grid; gap: 0.9rem; }
-    .checklist li { display: flex; gap: 0.75rem; align-items: flex-start; color: var(--cream-dim); }
-    .checklist svg { flex: 0 0 auto; width: 22px; height: 22px; color: var(--red); margin-top: 2px; }
+    .showcase__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 45%, rgba(228,43,36,0.22)); }
+    .showcase__media::before { content: ""; position: absolute; inset: 0; border-radius: var(--radius-lg); border: 1px solid var(--border); z-index: 2; pointer-events: none; }
+    .checklist { list-style: none; margin-top: 1.6rem; display: grid; gap: 1rem; }
+    .checklist li { display: flex; gap: 0.8rem; align-items: flex-start; color: var(--cream-dim); }
+    .checklist .tick { flex: 0 0 auto; width: 24px; height: 24px; border-radius: 50%; background: var(--red-soft); border: 1px solid rgba(228,43,36,0.3); display: grid; place-items: center; margin-top: 1px; }
+    .checklist .tick svg { width: 13px; height: 13px; color: var(--red); }
 
     /* =========================================================
-       10) CALL-TO-ACTION  (App-Store-Buttons – Platzhalter)
+       10) CTA
        ========================================================= */
-    .cta { text-align: center; }
     .cta__box {
-      background: radial-gradient(80% 120% at 50% 0%, rgba(228,43,36,0.20), transparent 60%), var(--surface-2);
-      border: 1px solid var(--border); border-radius: 24px;
-      padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+      position: relative; overflow: hidden; text-align: center;
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      background: var(--glass); backdrop-filter: blur(10px);
+      padding: clamp(2.8rem, 7vw, 4.5rem) clamp(1.5rem, 5vw, 3rem);
     }
-    .cta__emblem { width: 72px; height: 72px; margin: 0 auto 1.4rem; }
+    .cta__box::before { content: ""; position: absolute; inset: 0; z-index: -1;
+      background: radial-gradient(70% 120% at 50% 0%, rgba(228,43,36,0.20), transparent 60%); }
+    .cta__emblem { width: 66px; height: 66px; margin: 0 auto 1.5rem; }
     .cta__emblem img { width: 100%; height: 100%; object-fit: contain; }
-    .cta h2 { font-size: clamp(1.6rem, 4.5vw, 2.5rem); }
+    .cta h2 { font-size: clamp(1.7rem, 4.4vw, 2.6rem); }
     .cta p { color: var(--cream-dim); margin-top: 0.9rem; font-size: 1.05rem; }
-    .store-badges { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .store-badges { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
     .store-badge {
-      display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.7rem 1.3rem;
-      border: 1px solid var(--border); border-radius: 12px; background: #000; min-width: 200px;
-      transition: border-color .2s ease, transform .2s ease;
+      display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.75rem 1.35rem;
+      border: 1px solid var(--border-2); border-radius: 16px; background: rgba(0,0,0,0.4); min-width: 205px;
+      transition: border-color .2s ease, transform .2s ease, background .2s ease;
     }
-    .store-badge:hover { border-color: var(--red); transform: translateY(-2px); }
-    .store-badge svg { width: 28px; height: 28px; flex: 0 0 auto; }
-    .store-badge .label { text-align: left; line-height: 1.1; }
-    .store-badge .label small { display: block; font-size: 0.62rem; color: var(--cream-dim); text-transform: uppercase; letter-spacing: 0.05em; }
-    .store-badge .label strong { font-family: var(--font-head); font-size: 1rem; font-weight: 700; color: var(--cream); }
+    .store-badge:hover { border-color: var(--red); transform: translateY(-2px); background: rgba(0,0,0,0.6); }
+    .store-badge svg { width: 27px; height: 27px; flex: 0 0 auto; }
+    .store-badge .label { text-align: left; line-height: 1.15; }
+    .store-badge .label small { display: block; font-size: 0.6rem; color: var(--cream-faint); text-transform: uppercase; letter-spacing: 0.06em; }
+    .store-badge .label strong { font-family: var(--font); font-size: 0.98rem; font-weight: 600; color: var(--cream); }
 
     /* =========================================================
        11) FOOTER
        ========================================================= */
     .site-footer { border-top: 1px solid var(--border); padding-block: clamp(3rem, 6vw, 4.5rem); }
     .footer__grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
-    .footer__logo { width: min(340px, 78%); height: auto; margin-bottom: 1.4rem; }
+    .footer__logo { width: min(330px, 76%); height: auto; margin-bottom: 1.5rem; }
     .footer__lead h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); }
     .footer__lead p { color: var(--cream-dim); margin-top: 0.8rem; max-width: 460px; }
-    .socials { display: flex; gap: 0.9rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .socials { display: flex; gap: 0.8rem; margin-top: 1.6rem; flex-wrap: wrap; }
     .social {
-      width: 48px; height: 48px; display: grid; place-items: center; border-radius: 12px;
-      background: var(--surface-2); border: 1px solid var(--border); color: var(--cream);
+      width: 46px; height: 46px; display: grid; place-items: center; border-radius: 14px;
+      background: var(--glass); border: 1px solid var(--border-2); color: var(--cream);
       transition: background .2s, color .2s, transform .2s, border-color .2s;
     }
     .social:hover { background: var(--red); color: var(--cream); border-color: var(--red); transform: translateY(-3px); }
-    .social svg { width: 22px; height: 22px; }
+    .social svg { width: 21px; height: 21px; }
     .footer__links { display: flex; flex-direction: column; gap: 0.7rem; }
-    .footer__links h4 { font-family: var(--font-head); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.4rem; }
+    .footer__links h4 { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); margin-bottom: 0.5rem; }
     .footer__links a { color: var(--cream-dim); transition: color .2s; width: fit-content; }
     .footer__links a:hover { color: var(--red); }
     .footer__bottom {
       margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
       display: flex; flex-wrap: wrap; gap: 0.6rem 1.5rem; justify-content: space-between;
-      align-items: center; color: var(--cream-dim); font-size: 0.82rem;
+      align-items: center; color: var(--cream-faint); font-size: 0.8rem;
     }
 
     /* =========================================================
-       12) RESPONSIVE
+       12) SCROLL-REVEAL
        ========================================================= */
-    @media (min-width: 860px) {
-      .hero__grid { grid-template-columns: 1.25fr 0.75fr; }
-      .hero__emblem { display: block; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* =========================================================
+       13) RESPONSIVE
+       ========================================================= */
+    @media (min-width: 880px) {
+      .hero__grid { grid-template-columns: 1.2fr 0.8fr; }
     }
     @media (min-width: 768px) {
       .features__grid { grid-template-columns: repeat(3, 1fr); }
       .showcase__grid { grid-template-columns: 1.05fr 0.95fr; }
       .footer__grid { grid-template-columns: 1.4fr 1fr; }
     }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- =========================================================
-       LOGOS: echte Markendateien (gleicher Ordner):
-         • CombatCoach_Avata_Logo.png  → Boxer-Avatar
-         • Combat_Coach_FontLogo.png   → Wortmarke
-       SPRACHE: Texte mit data-i18n werden vom Skript am Seitenende
-       übersetzt (DE = Standard, umschaltbar via DE/EN-Buttons).
-       ========================================================= -->
+  <!-- LOGOS (gleicher Ordner): CombatCoach_Avata_Logo.png, Combat_Coach_FontLogo.png
+       SPRACHE: data-i18n-Texte werden vom Skript unten übersetzt (DE Standard). -->
 
-  <!-- ====================== HEADER / NAV ====================== -->
+  <!-- ====================== HEADER ====================== -->
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="brand" aria-label="Combat Coach home">
         <img class="brand__mark" src="CombatCoach_Avata_Logo.png" alt="" />
         <img class="brand__wordmark" src="Combat_Coach_FontLogo.png" alt="Combat Coach" />
       </a>
-      <!-- Sprachumschalter -->
       <div class="lang-switch" role="group" aria-label="Sprache / Language">
         <button class="lang-btn" data-lang="de" type="button">DE</button>
         <button class="lang-btn" data-lang="en" type="button">EN</button>
@@ -313,7 +331,7 @@
   <!-- ====================== HERO ====================== -->
   <section class="hero">
     <div class="container hero__grid">
-      <div class="hero__copy">
+      <div class="hero__copy reveal">
         <span class="hero__badge"><span class="dot"></span> <span data-i18n="hero.badge">Bald verfügbar · Sommer 2026</span></span>
         <h1 data-i18n="hero.h1">Dein smarter<br><span class="accent">Kampfsport-</span><br>Trainingsbuddy.</h1>
         <p class="hero__sub" data-i18n="hero.sub">Hol das Beste aus deinem Muay-Thai-, Kickbox- und Boxtraining heraus. Smarte Routinen, präzise Timer und Combo-Sims — gebaut für den Ring.</p>
@@ -321,10 +339,8 @@
           <a href="#features" class="btn btn--ghost" data-i18n="hero.explore">Funktionen entdecken</a>
         </div>
       </div>
-
-      <!-- Markenemblem (Boxer-Avatar) – kleiner -->
-      <div class="hero__emblem">
-        <img class="emblem" src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" />
+      <div class="hero__emblem reveal">
+        <img src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" />
       </div>
     </div>
   </section>
@@ -333,24 +349,25 @@
   <div class="audience">
     <div class="container audience__row">
       <span class="audience__item" data-i18n="aud.beginners">Für Einsteiger</span>
-      <span class="audience__sep">/</span>
+      <span class="audience__sep">·</span>
       <span class="audience__item" data-i18n="aud.pros">Profis</span>
-      <span class="audience__sep">/</span>
+      <span class="audience__sep">·</span>
       <span class="audience__item" data-i18n="aud.coaches">&amp; Coaches</span>
     </div>
   </div>
 
-  <!-- ====================== FEATURES (3 Karten) ====================== -->
+  <!-- ====================== FEATURES ====================== -->
   <section id="features">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow" data-i18n="feat.eyebrow">Das steckt drin</span>
         <h2 data-i18n="feat.h2">Alles, was du brauchst, um dein Training aufs nächste Level zu bringen.</h2>
         <p data-i18n="feat.p">Eine App für deinen Plan, deine Technik und deinen Timer — wo auch immer du trainierst.</p>
       </div>
 
       <div class="features__grid">
-        <article class="card">
+        <article class="card reveal">
+          <span class="card__num">01</span>
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
           </div>
@@ -358,7 +375,8 @@
           <p data-i18n="card1.p">Verwalte deine Routinen, direkt integriert mit unserem Timer und den Combo-Sims. Mehr nötig? Hol dir deinen individuellen, KI-gestützten Trainingsplan.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
+          <span class="card__num">02</span>
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="m22 8-6 4 6 4V8z"/></svg>
           </div>
@@ -366,7 +384,8 @@
           <p data-i18n="card2.p">Schärfe deine Skills. Begib dich auf deine Lernreise und verbessere alle Grund- und Fortgeschrittenen-Techniken mit unseren eigens produzierten 3D-Lernvideos.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
+          <span class="card__num">03</span>
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6M12 5V2"/></svg>
           </div>
@@ -380,29 +399,29 @@
   <!-- ====================== SHOWCASE ====================== -->
   <section class="showcase">
     <div class="container showcase__grid">
-      <div class="showcase__media">
+      <div class="showcase__media reveal">
         <img src="https://images.pexels.com/photos/8611942/pexels-photo-8611942.jpeg?auto=compress&cs=tinysrgb&w=1000"
              alt="Zwei Kampfsportler beim Sparring im Boxgym" loading="lazy" />
       </div>
-      <div>
+      <div class="reveal">
         <span class="eyebrow" data-i18n="show.eyebrow">Gebaut für den Ring</span>
-        <h2 style="font-size:clamp(1.7rem,4.5vw,2.4rem);" data-i18n="show.h2">Bleib fokussiert.<br>Trainiere klüger.</h2>
+        <h2 style="font-size:clamp(1.7rem,4.4vw,2.5rem);" data-i18n="show.h2">Bleib fokussiert.<br>Trainiere klüger.</h2>
         <p style="color:var(--cream-dim); margin-top:1rem;" data-i18n="show.p">Combat Coach hält alles an einem Ort, damit du deinen Fokus auf die Arbeit richtest — nicht auf dein Handy.</p>
         <ul class="checklist">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="show.li1">Kontrastreiches UI, lesbar mitten im Training</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="show.li2">KI-gestützte Pläne, abgestimmt auf Level & Sportart</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> <span data-i18n="show.li3">Präzise Timer & Combo-Sims, die nie aus dem Takt geraten</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> <span data-i18n="show.li1">Kontrastreiches UI, lesbar mitten im Training</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> <span data-i18n="show.li2">KI-gestützte Pläne, abgestimmt auf Level & Sportart</span></li>
+          <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> <span data-i18n="show.li3">Präzise Timer & Combo-Sims, die nie aus dem Takt geraten</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ====================== CTA / DOWNLOAD ====================== -->
+  <!-- ====================== CTA ====================== -->
   <section id="download" class="cta">
     <div class="container">
-      <div class="cta__box">
+      <div class="cta__box reveal">
         <div class="cta__emblem"><img src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" /></div>
-        <span class="eyebrow" data-i18n="cta.eyebrow">Mach dich bereit</span>
+        <span class="eyebrow" style="justify-content:center;" data-i18n="cta.eyebrow">Mach dich bereit</span>
         <h2 data-i18n="cta.h2">Verfügbar ab Sommer 2026.</h2>
         <p data-i18n="cta.p">Combat Coach kommt in deine Apple- und Android-App-Stores.</p>
         <div class="store-badges">
@@ -423,9 +442,9 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer__grid">
-        <div class="footer__lead">
+        <div class="footer__lead reveal">
           <img class="footer__logo" src="Combat_Coach_FontLogo.png" alt="Combat Coach" />
-          <span class="eyebrow" style="display:block;" data-i18n="foot.eyebrow">Kontakt aufnehmen</span>
+          <span class="eyebrow" style="display:inline-flex;" data-i18n="foot.eyebrow">Kontakt aufnehmen</span>
           <h2 data-i18n="foot.h2">Wir freuen uns über dein Feedback.</h2>
           <p data-i18n="foot.p">Wenn du Fragen hast oder uns zu neuen Features inspirieren möchtest, melde dich einfach bei uns.</p>
           <div class="socials">
@@ -441,7 +460,7 @@
           </div>
         </div>
 
-        <nav class="footer__links" aria-label="Rechtliches">
+        <nav class="footer__links reveal" aria-label="Rechtliches">
           <h4 data-i18n="foot.legalHead">Rechtliches</h4>
           <a href="privacy.html" data-i18n="foot.privacy">Datenschutz</a>
           <a href="legal.html#terms" data-i18n="foot.terms">Nutzungsbedingungen</a>
@@ -458,9 +477,7 @@
   </footer>
 
   <!-- =========================================================
-       SPRACHE (i18n) – Wörterbuch DE/EN + Umschalt-Logik
-       Neue Texte: data-i18n="key" ans Element, Key hier in beiden
-       Sprachen ergänzen. Standard = Deutsch, Auswahl wird gespeichert.
+       SPRACHE (i18n) + SCROLL-REVEAL
        ========================================================= -->
   <script>
     const I18N = {
@@ -562,6 +579,17 @@
       document.querySelectorAll('.lang-btn').forEach(function (b) {
         b.addEventListener('click', function () { setLang(b.dataset.lang); });
       });
+
+      // Sanfte Einblendung beim Scrollen
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach(function (el) { el.classList.add('in'); });
+      } else {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+        els.forEach(function (el) { io.observe(el); });
+      }
     })();
   </script>
 
