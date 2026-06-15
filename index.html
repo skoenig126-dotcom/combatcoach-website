@@ -305,6 +305,18 @@
     .chip.hot { background:var(--red); border-color:var(--red); color:var(--cream); box-shadow:0 6px 20px var(--red-glow); }
     .filters-line { margin-top:1.7rem; padding-top:1.3rem; border-top:1px solid var(--border); color:var(--cream-dim); font-size:.9rem; }
     .filters-line strong { color:var(--cream); }
+    /* Smartphone-Rahmen für App-Screen-Mockups */
+    .phone { position:relative; width:min(320px,82vw); margin-inline:auto; border-radius:44px; padding:13px;
+      background:linear-gradient(160deg,#1c1c1f,#0a0a0b); border:1px solid var(--border-2);
+      box-shadow:0 36px 70px rgba(0,0,0,.6), inset 0 0 0 2px rgba(255,255,255,.03); }
+    .phone::before { content:""; position:absolute; top:24px; left:50%; transform:translateX(-50%);
+      width:88px; height:6px; border-radius:99px; background:rgba(255,253,228,.16); z-index:3; }
+    .phone__screen { border-radius:32px; overflow:hidden; background:#070707; position:relative; min-height:430px; }
+    .phone__appbar { display:flex; align-items:center; gap:.55rem; padding:2.1rem 1.2rem .3rem; }
+    .phone__appbar img { width:26px; height:26px; object-fit:contain; }
+    .phone__appbar span { font-size:.82rem; font-weight:600; letter-spacing:.03em; color:var(--cream); }
+    .phone .combo-demo { border:none; border-radius:0; background:transparent; backdrop-filter:none; padding:1.1rem 1.3rem 2rem; }
+    .phone .combo-demo::before { border-radius:0; }
     /* Timer-Suite */
     .timer-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap); }
     .timer-card { text-align:center; padding:1.8rem 1.2rem; }
@@ -451,15 +463,22 @@
             <p data-i18n="cs.seq.p">Strukturierte Lernsequenzen, Schritt für Schritt aufgebaut: erst Jab, dann Jab–Cross, dann Jab–Cross–Hook. Für gezieltes Techniktraining.</p>
           </article>
         </div>
-        <div class="combo-demo reveal">
-          <div class="cd-top"><span data-i18n="cs.demo.round">Runde 1 / 3</span><span class="cd-time">02:00</span></div>
-          <div class="cd-next" data-i18n="cs.demo.label">Nächste Combo</div>
-          <div class="cd-combo" data-i18n="cs.demo.combo">Jab · Cross · Low Kick</div>
-          <div class="cd-speedlabel" data-i18n="cs.demo.speed">Combo-Tempo</div>
-          <div class="speed-chips">
-            <span class="chip">9s</span><span class="chip">8s</span><span class="chip">7s</span><span class="chip">6s</span><span class="chip">5s</span><span class="chip hot">4s</span>
+        <div class="reveal">
+          <div class="phone">
+            <div class="phone__screen">
+              <div class="phone__appbar"><img src="CombatCoach_Avata_Logo.png" alt="" /><span>ComboSim</span></div>
+              <div class="combo-demo">
+                <div class="cd-top"><span data-i18n="cs.demo.round">Runde 1 / 3</span><span class="cd-time">02:00</span></div>
+                <div class="cd-next" data-i18n="cs.demo.label">Nächste Combo</div>
+                <div class="cd-combo" data-i18n="cs.demo.combo">Jab · Cross · Low Kick</div>
+                <div class="cd-speedlabel" data-i18n="cs.demo.speed">Combo-Tempo</div>
+                <div class="speed-chips">
+                  <span class="chip">9s</span><span class="chip">8s</span><span class="chip">7s</span><span class="chip">6s</span><span class="chip">5s</span><span class="chip hot">4s</span>
+                </div>
+                <div class="filters-line" data-i18n="cs.filters">Du wählst, was angesagt wird: <strong>Strikes · Kicks · Blocks · Footwork · eigene Combos</strong></div>
+              </div>
+            </div>
           </div>
-          <div class="filters-line" data-i18n="cs.filters">Du wählst, was angesagt wird: <strong>Strikes · Kicks · Blocks · Footwork · eigene Combos</strong></div>
         </div>
       </div>
     </div>
