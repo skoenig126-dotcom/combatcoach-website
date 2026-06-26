@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Intro/Splash: synchron entscheiden, bevor die Seite rendert (kein Aufblitzen) -->
+  <script>
+    (function () {
+      try {
+        var seen = sessionStorage.getItem('cc_splash_shown');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!seen && !reduce) document.documentElement.classList.add('cc-splash-on');
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- =========================================================
        SEO / SOCIAL META
        ========================================================= -->
@@ -141,6 +152,24 @@
     }
     .lang-btn:hover { color: var(--cream); }
     .lang-btn.is-active { background: var(--red); color: var(--cream); }
+
+    /* =========================================================
+       4b) INTRO / SPLASH (Reveal-Animation beim Start)
+       ========================================================= */
+    #cc-splash { position: fixed; inset: 0; z-index: 9999; background: #15110F; display: none; opacity: 1; transition: opacity .6s ease; }
+    html.cc-splash-on #cc-splash { display: block; }
+    #cc-splash.is-leaving { opacity: 0; pointer-events: none; }
+    #cc-splash-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: #15110F; }
+    #cc-splash-skip {
+      position: absolute; bottom: clamp(18px, 4vh, 34px); right: clamp(18px, 4vw, 34px); z-index: 2;
+      font-family: var(--font); font-weight: 600; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--cream-dim); background: rgba(255, 253, 228, 0.06); border: 1px solid var(--border-2);
+      border-radius: 999px; padding: .55rem 1.15rem; cursor: pointer; backdrop-filter: blur(6px);
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    #cc-splash-skip:hover { color: var(--cream); border-color: var(--red); background: rgba(228, 43, 36, 0.12); }
+    html.cc-splash-on, html.cc-splash-on body { overflow: hidden; }
+    @media (prefers-reduced-motion: reduce) { #cc-splash { transition: none; } }
 
     /* =========================================================
        5) HERO  (luftig, transparent, aufgeräumt)
@@ -395,6 +424,12 @@
 
   <!-- LOGOS (gleicher Ordner): CombatCoach_Avata_Logo.png, Combat_Coach_FontLogo.png
        SPRACHE: data-i18n-Texte werden vom Skript unten übersetzt (DE Standard). -->
+
+  <!-- ====================== INTRO / SPLASH ====================== -->
+  <div id="cc-splash" aria-hidden="true">
+    <iframe id="cc-splash-frame" title="Combat Coach Intro" tabindex="-1" scrolling="no"></iframe>
+    <button id="cc-splash-skip" type="button" data-i18n="splash.skip">Überspringen</button>
+  </div>
 
   <!-- ====================== HEADER ====================== -->
   <header class="site-header">
@@ -787,6 +822,7 @@
         "acc.h2": "Funktionen im Detail.",
         "acc.hint": "Tippe auf eine Funktion, um Details, Visualisierungen und Screenshots zu sehen.",
         "shot.soon": "Screenshot folgt",
+        "splash.skip": "Überspringen",
         "f.combosim.t": "ComboSim — der ansagende Combo-Timer",
         "f.combosim.pre": "Dein digitaler Sparringspartner ruft dir Kombinationen zu — du reagierst, schlägst, wiederholst.",
         "f.camp.t": "Combat Camp — 3D-Lernvideos",
@@ -875,6 +911,7 @@
         "acc.h2": "Features in detail.",
         "acc.hint": "Tap a feature to reveal details, visuals and screenshots.",
         "shot.soon": "Screenshot coming soon",
+        "splash.skip": "Skip",
         "f.combosim.t": "ComboSim — the calling combo timer",
         "f.combosim.pre": "Your digital sparring partner calls out combinations — you react, strike, repeat.",
         "f.camp.t": "Combat Camp — 3D learning videos",
@@ -908,6 +945,32 @@
       });
       try { localStorage.setItem('cc_lang', lang); } catch (e) {}
     }
+
+    // Intro/Splash: Reveal-Animation einmal pro Sitzung
+    (function () {
+      var splash = document.getElementById('cc-splash');
+      if (!splash || !document.documentElement.classList.contains('cc-splash-on')) return;
+      var frame = document.getElementById('cc-splash-frame');
+      var skip = document.getElementById('cc-splash-skip');
+      var done = false;
+      function dismiss() {
+        if (done) return; done = true;
+        try { sessionStorage.setItem('cc_splash_shown', '1'); } catch (e) {}
+        clearTimeout(timer);
+        splash.classList.add('is-leaving');
+        setTimeout(function () {
+          document.documentElement.classList.remove('cc-splash-on');
+          if (frame) frame.src = 'about:blank';
+          if (splash.parentNode) splash.parentNode.removeChild(splash);
+        }, 650);
+      }
+      try { localStorage.removeItem('animstage:t'); } catch (e) {} // Reveal immer bei 0 starten
+      splash.setAttribute('aria-hidden', 'false');
+      if (frame) frame.src = 'reveal.html';
+      if (skip) skip.addEventListener('click', dismiss);
+      window.addEventListener('keydown', function (e) { if (e.key === 'Escape') dismiss(); });
+      var timer = setTimeout(dismiss, 5600); // eine volle Runde (~5s) + Puffer
+    })();
 
     (function () {
       var saved = null;
