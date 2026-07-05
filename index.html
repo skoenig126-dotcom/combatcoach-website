@@ -40,6 +40,7 @@
        ========================================================= */
     :root {
       --red:        #E42B24;
+      --red-2:      #FF6A3D;               /* Verlaufs-Partner für flüssige Gradients */
       --red-soft:   rgba(228, 43, 36, 0.14);
       --red-glow:   rgba(228, 43, 36, 0.35);
       --cream:      #FFFDE4;
@@ -75,6 +76,15 @@
     }
     img, svg { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--red); color: var(--cream); }
+    :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 4px; }
+
+    /* Scroll-Fortschritt (dünne Verlaufslinie ganz oben) */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60;
+      background: linear-gradient(90deg, var(--red), var(--red-2));
+      transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
+    }
 
     /* --- Globaler, dezenter Hintergrund: warmer Creme-Schimmer (Tertiary)
            mit einem subtilen roten Marken-Akzent unten --- */
@@ -118,8 +128,18 @@
       transition: transform .18s ease, background .22s ease, box-shadow .22s ease, border-color .22s ease, color .22s ease;
       white-space: nowrap;
     }
-    .btn--primary { background: var(--red); color: var(--cream); box-shadow: 0 10px 34px var(--red-glow); }
-    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 44px var(--red-glow); }
+    .btn--primary {
+      position: relative; overflow: hidden;
+      background: linear-gradient(120deg, var(--red), #c81f19);
+      color: var(--cream); box-shadow: 0 10px 34px var(--red-glow);
+    }
+    .btn--primary::after { /* Licht-Sweep beim Hover */
+      content: ""; position: absolute; inset: 0; translate: -130% 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,253,228,0.28) 50%, transparent 60%);
+      transition: translate .55s ease;
+    }
+    .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 48px var(--red-glow); }
+    .btn--primary:hover::after { translate: 130% 0; }
     .btn--ghost { background: var(--glass); color: var(--cream); border-color: var(--border-2); backdrop-filter: blur(6px); }
     .btn--ghost:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
 
@@ -191,33 +211,73 @@
       0% { box-shadow: 0 0 0 0 var(--red-glow); } 70% { box-shadow: 0 0 0 9px rgba(228,43,36,0); } 100% { box-shadow: 0 0 0 0 rgba(228,43,36,0); }
     }
     .hero h1 { font-size: clamp(2.4rem, 6.4vw, 4.4rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; }
-    .hero h1 .accent { color: var(--red); }
+    .hero h1 .accent { /* flüssiger, wandernder Verlauf auf dem Akzentwort */
+      color: var(--red); /* Fallback, falls background-clip:text fehlt */
+      background: linear-gradient(100deg, var(--red) 15%, var(--red-2) 45%, var(--red) 75%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradShift 6s ease-in-out infinite;
+    }
+    @keyframes gradShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
     .hero__sub { margin-top: 1.5rem; font-size: clamp(1rem, 2.1vw, 1.2rem); color: var(--cream-dim); max-width: 540px; }
     .hero__actions { margin-top: 2.4rem; display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
-    /* Emblem: ruhig, mit weichem Ring statt hartem Block */
+    /* Emblem: schwebt sanft, mit weichem Glow + rotierendem Licht-Ring */
     .hero__emblem { justify-self: center; width: min(300px, 72vw); aspect-ratio: 1; position: relative; display: grid; place-items: center; }
     .hero__emblem::before { /* weicher Glow-Ring */
       content: ""; position: absolute; inset: 0; border-radius: 50%;
       background: radial-gradient(circle at 50% 45%, rgba(228,43,36,0.30), transparent 62%);
       filter: blur(14px);
+      animation: glowPulse 6s ease-in-out infinite;
     }
-    .hero__emblem::after { /* dünner Kreis-Rahmen */
+    @keyframes glowPulse { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+    @property --ring-a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .hero__emblem::after { /* dünner Kreis mit umlaufendem Lichtpunkt */
       content: ""; position: absolute; inset: -6%; border-radius: 50%;
-      border: 1px solid var(--border-2);
+      background: conic-gradient(from var(--ring-a),
+        rgba(255,253,228,0.14) 0deg, rgba(255,253,228,0.06) 250deg,
+        rgba(228,43,36,0.9) 320deg, rgba(255,253,228,0.14) 360deg);
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+              mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+      animation: ringSpin 7s linear infinite;
     }
-    .hero__emblem img { position: relative; width: 78%; height: 78%; object-fit: contain; filter: drop-shadow(0 18px 38px rgba(0,0,0,0.55)); }
+    @keyframes ringSpin { to { --ring-a: 360deg; } }
+    .hero__emblem img {
+      position: relative; width: 78%; height: 78%; object-fit: contain;
+      filter: drop-shadow(0 18px 38px rgba(0,0,0,0.55));
+      animation: floatY 6s ease-in-out infinite;
+    }
+    @keyframes floatY { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+
+    /* Scroll-Hinweis (Maus-Silhouette mit fallendem Punkt) */
+    .hero__scroll {
+      position: absolute; left: 50%; bottom: clamp(0.6rem, 3vh, 2rem); translate: -50% 0;
+      width: 26px; height: 42px; border: 1.5px solid var(--border-2); border-radius: 999px;
+      display: flex; justify-content: center; padding-top: 8px; opacity: .8;
+      transition: border-color .25s ease, opacity .25s ease;
+    }
+    .hero__scroll:hover { border-color: var(--red); opacity: 1; }
+    .hero__scroll span { width: 3.5px; height: 8px; border-radius: 99px; background: var(--red); animation: scrollDot 1.9s ease-in-out infinite; }
+    @keyframes scrollDot { 0% { translate: 0 0; opacity: 1; } 70% { translate: 0 12px; opacity: 0; } 100% { translate: 0 0; opacity: 0; } }
 
     /* =========================================================
        6) MARQUEE-ZIELGRUPPE (dezente Trennleiste)
        ========================================================= */
-    .audience { border-block: 1px solid var(--border); background: var(--glass); }
-    .audience__row {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
-      gap: clamp(0.9rem, 4vw, 2.8rem); padding-block: 1.6rem; text-align: center;
+    .audience { border-block: 1px solid var(--border); background: var(--glass); overflow: hidden; }
+    .marquee { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+    .audience:hover .marquee { animation-play-state: paused; }
+    .marquee__group {
+      display: flex; align-items: center; gap: clamp(1.4rem, 4vw, 3rem);
+      padding-block: 1.5rem; padding-right: clamp(1.4rem, 4vw, 3rem); white-space: nowrap;
     }
-    .audience__item { font-family: var(--font); font-weight: 600; font-size: clamp(0.92rem, 2.4vw, 1.25rem); text-transform: uppercase; letter-spacing: 0.04em; color: var(--cream); }
-    .audience__sep { color: var(--red); }
+    .marquee__group span { font-family: var(--font); font-weight: 600; font-size: clamp(0.95rem, 2.4vw, 1.2rem); text-transform: uppercase; letter-spacing: 0.05em; color: var(--cream); }
+    .marquee__group .star { color: var(--red); font-size: 0.85em; }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee { width: auto; flex-wrap: wrap; justify-content: center; }
+      .marquee__group[aria-hidden] { display: none; }
+    }
 
     /* =========================================================
        7) ABSCHNITTE
@@ -238,7 +298,19 @@
       backdrop-filter: blur(8px);
       transition: transform .25s ease, border-color .25s ease, background .25s ease;
     }
-    .card:hover { transform: translateY(-6px); border-color: var(--border-2); background: var(--glass-2); }
+    .card:hover { transform: translateY(-6px); border-color: rgba(228,43,36,0.35); background: var(--glass-2); box-shadow: 0 22px 50px rgba(0,0,0,0.35), 0 0 44px rgba(228,43,36,0.07); }
+    /* Maus-Spotlight: warmes Licht folgt dem Zeiger (nur bei feiner Maus) */
+    @media (hover: hover) and (pointer: fine) {
+      .card::after {
+        content: ""; position: absolute; inset: 0; opacity: 0; pointer-events: none;
+        background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(228,43,36,0.13), transparent 65%);
+        transition: opacity .3s ease;
+      }
+      .card:hover::after { opacity: 1; }
+    }
+    /* Gestaffeltes Einblenden nebeneinanderliegender Karten */
+    .features__grid .reveal:nth-child(2) { transition-delay: .12s; }
+    .features__grid .reveal:nth-child(3) { transition-delay: .24s; }
     .card__num {
       position: absolute; top: 1.2rem; right: 1.4rem;
       font-size: 0.78rem; font-weight: 600; letter-spacing: 0.15em; color: var(--cream-faint);
@@ -342,6 +414,23 @@
     .chip.hot { background:var(--red); border-color:var(--red); color:var(--cream); box-shadow:0 6px 20px var(--red-glow); }
     .filters-line { margin-top:1.7rem; padding-top:1.3rem; border-top:1px solid var(--border); color:var(--cream-dim); font-size:.9rem; }
     .filters-line strong { color:var(--cream); }
+
+    /* --- Interaktive ComboSim-Live-Demo --- */
+    .demo__grid { display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
+    @media (min-width:900px){ .demo__grid { grid-template-columns:.95fr 1.05fr; } }
+    .chip--btn { cursor:pointer; background:transparent; font-family:var(--font); transition:border-color .2s ease, color .2s ease, transform .15s ease; }
+    .chip--btn:hover { border-color:var(--red); color:var(--cream); transform:translateY(-1px); }
+    .chip--btn.hot { background:var(--red); border-color:var(--red); color:var(--cream); box-shadow:0 6px 20px var(--red-glow); }
+    .cd-combo.punch { animation: punchIn .38s cubic-bezier(.2,1.4,.4,1); }
+    @keyframes punchIn { 0% { opacity:0; transform:translateX(14px) scale(.94); } 100% { opacity:1; transform:none; } }
+    .cd-live { display:inline-flex; align-items:center; gap:.45rem; }
+    .cd-live .dot { width:7px; height:7px; border-radius:50%; background:var(--cream-faint); }
+    .combo-demo.is-running .cd-live .dot { background:var(--red); animation:pulse 1.6s infinite; }
+    .demo__controls { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.7rem; padding-top:1.3rem; border-top:1px solid var(--border); align-items:center; }
+    .demo__hint { font-size:.72rem; color:var(--cream-faint); letter-spacing:.06em; }
+    .btn--voice { padding:.85rem 1.1rem; }
+    .btn--voice.is-on { border-color:var(--red); color:var(--red); }
+    .btn--voice svg { width:17px; height:17px; }
     /* Smartphone-Rahmen für App-Screen-Mockups */
     .phone { position:relative; width:min(320px,82vw); margin-inline:auto; border-radius:44px; padding:13px;
       background:linear-gradient(160deg,#1c1c1f,#0a0a0b); border:1px solid var(--border-2);
@@ -349,15 +438,18 @@
     .phone::before { content:""; position:absolute; top:24px; left:50%; transform:translateX(-50%);
       width:88px; height:6px; border-radius:99px; background:rgba(255,253,228,.16); z-index:3; }
     .phone__screen { border-radius:32px; overflow:hidden; background:#070707; position:relative; min-height:430px; }
-    .phone__appbar { display:flex; align-items:center; gap:.55rem; padding:2.1rem 1.2rem .3rem; }
-    .phone__appbar img { width:26px; height:26px; object-fit:contain; }
-    .phone__appbar span { font-size:.82rem; font-weight:600; letter-spacing:.03em; color:var(--cream); }
-    .phone .combo-demo { border:none; border-radius:0; background:transparent; backdrop-filter:none; padding:1.1rem 1.3rem 2rem; }
-    .phone .combo-demo::before { border-radius:0; }
-    /* Phone-Rahmen mit echtem Screenshot */
+    /* Phone-Rahmen mit echtem Screenshot: schwebt sanft, kippt beim Hover in 3D */
     .phone--img::before { display:none; }
     .phone--img .phone__screen { min-height:0; background:#000; }
     .phone--img .phone__screen img { width:100%; display:block; }
+    .phone--img { animation: floatY 7s ease-in-out infinite; transition: transform .4s ease, box-shadow .4s ease; }
+    .shots .phone--img:nth-child(even) { animation-delay: -3.5s; }
+    @media (hover: hover) and (pointer: fine) {
+      .phone--img:hover {
+        transform: perspective(900px) rotateX(2.5deg) rotateY(-4deg);
+        box-shadow: 0 46px 90px rgba(0,0,0,.65), 0 0 44px rgba(228,43,36,.12), inset 0 0 0 2px rgba(255,255,255,.03);
+      }
+    }
     .acc__grid .phone { width:min(270px,76vw); }
     .shots { display:flex; flex-wrap:wrap; gap:1.1rem; justify-content:center; }
     .shots .phone { width:min(210px,44vw); }
@@ -381,8 +473,19 @@
     .acc__sum { list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.25rem 1.4rem; }
     .acc__sum::-webkit-details-marker { display:none; }
     .acc__head { display:flex; align-items:center; gap:1rem; min-width:0; }
-    .acc__icon { flex:0 0 auto; width:44px; height:44px; display:grid; place-items:center; border-radius:13px; background:var(--red-soft); color:var(--red); border:1px solid rgba(228,43,36,0.25); }
+    .acc__icon { flex:0 0 auto; width:44px; height:44px; display:grid; place-items:center; border-radius:13px; background:var(--red-soft); color:var(--red); border:1px solid rgba(228,43,36,0.25); transition:transform .3s ease, background .3s ease, box-shadow .3s ease; }
     .acc__icon svg { width:22px; height:22px; }
+    .acc__sum:hover .acc__icon { transform:scale(1.08) rotate(-4deg); }
+    .acc__item[open] .acc__icon { background:var(--red); color:var(--cream); box-shadow:0 8px 24px var(--red-glow); }
+    /* Weiches Auf-/Zuklappen — moderne Browser (Chrome 131+); sonst instant wie bisher */
+    @supports (interpolate-size: allow-keywords) {
+      .acc__item { interpolate-size: allow-keywords; }
+      .acc__item::details-content {
+        block-size: 0; overflow: clip;
+        transition: block-size .45s ease, content-visibility .45s allow-discrete;
+      }
+      .acc__item[open]::details-content { block-size: auto; }
+    }
     .acc__titles { display:flex; flex-direction:column; gap:.2rem; min-width:0; }
     .acc__t { font-weight:700; font-size:1.02rem; color:var(--cream); }
     .acc__pre { font-size:.9rem; color:var(--cream-dim); }
@@ -425,6 +528,8 @@
   <!-- LOGOS (gleicher Ordner): CombatCoach_Avata_Logo.png, Combat_Coach_FontLogo.png
        SPRACHE: data-i18n-Texte werden vom Skript unten übersetzt (DE Standard). -->
 
+  <div id="scroll-progress" aria-hidden="true"></div>
+
   <!-- ====================== INTRO / SPLASH ====================== -->
   <div id="cc-splash" aria-hidden="true">
     <iframe id="cc-splash-frame" title="Combat Coach Intro" tabindex="-1" scrolling="no"></iframe>
@@ -453,6 +558,7 @@
         <h1 data-i18n="hero.h1">Dein smarter<br><span class="accent">Kampfsport-</span><br>Trainingsbuddy.</h1>
         <p class="hero__sub" data-i18n="hero.sub">Hol das Beste aus deinem Muay-Thai-, Kickbox- und Boxtraining heraus. Smarte Routinen, präzise Timer und Combo-Sims — gebaut für den Ring.</p>
         <div class="hero__actions">
+          <a href="#demo" class="btn btn--primary" data-i18n="hero.try">ComboSim ausprobieren</a>
           <a href="#features" class="btn btn--ghost" data-i18n="hero.explore">Funktionen entdecken</a>
         </div>
       </div>
@@ -460,18 +566,66 @@
         <img src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" />
       </div>
     </div>
+    <a href="#demo" class="hero__scroll" aria-label="Nach unten scrollen"><span></span></a>
   </section>
 
-  <!-- ====================== ZIELGRUPPE ====================== -->
-  <div class="audience">
-    <div class="container audience__row">
-      <span class="audience__item" data-i18n="aud.beginners">Für Einsteiger</span>
-      <span class="audience__sep">·</span>
-      <span class="audience__item" data-i18n="aud.pros">Profis</span>
-      <span class="audience__sep">·</span>
-      <span class="audience__item" data-i18n="aud.coaches">&amp; Coaches</span>
+  <!-- ====================== ZIELGRUPPEN-TICKER ====================== -->
+  <div class="audience" aria-label="Boxen, Kickboxen, Muay Thai — für Einsteiger, Profis und Coaches">
+    <div class="marquee">
+      <div class="marquee__group">
+        <span data-i18n="mq.box">Boxen</span><span class="star">★</span>
+        <span data-i18n="mq.kick">Kickboxen</span><span class="star">★</span>
+        <span data-i18n="mq.muay">Muay Thai</span><span class="star">★</span>
+        <span data-i18n="aud.beginners">Für Einsteiger</span><span class="star">★</span>
+        <span data-i18n="aud.pros">Profis</span><span class="star">★</span>
+        <span data-i18n="aud.coaches">&amp; Coaches</span><span class="star">★</span>
+      </div>
+      <div class="marquee__group" aria-hidden="true">
+        <span data-i18n="mq.box">Boxen</span><span class="star">★</span>
+        <span data-i18n="mq.kick">Kickboxen</span><span class="star">★</span>
+        <span data-i18n="mq.muay">Muay Thai</span><span class="star">★</span>
+        <span data-i18n="aud.beginners">Für Einsteiger</span><span class="star">★</span>
+        <span data-i18n="aud.pros">Profis</span><span class="star">★</span>
+        <span data-i18n="aud.coaches">&amp; Coaches</span><span class="star">★</span>
+      </div>
     </div>
   </div>
+
+  <!-- ====================== LIVE-DEMO (interaktive ComboSim-Vorschau) ====================== -->
+  <section id="demo">
+    <div class="container demo__grid">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="demo.eyebrow">Live ausprobieren</span>
+        <h2 style="font-size:clamp(1.8rem,4.4vw,2.7rem);" data-i18n="demo.h2">Hör auf zu denken.<br>Fang an zu reagieren.</h2>
+        <p style="color:var(--cream-dim); margin-top:1rem;" data-i18n="demo.p">So fühlt sich ComboSim an: Drück Start, wähl dein Tempo — und reagiere auf jede Ansage. Genau so ruft dir die App am Sandsack die Combos zu.</p>
+        <p class="demo__hint" style="margin-top:1.2rem;" data-i18n="demo.hint">Tipp: Aktiviere den Ton und die Demo sagt dir die Combos laut an — wie in der App.</p>
+      </div>
+      <div class="combo-demo reveal" id="cc-demo">
+        <div class="cd-top">
+          <span class="cd-live"><span class="dot"></span> <span data-i18n="demo.round">Demo-Runde</span></span>
+          <span class="cd-time" id="cc-demo-time">2:00</span>
+        </div>
+        <div class="cd-next" data-i18n="cs.demo.label">Nächste Combo</div>
+        <div class="cd-combo" id="cc-demo-combo" aria-live="polite">Jab · Cross · Low Kick</div>
+        <div class="cd-speedlabel" data-i18n="cs.demo.speed">Combo-Tempo</div>
+        <div class="speed-chips" id="cc-demo-chips" role="group" aria-label="Combo-Tempo wählen">
+          <button class="chip chip--btn" type="button" data-speed="9">9s</button>
+          <button class="chip chip--btn" type="button" data-speed="8">8s</button>
+          <button class="chip chip--btn hot" type="button" data-speed="7">7s</button>
+          <button class="chip chip--btn" type="button" data-speed="6">6s</button>
+          <button class="chip chip--btn" type="button" data-speed="5">5s</button>
+          <button class="chip chip--btn" type="button" data-speed="4">4s</button>
+        </div>
+        <div class="demo__controls">
+          <button class="btn btn--primary" type="button" id="cc-demo-start"><span data-i18n="demo.start">Start</span></button>
+          <button class="btn btn--ghost btn--voice" type="button" id="cc-demo-voice" aria-pressed="false" title="Sprachansage an/aus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>
+            <span data-i18n="demo.voice">Ansage</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ====================== FUNKTIONEN (Akkordeon) ====================== -->
   <section id="features">
@@ -485,7 +639,7 @@
       <div class="acc reveal">
 
         <!-- ComboSim (offen) -->
-        <details class="acc__item" open>
+        <details class="acc__item" name="cc-acc" open>
           <summary class="acc__sum">
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-12h-7l2-8z"/></svg></span>
@@ -524,7 +678,7 @@
         </details>
 
         <!-- Combat Camp -->
-        <details class="acc__item">
+        <details class="acc__item" name="cc-acc">
           <summary class="acc__sum">
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="m22 8-6 4 6 4V8z"/></svg></span>
@@ -545,7 +699,7 @@
         </details>
 
         <!-- Timer-Suite -->
-        <details class="acc__item">
+        <details class="acc__item" name="cc-acc">
           <summary class="acc__sum">
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></span>
@@ -572,7 +726,7 @@
         </details>
 
         <!-- Trainingspläne -->
-        <details class="acc__item">
+        <details class="acc__item" name="cc-acc">
           <summary class="acc__sum">
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
@@ -595,7 +749,7 @@
         </details>
 
         <!-- SmartCoach -->
-        <details class="acc__item">
+        <details class="acc__item" name="cc-acc">
           <summary class="acc__sum">
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 0 1-.9-3.8A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></span>
@@ -617,7 +771,7 @@
         </details>
 
         <!-- KI-Trainingsplan -->
-        <details class="acc__item">
+        <details class="acc__item" name="cc-acc">
           <summary class="acc__sum">
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.8L12 15.5l-1.8-4.7L5.5 9l4.7-1.3L12 3z"/></svg></span>
@@ -758,18 +912,21 @@
         "hero.h1": "Dein smarter<br><span class=\"accent\">Kampfsport-</span><br>Trainingsbuddy.",
         "hero.sub": "Hol das Beste aus deinem Muay-Thai-, Kickbox- und Boxtraining heraus. Smarte Routinen, präzise Timer und Combo-Sims — gebaut für den Ring.",
         "hero.explore": "Funktionen entdecken",
+        "hero.try": "ComboSim ausprobieren",
         "aud.beginners": "Für Einsteiger",
         "aud.pros": "Profis",
         "aud.coaches": "&amp; Coaches",
-        "feat.eyebrow": "Das steckt drin",
-        "feat.h2": "Alles, was du brauchst, um dein Training aufs nächste Level zu bringen.",
-        "feat.p": "Eine App für deinen Plan, deine Technik und deinen Timer — wo auch immer du trainierst.",
-        "card1.h3": "Maßgeschneiderter Trainingsplan",
-        "card1.p": "Verwalte deine Routinen, direkt integriert mit unserem Timer und den Combo-Sims. Mehr nötig? Hol dir deinen individuellen, KI-gestützten Trainingsplan.",
-        "card2.h3": "Unser Combat Camp",
-        "card2.p": "Schärfe deine Skills. Begib dich auf deine Lernreise und verbessere alle Grund- und Fortgeschrittenen-Techniken mit unseren eigens produzierten 3D-Lernvideos.",
-        "card3.h3": "Trainiere jederzeit, überall",
-        "card3.p": "Timer & Combo-Simulator. Rundentimer, Intervalle und zufällige Kombinationen — bereit, wann und wo immer du den Sandsack bearbeitest.",
+        "mq.box": "Boxen",
+        "mq.kick": "Kickboxen",
+        "mq.muay": "Muay Thai",
+        "demo.eyebrow": "Live ausprobieren",
+        "demo.h2": "Hör auf zu denken.<br>Fang an zu reagieren.",
+        "demo.p": "So fühlt sich ComboSim an: Drück Start, wähl dein Tempo — und reagiere auf jede Ansage. Genau so ruft dir die App am Sandsack die Combos zu.",
+        "demo.hint": "Tipp: Aktiviere den Ton und die Demo sagt dir die Combos laut an — wie in der App.",
+        "demo.round": "Demo-Runde",
+        "demo.start": "Start",
+        "demo.pause": "Pause",
+        "demo.voice": "Ansage",
         "show.eyebrow": "Gebaut für den Ring",
         "show.h2": "Bleib fokussiert.<br>Trainiere klüger.",
         "show.p": "Combat Coach hält alles an einem Ort, damit du deinen Fokus auf die Arbeit richtest — nicht auf dein Handy.",
@@ -788,31 +945,19 @@
         "foot.terms": "Nutzungsbedingungen",
         "foot.imprint": "Impressum",
         "foot.contact": "Kontakt",
-        "cs.eyebrow": "Das Herzstück",
-        "cs.h2": "ComboSim — dein digitaler Sparringspartner.",
         "cs.p": "Stell dein Workout ein, drück Start — und der Timer ruft dir per Stimme Kombinationen zu. Du reagierst, schlägst, wiederholst. Runden, Pausen und Tempo laufen automatisch.",
         "cs.shuffle.h": "Shuffle-Modus",
         "cs.shuffle.p": "Zufällige Combos aus dem ganzen Pool — du weißt nie, was kommt. Wie echtes Sparring: spontan, reaktiv, ohne Muster.",
         "cs.seq.h": "Sequenced-Modus",
         "cs.seq.p": "Strukturierte Lernsequenzen, Schritt für Schritt aufgebaut: erst Jab, dann Jab–Cross, dann Jab–Cross–Hook. Für gezieltes Techniktraining.",
-        "cs.demo.round": "Runde 1 / 3",
         "cs.demo.label": "Nächste Combo",
-        "cs.demo.combo": "Jab · Cross · Low Kick",
         "cs.demo.speed": "Combo-Tempo",
         "cs.filters": "Du wählst, was angesagt wird: <strong>Strikes · Kicks · Blocks · Footwork · eigene Combos</strong>",
-        "ts.eyebrow": "Die Timer-Suite",
-        "ts.h2": "Jedes Workout-Format. Eine App.",
-        "ts.p": "Mehr als Combos: deine komplette Trainingsuhr für jede Session.",
         "ts.c1.h": "Countdown", "ts.c1.p": "Klassische Runden mit Pausen — wie im Boxgym.",
         "ts.c2.h": "Intervall", "ts.c2.p": "HIIT-Style: Belastung und Erholung im Wechsel.",
         "ts.c3.h": "Tabata", "ts.c3.p": "Das berühmte 20/10-Protokoll für maximale Intensität.",
         "ts.c4.h": "Stretching", "ts.c4.p": "Geführte Dehn-Routinen nach Körperregion.",
         "ts.c5.h": "Drills", "ts.c5.p": "Strukturierte Übungseinheiten mit Fokus und Anleitung.",
-        "ai.eyebrow": "Powered by AI",
-        "ai.h2": "Ein Coach, der nie schläft.",
-        "ai.p": "Künstliche Intelligenz, die dich trainiert — nicht irgendwen.",
-        "ai.c1.h": "SmartCoach", "ai.c1.p": "Dein KI-Chatcoach beantwortet jede Frage zu Technik, Taktik und Training — jederzeit.",
-        "ai.c2.h": "KI-Trainingsplan", "ai.c2.p": "Sag, was du willst — „30 Min Muay Thai, Fokus Kondition“ — und bekomm deinen maßgeschneiderten Plan.",
         "who.eyebrow": "Für wen?",
         "who.h2": "Gebaut für jede Ecke des Rings.",
         "who.c1.h": "Einsteiger", "who.c1.p": "Lerne Standardkombinationen strukturiert und aufbauend — ohne dich überfordert zu fühlen.",
@@ -847,18 +992,21 @@
         "hero.h1": "Your smart<br><span class=\"accent\">martial arts</span><br>workout pal.",
         "hero.sub": "Make the best out of your Muay Thai, Kickboxing and Boxing training. Smart routines, precise timers and combo sims — built for the ring.",
         "hero.explore": "Explore Features",
+        "hero.try": "Try ComboSim",
         "aud.beginners": "For Beginners",
         "aud.pros": "Professionals",
         "aud.coaches": "&amp; Coaches",
-        "feat.eyebrow": "What's inside",
-        "feat.h2": "Everything you need to level up your training.",
-        "feat.p": "One app for your plan, your technique and your timer — wherever you train.",
-        "card1.h3": "Custom Fit Training Plan",
-        "card1.p": "Manage your routines, directly integrated with our timer and Combo Sims. Need more? Get your customized, AI-powered training plan.",
-        "card2.h3": "Our Combat Camp",
-        "card2.p": "Sharpen your skills. Take on your learning journey and enhance all basic and advanced techniques with our custom-made 3D learning videos.",
-        "card3.h3": "Train anytime, anywhere",
-        "card3.p": "Timer & Combo Simulator. Round timers, intervals and randomized combinations — ready whenever and wherever you hit the bag.",
+        "mq.box": "Boxing",
+        "mq.kick": "Kickboxing",
+        "mq.muay": "Muay Thai",
+        "demo.eyebrow": "Try it live",
+        "demo.h2": "Stop thinking.<br>Start reacting.",
+        "demo.p": "This is what ComboSim feels like: hit start, pick your pace — and react to every call. Exactly how the app calls out combos at the bag.",
+        "demo.hint": "Tip: turn on the voice and the demo calls out your combos — just like the app.",
+        "demo.round": "Demo round",
+        "demo.start": "Start",
+        "demo.pause": "Pause",
+        "demo.voice": "Voice",
         "show.eyebrow": "Built for the ring",
         "show.h2": "Stay focused.<br>Train smarter.",
         "show.p": "Combat Coach keeps everything in one place so you can keep your eyes on the work, not your phone.",
@@ -877,31 +1025,19 @@
         "foot.terms": "Terms of Use",
         "foot.imprint": "Legal Notice / Imprint",
         "foot.contact": "Contact",
-        "cs.eyebrow": "The core",
-        "cs.h2": "ComboSim — your digital sparring partner.",
         "cs.p": "Set your workout, hit start — and the timer calls out combinations by voice. You react, strike, repeat. Rounds, breaks and pace run on autopilot.",
         "cs.shuffle.h": "Shuffle mode",
         "cs.shuffle.p": "Random combos from the whole pool — you never know what's next. Like real sparring: spontaneous, reactive, no patterns.",
         "cs.seq.h": "Sequenced mode",
         "cs.seq.p": "Structured learning sequences, built step by step: jab, then jab–cross, then jab–cross–hook. For focused technique work.",
-        "cs.demo.round": "Round 1 / 3",
         "cs.demo.label": "Next combo",
-        "cs.demo.combo": "Jab · Cross · Low Kick",
         "cs.demo.speed": "Combo speed",
         "cs.filters": "You choose what gets called: <strong>Strikes · Kicks · Blocks · Footwork · your own combos</strong>",
-        "ts.eyebrow": "The timer suite",
-        "ts.h2": "Every workout format. One app.",
-        "ts.p": "More than combos: your complete training clock for every session.",
         "ts.c1.h": "Countdown", "ts.c1.p": "Classic rounds with breaks — just like the boxing gym.",
         "ts.c2.h": "Interval", "ts.c2.p": "HIIT style: work and recovery, alternating.",
         "ts.c3.h": "Tabata", "ts.c3.p": "The famous 20/10 protocol for maximum intensity.",
         "ts.c4.h": "Stretching", "ts.c4.p": "Guided stretching routines by body area.",
         "ts.c5.h": "Drills", "ts.c5.p": "Structured drills with focus area and guidance.",
-        "ai.eyebrow": "Powered by AI",
-        "ai.h2": "A coach that never sleeps.",
-        "ai.p": "Artificial intelligence that trains you — not just anyone.",
-        "ai.c1.h": "SmartCoach", "ai.c1.p": "Your AI chat coach answers every question on technique, tactics and training — anytime.",
-        "ai.c2.h": "AI Training Plan", "ai.c2.p": "Say what you want — “30 min Muay Thai, focus conditioning” — and get your tailored plan.",
         "who.eyebrow": "Who's it for?",
         "who.h2": "Built for every corner of the ring.",
         "who.c1.h": "Beginners", "who.c1.p": "Learn standard combinations structured and step by step — without feeling overwhelmed.",
@@ -972,6 +1108,84 @@
       var timer = setTimeout(dismiss, 5600); // eine volle Runde (~5s) + Puffer
     })();
 
+    // ComboSim-Live-Demo: laufender Rundentimer, wechselnde Combos, wählbares Tempo,
+    // optionale Sprachansage (Web Speech API) — das App-Kernfeature zum Anfassen.
+    (function () {
+      var panel = document.getElementById('cc-demo');
+      if (!panel) return;
+      var comboEl = document.getElementById('cc-demo-combo');
+      var timeEl = document.getElementById('cc-demo-time');
+      var startBtn = document.getElementById('cc-demo-start');
+      var startLbl = startBtn.querySelector('[data-i18n]');
+      var voiceBtn = document.getElementById('cc-demo-voice');
+      var chips = document.getElementById('cc-demo-chips');
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var COMBOS = [
+        'Jab · Cross', 'Jab · Cross · Hook', 'Double Jab · Cross',
+        'Cross · Hook · Body', 'Jab · Cross · Low Kick', 'Hook · Cross · Elbow',
+        'Jab · Uppercut · Hook', 'Teep · Cross · Hook', 'Jab · Low Kick',
+        'Cross · Uppercut · High Kick'
+      ];
+      var running = false, speed = 7, timeLeft = 120, tick = null, comboTick = null, voice = false, lastIdx = -1;
+
+      function fmt(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+      function speak(text) {
+        if (!voice || !('speechSynthesis' in window)) return;
+        try {
+          window.speechSynthesis.cancel();
+          var u = new SpeechSynthesisUtterance(text.split('·').join(','));
+          u.lang = 'en-US'; u.rate = 1.05;
+          window.speechSynthesis.speak(u);
+        } catch (e) {}
+      }
+      function nextCombo() {
+        var i; do { i = Math.floor(Math.random() * COMBOS.length); } while (i === lastIdx);
+        lastIdx = i;
+        comboEl.textContent = COMBOS[i];
+        if (!reduce) { comboEl.classList.remove('punch'); void comboEl.offsetWidth; comboEl.classList.add('punch'); }
+        speak(COMBOS[i]);
+      }
+      function setStartLabel() {
+        var key = running ? 'demo.pause' : 'demo.start';
+        startLbl.setAttribute('data-i18n', key);
+        var dict = I18N[document.documentElement.lang] || I18N.de;
+        startLbl.innerHTML = dict[key] || key;
+      }
+      function stopTimers() { clearInterval(tick); clearInterval(comboTick); tick = comboTick = null; }
+      function start() {
+        running = true; panel.classList.add('is-running'); setStartLabel();
+        nextCombo();
+        comboTick = setInterval(nextCombo, speed * 1000);
+        tick = setInterval(function () {
+          timeLeft -= 1;
+          if (timeLeft <= 0) timeLeft = 120; // Demo-Runde loopt
+          timeEl.textContent = fmt(timeLeft);
+        }, 1000);
+      }
+      function pause() {
+        running = false; panel.classList.remove('is-running'); setStartLabel();
+        stopTimers();
+        if ('speechSynthesis' in window) { try { window.speechSynthesis.cancel(); } catch (e) {} }
+      }
+      startBtn.addEventListener('click', function () { running ? pause() : start(); });
+      voiceBtn.addEventListener('click', function () {
+        voice = !voice;
+        voiceBtn.classList.toggle('is-on', voice);
+        voiceBtn.setAttribute('aria-pressed', String(voice));
+        if (voice && running) speak(comboEl.textContent);
+      });
+      chips.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-speed]');
+        if (!b) return;
+        speed = +b.dataset.speed;
+        chips.querySelectorAll('.chip--btn').forEach(function (c) { c.classList.toggle('hot', c === b); });
+        if (running) { clearInterval(comboTick); comboTick = setInterval(nextCombo, speed * 1000); }
+      });
+      // Bei verlassenem Tab pausieren (kein Hintergrund-Gequassel)
+      document.addEventListener('visibilitychange', function () { if (document.hidden && running) pause(); });
+    })();
+
     (function () {
       var saved = null;
       try { saved = localStorage.getItem('cc_lang'); } catch (e) {}
@@ -980,12 +1194,29 @@
         b.addEventListener('click', function () { setLang(b.dataset.lang); });
       });
 
-      // Header: cremefarbenes Milchglas erst beim Scrollen einblenden
+      // Header-Milchglas + Scroll-Fortschrittsleiste
       var header = document.querySelector('.site-header');
-      if (header) {
-        var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 12); };
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
+      var progress = document.getElementById('scroll-progress');
+      var onScroll = function () {
+        if (header) header.classList.toggle('is-scrolled', window.scrollY > 12);
+        if (progress) {
+          var max = document.documentElement.scrollHeight - window.innerHeight;
+          progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+        }
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+
+      // Karten-Spotlight: Lichtkegel folgt dem Mauszeiger (nur feine Zeiger)
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.addEventListener('pointermove', function (e) {
+          var card = e.target.closest && e.target.closest('.card');
+          if (!card) return;
+          var r = card.getBoundingClientRect();
+          card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        }, { passive: true });
       }
 
       // Sanfte Einblendung beim Scrollen
