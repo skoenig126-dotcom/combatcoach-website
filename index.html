@@ -168,7 +168,7 @@
 
     .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 2.5rem); }
 
-    h1, h2, h3 { font-family: var(--font); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+    h1, h2, h3, h4 { font-family: var(--font); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; margin: 0; }
 
     .eyebrow {
       display: inline-flex; align-items: center; gap: 0.55rem;
@@ -381,7 +381,7 @@
       border: 1px solid rgba(228,43,36,0.25);
     }
     .card__icon svg { width: 26px; height: 26px; }
-    .card h3 { font-size: 1.18rem; margin-bottom: 0.7rem; color: var(--cream); }
+    .card h3, .card h4 { font-size: 1.18rem; margin-bottom: 0.7rem; color: var(--cream); }
     .card p { color: var(--cream-dim); font-size: 0.96rem; }
 
     /* =========================================================
@@ -517,7 +517,7 @@
     .timer-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap); }
     .timer-card { text-align:center; padding:1.8rem 1.2rem; }
     .timer-card .card__icon { margin:0 auto 1rem; }
-    .timer-card h3 { font-size:1.05rem; }
+    .timer-card h3, .timer-card h4 { font-size:1.05rem; }
     .timer-card p { font-size:.88rem; }
     @media (min-width:768px){ .two-col{grid-template-columns:1fr 1fr} .mode-grid{grid-template-columns:1fr 1fr} }
     @media (min-width:900px){ .spotlight__grid{grid-template-columns:.92fr 1.08fr} .mode-grid{grid-template-columns:1fr} }
@@ -692,7 +692,7 @@
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow" data-i18n="acc.eyebrow">Alles, was drinsteckt</span>
-        <h2 data-i18n="acc.h2">Funktionen im Detail.</h2>
+        <h2 data-i18n="acc.h2">Dein digitaler Sparringspartner fürs Solo-Training.</h2>
         <p data-i18n="acc.hint">Tippe auf eine Funktion, um Details, Visualisierungen und Screenshots zu sehen.</p>
       </div>
 
@@ -704,7 +704,7 @@
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-12h-7l2-8z"/></svg></span>
               <span class="acc__titles">
-                <span class="acc__t" data-i18n="f.combosim.t">ComboSim — der ansagende Combo-Timer</span>
+                <h3 class="acc__t" data-i18n="f.combosim.t">ComboSim — der ansagende Combo-Timer</h3>
                 <span class="acc__pre" data-i18n="f.combosim.pre">Dein digitaler Sparringspartner ruft dir Kombinationen zu — du reagierst, schlägst, wiederholst.</span>
               </span>
             </span>
@@ -717,12 +717,12 @@
                 <div class="mode-grid" style="margin-top:1.4rem;">
                   <article class="card">
                     <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5M21 3l-7 7M8 21H3v-5M3 21l7-7M21 16v5h-5M21 21l-6-6M3 8V3h5M3 3l6 6"/></svg></div>
-                    <h3 data-i18n="cs.shuffle.h">Shuffle-Modus</h3>
+                    <h4 data-i18n="cs.shuffle.h">Shuffle-Modus</h4>
                     <p data-i18n="cs.shuffle.p">Zufällige Combos aus dem ganzen Pool — du weißt nie, was kommt. Wie echtes Sparring: spontan, reaktiv, ohne Muster.</p>
                   </article>
                   <article class="card">
                     <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h4l3-12h4M14 6h6M11 18h9"/></svg></div>
-                    <h3 data-i18n="cs.seq.h">Sequenced-Modus</h3>
+                    <h4 data-i18n="cs.seq.h">Sequenced-Modus</h4>
                     <p data-i18n="cs.seq.p">Strukturierte Lernsequenzen, Schritt für Schritt aufgebaut: erst Jab, dann Jab–Cross, dann Jab–Cross–Hook. Für gezieltes Techniktraining.</p>
                   </article>
                 </div>
@@ -743,7 +743,7 @@
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="m22 8-6 4 6 4V8z"/></svg></span>
               <span class="acc__titles">
-                <span class="acc__t" data-i18n="f.camp.t">Combat Camp — 3D-Lernvideos</span>
+                <h3 class="acc__t" data-i18n="f.camp.t">Combat Camp — 3D-Lernvideos</h3>
                 <span class="acc__pre" data-i18n="f.camp.pre">Lerne jede Technik richtig — mit eigens produzierten 3D-Videos.</span>
               </span>
             </span>
@@ -764,7 +764,7 @@
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></span>
               <span class="acc__titles">
-                <span class="acc__t" data-i18n="f.timers.t">Die Timer-Suite</span>
+                <h3 class="acc__t" data-i18n="f.timers.t">Box-Timer, Intervall &amp; Tabata — die Timer-Suite</h3>
                 <span class="acc__pre" data-i18n="f.timers.pre">Countdown, Intervall, Tabata, Stretching &amp; Drills — jedes Workout-Format in einer App.</span>
               </span>
             </span>
@@ -772,11 +772,11 @@
           </summary>
           <div class="acc__body">
             <div class="timer-grid">
-              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></div><h3 data-i18n="ts.c1.h">Countdown</h3><p data-i18n="ts.c1.p">Klassische Runden mit Pausen — wie im Boxgym.</p></article>
-              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M9 20V4M14 20v-7M19 20V8"/></svg></div><h3 data-i18n="ts.c2.h">Intervall</h3><p data-i18n="ts.c2.p">HIIT-Style: Belastung und Erholung im Wechsel.</p></article>
-              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-12h-7l2-8z"/></svg></div><h3 data-i18n="ts.c3.h">Tabata</h3><p data-i18n="ts.c3.p">Das berühmte 20/10-Protokoll für maximale Intensität.</p></article>
-              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 8v6m0 0-3 6m3-6 3 6M7 11h10"/></svg></div><h3 data-i18n="ts.c4.h">Stretching</h3><p data-i18n="ts.c4.p">Geführte Dehn-Routinen nach Körperregion.</p></article>
-              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div><h3 data-i18n="ts.c5.h">Drills</h3><p data-i18n="ts.c5.p">Strukturierte Übungseinheiten mit Fokus und Anleitung.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg></div><h4 data-i18n="ts.c1.h">Countdown</h4><p data-i18n="ts.c1.p">Klassische Runden mit Pausen — wie im Boxgym.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M9 20V4M14 20v-7M19 20V8"/></svg></div><h4 data-i18n="ts.c2.h">Intervall</h4><p data-i18n="ts.c2.p">HIIT-Style: Belastung und Erholung im Wechsel.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-2 8 9-12h-7l2-8z"/></svg></div><h4 data-i18n="ts.c3.h">Tabata</h4><p data-i18n="ts.c3.p">Das berühmte 20/10-Protokoll für maximale Intensität.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 8v6m0 0-3 6m3-6 3 6M7 11h10"/></svg></div><h4 data-i18n="ts.c4.h">Stretching</h4><p data-i18n="ts.c4.p">Geführte Dehn-Routinen nach Körperregion.</p></article>
+              <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div><h4 data-i18n="ts.c5.h">Drills</h4><p data-i18n="ts.c5.p">Strukturierte Übungseinheiten mit Fokus und Anleitung.</p></article>
             </div>
             <div class="shots" style="margin-top:1.7rem;">
               <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/stretching.png" alt="Stretching-Timer im Combat Coach" loading="lazy" /></div></div>
@@ -791,7 +791,7 @@
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
               <span class="acc__titles">
-                <span class="acc__t" data-i18n="f.plans.t">Trainingspläne &amp; Kalender</span>
+                <h3 class="acc__t" data-i18n="f.plans.t">Trainingspläne &amp; Kalender</h3>
                 <span class="acc__pre" data-i18n="f.plans.pre">Baue, speichere und durchlaufe komplette Workouts — und plane sie im Kalender.</span>
               </span>
             </span>
@@ -814,7 +814,7 @@
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 0 1-.9-3.8A8.38 8.38 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg></span>
               <span class="acc__titles">
-                <span class="acc__t" data-i18n="f.coach.t">SmartCoach — dein KI-Coach</span>
+                <h3 class="acc__t" data-i18n="f.coach.t">SmartCoach — dein KI-Coach</h3>
                 <span class="acc__pre" data-i18n="f.coach.pre">Ein KI-Chatcoach, der jede Frage zu Technik, Taktik und Training beantwortet.</span>
               </span>
             </span>
@@ -836,7 +836,7 @@
             <span class="acc__head">
               <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.8L12 15.5l-1.8-4.7L5.5 9l4.7-1.3L12 3z"/></svg></span>
               <span class="acc__titles">
-                <span class="acc__t" data-i18n="f.plan.t">KI-Trainingsplan-Generator</span>
+                <h3 class="acc__t" data-i18n="f.plan.t">KI-Trainingsplan-Generator</h3>
                 <span class="acc__pre" data-i18n="f.plan.pre">Sag, was du willst — und bekomm deinen maßgeschneiderten Plan.</span>
               </span>
             </span>
@@ -926,7 +926,7 @@
             </span>
             <span class="acc__chev" aria-hidden="true"></span>
           </summary>
-          <div class="acc__body"><p data-i18n="faq.a2">Mit externen Impulsen statt eigener Planung: ComboSim ruft dir wie ein Trainer Kombinationen zu — am Boxsack oder beim Schattenboxen. Du denkst nicht, du reagierst.</p></div>
+          <div class="acc__body"><p data-i18n="faq.a2">Mit externen Impulsen statt eigener Planung: ComboSim ruft dir wie ein Trainer Kombinationen zu — am Boxsack oder beim Schattenboxen. Du denkst nicht, du reagierst. Schritt-für-Schritt-Anleitung im Ratgeber: <a href="boxen-alleine-trainieren.html">Boxen alleine trainieren</a>.</p></div>
         </details>
         <details class="acc__item">
           <summary class="acc__sum">
@@ -999,6 +999,8 @@
           <a href="privacy.html" data-i18n="foot.privacy">Datenschutz</a>
           <a href="legal.html#terms" data-i18n="foot.terms">Nutzungsbedingungen</a>
           <a href="legal.html#imprint" data-i18n="foot.imprint">Impressum</a>
+        "foot.guide": "Ratgeber: Boxen alleine trainieren",
+          <a href="boxen-alleine-trainieren.html" data-i18n="foot.guide">Ratgeber: Boxen alleine trainieren</a>
           <a href="mailto:info@combatcoach.org" data-i18n="foot.contact">Kontakt</a>
         </nav>
       </div>
@@ -1053,6 +1055,7 @@
         "foot.privacy": "Datenschutz",
         "foot.terms": "Nutzungsbedingungen",
         "foot.imprint": "Impressum",
+        "foot.guide": "Guide: how to train boxing alone",
         "foot.contact": "Kontakt",
         "cs.p": "Stell dein Workout ein, drück Start — und der Timer ruft dir per Stimme Kombinationen zu. Du reagierst, schlägst, wiederholst. Runden, Pausen und Tempo laufen automatisch.",
         "cs.shuffle.h": "Shuffle-Modus",
@@ -1073,7 +1076,7 @@
         "who.c2.h": "Profis", "who.c2.p": "4 Sekunden pro Combo. Keine Muster. Nur Reaktion. Bist du schnell genug?",
         "who.c3.h": "Coaches", "who.c3.p": "Gib deinen Athleten strukturierte Hausaufgaben und Drills — und behalte den Überblick.",
         "acc.eyebrow": "Alles, was drinsteckt",
-        "acc.h2": "Funktionen im Detail.",
+        "acc.h2": "Dein digitaler Sparringspartner fürs Solo-Training.",
         "acc.hint": "Tippe auf eine Funktion, um Details, Visualisierungen und Screenshots zu sehen.",
         "shot.soon": "Screenshot folgt",
         "splash.skip": "Überspringen",
@@ -1082,7 +1085,7 @@
         "faq.q1": "Kann man mit einer App Boxen lernen?",
         "faq.a1": "Ja — wenn sie mehr tut, als Videos zu zeigen. Combat Coach sagt dir Kombinationen an, auf die du in Echtzeit reagierst, und erklärt Techniken mit 3D-Lernvideos. Ideal als Ergänzung zum Gym oder fürs Training zu Hause.",
         "faq.q2": "Wie kann ich Boxen alleine trainieren, ohne Partner?",
-        "faq.a2": "Mit externen Impulsen statt eigener Planung: ComboSim ruft dir wie ein Trainer Kombinationen zu — am Boxsack oder beim Schattenboxen. Du denkst nicht, du reagierst.",
+        "faq.a2": "Mit externen Impulsen statt eigener Planung: ComboSim ruft dir wie ein Trainer Kombinationen zu — am Boxsack oder beim Schattenboxen. Du denkst nicht, du reagierst. Schritt-für-Schritt-Anleitung im Ratgeber: <a href=\"boxen-alleine-trainieren.html\">Boxen alleine trainieren</a>.",
         "faq.q3": "Welcher Timer eignet sich für Boxtraining zu Hause?",
         "faq.a3": "Ein Runden-Timer mit Vorbereitungszeit, Pausen und Signalen. Combat Coach bringt Countdown-, Intervall-, Tabata-, Stretching- und Drill-Timer in einer App mit.",
         "faq.q4": "Für welche Kampfsportarten funktioniert Combat Coach?",
@@ -1092,7 +1095,7 @@
         "f.camp.t": "Combat Camp — 3D-Lernvideos",
         "f.camp.pre": "Lerne jede Technik richtig — mit eigens produzierten 3D-Videos.",
         "f.camp.body": "Combat Camp ist deine Technik-Akademie: kuratierte Kurse zu Grund- und Fortgeschrittenen-Techniken, klar strukturiert und Schritt für Schritt aufgebaut. Statt nur zu reagieren, siehst du genau, wie eine Technik korrekt aussieht — in eigens produzierten 3D-Lernvideos.",
-        "f.timers.t": "Die Timer-Suite",
+        "f.timers.t": "Box-Timer, Intervall &amp; Tabata — die Timer-Suite",
         "f.timers.pre": "Countdown, Intervall, Tabata, Stretching & Drills — jedes Workout-Format in einer App.",
         "f.plans.t": "Trainingspläne & Kalender",
         "f.plans.pre": "Baue, speichere und durchlaufe komplette Workouts — und plane sie im Kalender.",
@@ -1164,7 +1167,7 @@
         "who.c2.h": "Professionals", "who.c2.p": "4 seconds per combo. No patterns. Pure reaction. Are you fast enough?",
         "who.c3.h": "Coaches", "who.c3.p": "Give your athletes structured homework and drills — and keep the overview.",
         "acc.eyebrow": "Everything inside",
-        "acc.h2": "Features in detail.",
+        "acc.h2": "Your digital sparring partner for solo training.",
         "acc.hint": "Tap a feature to reveal details, visuals and screenshots.",
         "shot.soon": "Screenshot coming soon",
         "splash.skip": "Skip",
@@ -1173,7 +1176,7 @@
         "faq.q1": "Can you learn boxing with an app?",
         "faq.a1": "Yes — if it does more than play videos. Combat Coach calls out combinations you react to in real time and teaches proper technique with 3D learning videos. Perfect alongside the gym or for training at home.",
         "faq.q2": "How can I train boxing alone, without a partner?",
-        "faq.a2": "With external cues instead of planning it all yourself: ComboSim calls out combinations like a real trainer — on the heavy bag or while shadowboxing. You don't think, you react.",
+        "faq.a2": "With external cues instead of planning it all yourself: ComboSim calls out combinations like a real trainer — on the heavy bag or while shadowboxing. You don't think, you react. Step-by-step guide: <a href=\"boxen-alleine-trainieren.html\">how to train boxing alone</a>.",
         "faq.q3": "What's the best timer for boxing training at home?",
         "faq.a3": "A round timer with preparation time, rest periods and signals. Combat Coach packs countdown, interval, Tabata, stretching and drill timers into one app.",
         "faq.q4": "Which martial arts does Combat Coach support?",
@@ -1183,7 +1186,7 @@
         "f.camp.t": "Combat Camp — 3D learning videos",
         "f.camp.pre": "Learn every technique properly — with custom-made 3D videos.",
         "f.camp.body": "Combat Camp is your technique academy: curated courses on basic and advanced techniques, clearly structured and built step by step. Instead of just reacting, you see exactly how a technique is supposed to look — in custom-made 3D learning videos.",
-        "f.timers.t": "The timer suite",
+        "f.timers.t": "Boxing timer, interval &amp; Tabata — the timer suite",
         "f.timers.pre": "Countdown, Interval, Tabata, Stretching & Drills — every workout format in one app.",
         "f.plans.t": "Training plans & calendar",
         "f.plans.pre": "Build, save and run complete workouts — and schedule them in the calendar.",
