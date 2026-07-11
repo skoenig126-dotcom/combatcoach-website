@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /reveal.html
+
+Sitemap: https://combatcoach.org/sitemap.xml

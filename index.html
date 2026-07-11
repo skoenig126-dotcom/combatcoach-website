@@ -18,14 +18,74 @@
   <!-- =========================================================
        SEO / SOCIAL META
        ========================================================= -->
-  <title>Combat Coach – Dein smarter Kampfsport-Trainingsbuddy</title>
+  <title>Combat Coach – Boxtraining-App mit Combo-Ansage &amp; Timer</title>
   <meta name="description"
-        content="Combat Coach – dein smarter Kampfsport-Trainingsbuddy. Hol das Beste aus deinem Muay-Thai-, Kickbox- und Boxtraining. Bald für iOS & Android." />
+        content="Die App, die dir Kombinationen ansagt: Boxen, Kickboxen & Muay Thai solo trainieren – mit Timer-Suite, KI-Coach & Trainingsplänen. Ab Sommer 2026." />
   <meta name="theme-color" content="#000000" />
-  <meta property="og:title" content="Combat Coach – Dein smarter Kampfsport-Trainingsbuddy" />
-  <meta property="og:description" content="Hol das Beste aus deinem Muay-Thai-, Kickbox- und Boxtraining." />
+  <link rel="canonical" href="https://combatcoach.org/" />
+  <meta property="og:title" content="Combat Coach – Boxtraining-App mit Combo-Ansage & Timer" />
+  <meta property="og:description" content="Die App, die dir Kombinationen ansagt: Boxen, Kickboxen & Muay Thai solo trainieren – mit Timer-Suite, KI-Coach & Trainingsplänen." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://combatcoach.org" />
+  <meta property="og:url" content="https://combatcoach.org/" />
+  <meta property="og:image" content="https://combatcoach.org/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:site_name" content="Combat Coach" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Combat Coach – Boxtraining-App mit Combo-Ansage & Timer" />
+  <meta name="twitter:description" content="Die App, die dir Kombinationen ansagt: Boxen, Kickboxen & Muay Thai solo trainieren." />
+  <meta name="twitter:image" content="https://combatcoach.org/og-image.png" />
+
+  <!-- Strukturierte Daten: App + FAQ (Rich Snippets) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Combat Coach",
+        "url": "https://combatcoach.org/",
+        "image": "https://combatcoach.org/og-image.png",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "iOS, Android",
+        "description": "Combat Coach ist die Trainings-App für Boxen, Kickboxen und Muay Thai: Der ansagende ComboSim-Timer ruft Kombinationen, eine komplette Timer-Suite strukturiert jede Einheit, 3D-Lernvideos schärfen die Technik und ein KI-Coach baut Trainingspläne auf Zuruf.",
+        "inLanguage": ["de", "en"],
+        "releasedEvent": {
+          "@type": "PublicationEvent",
+          "name": "App-Store-Release",
+          "startDate": "2026-07"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Kann man mit einer App Boxen lernen?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Ja — wenn sie mehr tut, als Videos zu zeigen. Combat Coach sagt dir Kombinationen an, auf die du in Echtzeit reagierst, und erklärt Techniken mit 3D-Lernvideos. Ideal als Ergänzung zum Gym oder fürs Training zu Hause." }
+          },
+          {
+            "@type": "Question",
+            "name": "Wie kann ich Boxen alleine trainieren, ohne Partner?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Mit externen Impulsen statt eigener Planung: ComboSim ruft dir wie ein Trainer Kombinationen zu — am Boxsack oder beim Schattenboxen. Du denkst nicht, du reagierst." }
+          },
+          {
+            "@type": "Question",
+            "name": "Welcher Timer eignet sich für Boxtraining zu Hause?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Ein Runden-Timer mit Vorbereitungszeit, Pausen und Signalen. Combat Coach bringt Countdown-, Intervall-, Tabata-, Stretching- und Drill-Timer in einer App mit." }
+          },
+          {
+            "@type": "Question",
+            "name": "Für welche Kampfsportarten funktioniert Combat Coach?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Boxen, Kickboxen und Muay Thai — jede Ansage, jeder Drill und jedes Video filtert sich automatisch auf deine Disziplin und dein Level." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- =========================================================
        GOOGLE FONT: Roboto Mono
@@ -210,7 +270,7 @@
     @keyframes pulse {
       0% { box-shadow: 0 0 0 0 var(--red-glow); } 70% { box-shadow: 0 0 0 9px rgba(228,43,36,0); } 100% { box-shadow: 0 0 0 0 rgba(228,43,36,0); }
     }
-    .hero h1 { font-size: clamp(2.4rem, 6.4vw, 4.4rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; }
+    .hero h1 { font-size: clamp(1.65rem, 4vw, 2.9rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.28; }
     .hero h1 .accent { /* flüssiger, wandernder Verlauf auf dem Akzentwort */
       color: var(--red); /* Fallback, falls background-clip:text fehlt */
       background: linear-gradient(100deg, var(--red) 15%, var(--red-2) 45%, var(--red) 75%);
@@ -487,7 +547,7 @@
       .acc__item[open]::details-content { block-size: auto; }
     }
     .acc__titles { display:flex; flex-direction:column; gap:.2rem; min-width:0; }
-    .acc__t { font-weight:700; font-size:1.02rem; color:var(--cream); }
+    .acc__t { font-weight:700; font-size:1.02rem; color:var(--cream); margin:0; line-height:1.35; }
     .acc__pre { font-size:.9rem; color:var(--cream-dim); }
     .acc__chev { flex:0 0 auto; width:10px; height:10px; border-right:2px solid var(--cream-dim); border-bottom:2px solid var(--cream-dim); transform:rotate(45deg); transition:transform .25s ease; margin-right:4px; }
     .acc__item[open] .acc__chev { transform:rotate(-135deg); }
@@ -555,8 +615,8 @@
     <div class="container hero__grid">
       <div class="hero__copy reveal">
         <span class="hero__badge"><span class="dot"></span> <span data-i18n="hero.badge">Bald verfügbar · Sommer 2026</span></span>
-        <h1 data-i18n="hero.h1">Dein smarter<br><span class="accent">Kampfsport-</span><br>Trainingsbuddy.</h1>
-        <p class="hero__sub" data-i18n="hero.sub">Hol das Beste aus deinem Muay-Thai-, Kickbox- und Boxtraining heraus. Smarte Routinen, präzise Timer und Combo-Sims — gebaut für den Ring.</p>
+        <h1 data-i18n="hero.h1">Boxen, Kickboxen &amp; Muay Thai <span class="accent">solo trainieren</span> — mit der App, die dir <span class="accent">Kombinationen ansagt</span>.</h1>
+        <p class="hero__sub" data-i18n="hero.sub">„Jab, Cross, Low Kick“ — du reagierst. Combat Coach übernimmt die Rolle deines Trainers: sagt Kombinationen an, führt deine Runden und treibt dich an.</p>
         <div class="hero__actions">
           <a href="#demo" class="btn btn--primary" data-i18n="hero.try">ComboSim ausprobieren</a>
           <a href="#features" class="btn btn--ghost" data-i18n="hero.explore">Funktionen entdecken</a>
@@ -842,6 +902,54 @@
     </div>
   </section>
 
+  <!-- ====================== FAQ ====================== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="faq.eyebrow">Gut zu wissen</span>
+        <h2 data-i18n="faq.h2">Häufige Fragen zum Training mit Combat Coach.</h2>
+      </div>
+      <div class="acc reveal">
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__titles"><h3 class="acc__t" data-i18n="faq.q1">Kann man mit einer App Boxen lernen?</h3></span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body"><p data-i18n="faq.a1">Ja — wenn sie mehr tut, als Videos zu zeigen. Combat Coach sagt dir Kombinationen an, auf die du in Echtzeit reagierst, und erklärt Techniken mit 3D-Lernvideos. Ideal als Ergänzung zum Gym oder fürs Training zu Hause.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__titles"><h3 class="acc__t" data-i18n="faq.q2">Wie kann ich Boxen alleine trainieren, ohne Partner?</h3></span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body"><p data-i18n="faq.a2">Mit externen Impulsen statt eigener Planung: ComboSim ruft dir wie ein Trainer Kombinationen zu — am Boxsack oder beim Schattenboxen. Du denkst nicht, du reagierst.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__titles"><h3 class="acc__t" data-i18n="faq.q3">Welcher Timer eignet sich für Boxtraining zu Hause?</h3></span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body"><p data-i18n="faq.a3">Ein Runden-Timer mit Vorbereitungszeit, Pausen und Signalen. Combat Coach bringt Countdown-, Intervall-, Tabata-, Stretching- und Drill-Timer in einer App mit.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__titles"><h3 class="acc__t" data-i18n="faq.q4">Für welche Kampfsportarten funktioniert Combat Coach?</h3></span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body"><p data-i18n="faq.a4">Boxen, Kickboxen und Muay Thai — jede Ansage, jeder Drill und jedes Video filtert sich automatisch auf deine Disziplin und dein Level.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- ====================== CTA ====================== -->
   <section id="download" class="cta">
     <div class="container">
@@ -909,8 +1017,9 @@
     const I18N = {
       de: {
         "hero.badge": "Bald verfügbar · Sommer 2026",
-        "hero.h1": "Dein smarter<br><span class=\"accent\">Kampfsport-</span><br>Trainingsbuddy.",
-        "hero.sub": "Hol das Beste aus deinem Muay-Thai-, Kickbox- und Boxtraining heraus. Smarte Routinen, präzise Timer und Combo-Sims — gebaut für den Ring.",
+        "doc.title": "Combat Coach – Boxtraining-App mit Combo-Ansage & Timer",
+        "hero.h1": "Boxen, Kickboxen &amp; Muay Thai <span class=\"accent\">solo trainieren</span> — mit der App, die dir <span class=\"accent\">Kombinationen ansagt</span>.",
+        "hero.sub": "„Jab, Cross, Low Kick“ — du reagierst. Combat Coach übernimmt die Rolle deines Trainers: sagt Kombinationen an, führt deine Runden und treibt dich an.",
         "hero.explore": "Funktionen entdecken",
         "hero.try": "ComboSim ausprobieren",
         "aud.beginners": "Für Einsteiger",
@@ -968,6 +1077,16 @@
         "acc.hint": "Tippe auf eine Funktion, um Details, Visualisierungen und Screenshots zu sehen.",
         "shot.soon": "Screenshot folgt",
         "splash.skip": "Überspringen",
+        "faq.eyebrow": "Gut zu wissen",
+        "faq.h2": "Häufige Fragen zum Training mit Combat Coach.",
+        "faq.q1": "Kann man mit einer App Boxen lernen?",
+        "faq.a1": "Ja — wenn sie mehr tut, als Videos zu zeigen. Combat Coach sagt dir Kombinationen an, auf die du in Echtzeit reagierst, und erklärt Techniken mit 3D-Lernvideos. Ideal als Ergänzung zum Gym oder fürs Training zu Hause.",
+        "faq.q2": "Wie kann ich Boxen alleine trainieren, ohne Partner?",
+        "faq.a2": "Mit externen Impulsen statt eigener Planung: ComboSim ruft dir wie ein Trainer Kombinationen zu — am Boxsack oder beim Schattenboxen. Du denkst nicht, du reagierst.",
+        "faq.q3": "Welcher Timer eignet sich für Boxtraining zu Hause?",
+        "faq.a3": "Ein Runden-Timer mit Vorbereitungszeit, Pausen und Signalen. Combat Coach bringt Countdown-, Intervall-, Tabata-, Stretching- und Drill-Timer in einer App mit.",
+        "faq.q4": "Für welche Kampfsportarten funktioniert Combat Coach?",
+        "faq.a4": "Boxen, Kickboxen und Muay Thai — jede Ansage, jeder Drill und jedes Video filtert sich automatisch auf deine Disziplin und dein Level.",
         "f.combosim.t": "ComboSim — der ansagende Combo-Timer",
         "f.combosim.pre": "Dein digitaler Sparringspartner ruft dir Kombinationen zu — du reagierst, schlägst, wiederholst.",
         "f.camp.t": "Combat Camp — 3D-Lernvideos",
@@ -989,8 +1108,9 @@
       },
       en: {
         "hero.badge": "Coming Soon · Summer 2026",
-        "hero.h1": "Your smart<br><span class=\"accent\">martial arts</span><br>workout pal.",
-        "hero.sub": "Make the best out of your Muay Thai, Kickboxing and Boxing training. Smart routines, precise timers and combo sims — built for the ring.",
+        "doc.title": "Combat Coach – Boxing Training App with Combo Callouts & Timer",
+        "hero.h1": "Train boxing, kickboxing &amp; Muay Thai <span class=\"accent\">solo</span> — with the app that <span class=\"accent\">calls out your combos</span>.",
+        "hero.sub": "“Jab, cross, low kick” — you react. Combat Coach takes over your trainer's job: calling combinations, running your rounds and pushing your pace.",
         "hero.explore": "Explore Features",
         "hero.try": "Try ComboSim",
         "aud.beginners": "For Beginners",
@@ -1048,6 +1168,16 @@
         "acc.hint": "Tap a feature to reveal details, visuals and screenshots.",
         "shot.soon": "Screenshot coming soon",
         "splash.skip": "Skip",
+        "faq.eyebrow": "Good to know",
+        "faq.h2": "Frequently asked questions about training with Combat Coach.",
+        "faq.q1": "Can you learn boxing with an app?",
+        "faq.a1": "Yes — if it does more than play videos. Combat Coach calls out combinations you react to in real time and teaches proper technique with 3D learning videos. Perfect alongside the gym or for training at home.",
+        "faq.q2": "How can I train boxing alone, without a partner?",
+        "faq.a2": "With external cues instead of planning it all yourself: ComboSim calls out combinations like a real trainer — on the heavy bag or while shadowboxing. You don't think, you react.",
+        "faq.q3": "What's the best timer for boxing training at home?",
+        "faq.a3": "A round timer with preparation time, rest periods and signals. Combat Coach packs countdown, interval, Tabata, stretching and drill timers into one app.",
+        "faq.q4": "Which martial arts does Combat Coach support?",
+        "faq.a4": "Boxing, kickboxing and Muay Thai — every callout, drill and video automatically filters to your discipline and your level.",
         "f.combosim.t": "ComboSim — the calling combo timer",
         "f.combosim.pre": "Your digital sparring partner calls out combinations — you react, strike, repeat.",
         "f.camp.t": "Combat Camp — 3D learning videos",
@@ -1072,6 +1202,7 @@
     function setLang(lang) {
       if (!I18N[lang]) lang = 'de';
       document.documentElement.lang = lang;
+      if (I18N[lang]['doc.title']) document.title = I18N[lang]['doc.title'];
       document.querySelectorAll('[data-i18n]').forEach(function (el) {
         var v = I18N[lang][el.getAttribute('data-i18n')];
         if (v != null) el.innerHTML = v;
