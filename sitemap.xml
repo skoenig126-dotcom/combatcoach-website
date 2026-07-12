@@ -1,28 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://combatcoach.org/</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/" />
   </url>
   <url>
     <loc>https://combatcoach.org/boxen-alleine-trainieren.html</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/boxen-alleine-trainieren.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/train-boxing-alone.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/train-boxing-alone.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/boxen-alleine-trainieren.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/train-boxing-alone.html" />
   </url>
   <url>
     <loc>https://combatcoach.org/boxsack-training-anfaenger.html</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/boxsack-training-anfaenger.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/heavy-bag-training-beginners.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/heavy-bag-training-beginners.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/boxsack-training-anfaenger.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/heavy-bag-training-beginners.html" />
   </url>
   <url>
     <loc>https://combatcoach.org/schattenboxen-kombinationen.html</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/schattenboxen-kombinationen.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/shadowboxing-combinations.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/shadowboxing-combinations.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/schattenboxen-kombinationen.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/shadowboxing-combinations.html" />
   </url>
   <url>
     <loc>https://combatcoach.org/privacy.html</loc>
