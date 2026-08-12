@@ -98,9 +98,10 @@
   <!-- =========================================================
        GOOGLE FONT: Roboto Mono
        ========================================================= -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Schrift lokal gehostet: keine Verbindung zu Google-Servern (DSGVO) und ein Round-Trip weniger -->
+  <link rel="preload" href="/fonts/roboto-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/roboto-mono-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/fonts/roboto-mono.css" />
 
   <style>
     /* =========================================================
@@ -167,12 +168,22 @@
     /* --- Transparente Foto-Textur, die nach unten ausblendet --- */
     body::after {
       content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-      background: url('https://images.pexels.com/photos/11045334/pexels-photo-11045334.jpeg?auto=compress&cs=tinysrgb&w=1600') center top / cover no-repeat;
+      background: url('/assets/hero-bg.jpg') center top / cover no-repeat;
       opacity: 0.09;
       filter: grayscale(1) contrast(1.05);
       -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.35) 45%, transparent 80%);
               mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.35) 45%, transparent 80%);
     }
+
+    /* Skip-Link: für Tastatur-Nutzer, springt über Header/Navigation direkt zum Inhalt */
+    .skip-link {
+      position: absolute; left: 1rem; top: -100px; z-index: 200;
+      padding: .7rem 1.1rem; border-radius: 999px;
+      background: var(--red); color: var(--cream);
+      font-family: var(--font); font-weight: 600; font-size: .85rem;
+      transition: top .18s ease;
+    }
+    .skip-link:focus-visible { top: 1rem; }
 
     .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 2.5rem); }
 
@@ -483,22 +494,36 @@
     .filters-line { margin-top:1.7rem; padding-top:1.3rem; border-top:1px solid var(--border); color:var(--cream-dim); font-size:.9rem; }
     .filters-line strong { color:var(--cream); }
 
-    /* --- Interaktive ComboSim-Live-Demo --- */
-    .demo__grid { display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
-    @media (min-width:900px){ .demo__grid { grid-template-columns:.95fr 1.05fr; } }
-    .chip--btn { cursor:pointer; background:transparent; font-family:var(--font); transition:border-color .2s ease, color .2s ease, transform .15s ease; }
-    .chip--btn:hover { border-color:var(--red); color:var(--cream); transform:translateY(-1px); }
-    .chip--btn.hot { background:var(--red); border-color:var(--red); color:var(--cream); box-shadow:0 6px 20px var(--red-glow); }
-    .cd-combo.punch { animation: punchIn .38s cubic-bezier(.2,1.4,.4,1); }
-    @keyframes punchIn { 0% { opacity:0; transform:translateX(14px) scale(.94); } 100% { opacity:1; transform:none; } }
+    /* --- "So funktioniert's": Konzept-Erklärung + statische Ansage-Illustration --- */
+    .how__grid { display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
+    @media (min-width:900px){ .how__grid { grid-template-columns:1.05fr .95fr; } }
+    .steps { list-style:none; margin-top:2rem; display:grid; gap:1.4rem; }
+    .step { display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start; }
+    .step__num {
+      width:2.1rem; height:2.1rem; flex:none; border-radius:50%; display:grid; place-items:center;
+      font-size:.85rem; font-weight:700; color:var(--red);
+      border:1px solid var(--red); background:rgba(228,43,36,.10);
+    }
+    .step__t { font-size:1.02rem; font-weight:700; color:var(--cream); line-height:1.3; }
+    .step__p { margin-top:.35rem; color:var(--cream-dim); font-size:.94rem; line-height:1.6; }
+    /* Ansage-Protokoll: zeigt, wie eine Runde klingt — reine Illustration, nichts Interaktives */
     .cd-live { display:inline-flex; align-items:center; gap:.45rem; }
-    .cd-live .dot { width:7px; height:7px; border-radius:50%; background:var(--cream-faint); }
-    .combo-demo.is-running .cd-live .dot { background:var(--red); animation:pulse 1.6s infinite; }
-    .demo__controls { display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.7rem; padding-top:1.3rem; border-top:1px solid var(--border); align-items:center; }
-    .demo__hint { font-size:.72rem; color:var(--cream-faint); letter-spacing:.06em; }
-    .btn--voice { padding:.85rem 1.1rem; }
-    .btn--voice.is-on { border-color:var(--red); color:var(--red); }
-    .btn--voice svg { width:17px; height:17px; }
+    .cd-live .dot { width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 1.9s infinite; }
+    .cd-log { list-style:none; margin-top:1.3rem; display:grid; gap:.55rem; }
+    .cd-log li {
+      display:grid; grid-template-columns:3.2rem 1fr; align-items:baseline; gap:.9rem;
+      padding:.62rem .8rem; border-radius:var(--radius-sm, 10px);
+      border:1px solid transparent; color:var(--cream-dim); font-size:1rem;
+    }
+    .cd-log .t { font-size:.72rem; letter-spacing:.08em; color:var(--cream-faint); font-variant-numeric:tabular-nums; }
+    .cd-log li.now {
+      background:rgba(228,43,36,.12); border-color:var(--red);
+      color:var(--cream); font-weight:700;
+    }
+    .cd-log li.now .t { color:var(--red); }
+    .cd-foot { margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid var(--border); }
+    .cd-foot__label { color:var(--cream-faint); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; }
+    @media (prefers-reduced-motion: reduce) { .cd-live .dot { animation:none; } }
     /* Smartphone-Rahmen für App-Screen-Mockups */
     .phone { position:relative; width:min(320px,82vw); margin-inline:auto; border-radius:44px; padding:13px;
       background:linear-gradient(160deg,#1c1c1f,#0a0a0b); border:1px solid var(--border-2);
@@ -607,11 +632,12 @@
   </div>
 
   <!-- ====================== HEADER ====================== -->
+  <a class="skip-link" href="#main">Direkt zum Inhalt</a>
   <header class="site-header">
     <div class="container nav">
       <a href="#" class="brand" aria-label="Combat Coach home">
-        <img class="brand__mark" src="CombatCoach_Avata_Logo.png" alt="" />
-        <img class="brand__wordmark" src="Combat_Coach_FontLogo.png" alt="Combat Coach" />
+        <img class="brand__mark" src="CombatCoach_Avata_Logo.png" alt="" width="333" height="331" />
+        <img class="brand__wordmark" src="Combat_Coach_FontLogo.png" alt="Combat Coach" width="497" height="339" />
       </a>
       <div class="lang-switch" role="group" aria-label="Sprache / Language">
         <button class="lang-btn" data-lang="de" type="button">DE</button>
@@ -619,6 +645,8 @@
       </div>
     </div>
   </header>
+
+  <main id="main">
 
   <!-- ====================== HERO ====================== -->
   <section class="hero">
@@ -628,15 +656,15 @@
         <h1 data-i18n="hero.h1">Boxen, Kickboxen &amp; Muay Thai <span class="accent">solo trainieren</span> — mit der App, die dir <span class="accent">Kombinationen ansagt</span>.</h1>
         <p class="hero__sub" data-i18n="hero.sub">„Jab, Cross, Low Kick“ — du reagierst. Combat Coach übernimmt die Rolle deines Trainers: sagt Kombinationen an, führt deine Runden und treibt dich an.</p>
         <div class="hero__actions">
-          <a href="#demo" class="btn btn--primary" data-i18n="hero.try">ComboSim ausprobieren</a>
+          <a href="#how" class="btn btn--primary" data-i18n="hero.try">So funktioniert’s</a>
           <a href="#features" class="btn btn--ghost" data-i18n="hero.explore">Funktionen entdecken</a>
         </div>
       </div>
       <div class="hero__emblem reveal">
-        <img src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" />
+        <img src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" width="333" height="331" />
       </div>
     </div>
-    <a href="#demo" class="hero__scroll" aria-label="Nach unten scrollen"><span></span></a>
+    <a href="#how" class="hero__scroll" aria-label="Nach unten scrollen"><span></span></a>
   </section>
 
   <!-- ====================== ZIELGRUPPEN-TICKER ====================== -->
@@ -661,39 +689,61 @@
     </div>
   </div>
 
-  <!-- ====================== LIVE-DEMO (interaktive ComboSim-Vorschau) ====================== -->
-  <section id="demo">
-    <div class="container demo__grid">
+  <!-- ====================== SO FUNKTIONIERT'S (ComboSim-Konzept) ====================== -->
+  <section id="how">
+    <div class="container how__grid">
       <div class="reveal">
-        <span class="eyebrow" data-i18n="demo.eyebrow">Live ausprobieren</span>
-        <h2 style="font-size:clamp(1.8rem,4.4vw,2.7rem);" data-i18n="demo.h2">Hör auf zu denken.<br>Fang an zu reagieren.</h2>
-        <p style="color:var(--cream-dim); margin-top:1rem;" data-i18n="demo.p">So fühlt sich ComboSim an: Drück Start, wähl dein Tempo — und reagiere auf jede Ansage. Genau so ruft dir die App am Sandsack die Combos zu.</p>
-        <p class="demo__hint" style="margin-top:1.2rem;" data-i18n="demo.hint">Tipp: Aktiviere den Ton und die Demo sagt dir die Combos laut an — wie in der App.</p>
+        <span class="eyebrow" data-i18n="how.eyebrow">Das Prinzip</span>
+        <h2 style="font-size:clamp(1.8rem,4.4vw,2.7rem);" data-i18n="how.h2">Hör auf zu denken.<br>Fang an zu reagieren.</h2>
+        <p style="color:var(--cream-dim); margin-top:1rem;" data-i18n="how.p">Im Sparring hast du keine Zeit, dir die nächste Kombination zu überlegen — du reagierst. Genau dieses Gefühl bringt ComboSim ins Solo-Training: Die App übernimmt das Denken, du übernimmst die Arbeit.</p>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num" aria-hidden="true">1</span>
+            <div>
+              <h3 class="step__t" data-i18n="how.s1t">Sportart und Tempo einstellen</h3>
+              <p class="step__p" data-i18n="how.s1p">Boxen, Kickboxen oder Muay Thai — dazu ein Ansage-Intervall zwischen entspannten 9 und kompromisslosen 4 Sekunden. Du legst außerdem fest, was überhaupt angesagt wird: Schläge, Kicks, Blocks, Footwork oder deine eigenen Combos.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">2</span>
+            <div>
+              <h3 class="step__t" data-i18n="how.s2t">Runde starten — die Stimme übernimmt</h3>
+              <p class="step__p" data-i18n="how.s2p">Der Timer läuft, und die App ruft dir Kombinationen zu: „Jab, Cross, Low Kick.“ Im Shuffle-Modus zufällig wie im echten Kampf, im Sequenced-Modus strukturiert aufgebaut, wenn du eine Technik gezielt lernen willst.</p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">3</span>
+            <div>
+              <h3 class="step__t" data-i18n="how.s3t">Reagieren statt aufs Handy schauen</h3>
+              <p class="step__p" data-i18n="how.s3p">Weil alles über die Stimme läuft, bleibt dein Blick am Sandsack und deine Hände oben. Runden, Pausen und Tempowechsel laufen automatisch durch — du musst die ganze Einheit lang kein einziges Mal aufs Display tippen.</p>
+            </div>
+          </li>
+        </ol>
       </div>
-      <div class="combo-demo reveal" id="cc-demo">
+
+      <!-- Illustration: so klingt eine Runde (statische Darstellung, keine Bedienelemente) -->
+      <figure class="combo-demo reveal">
         <div class="cd-top">
-          <span class="cd-live"><span class="dot"></span> <span data-i18n="demo.round">Demo-Runde</span></span>
-          <span class="cd-time" id="cc-demo-time">2:00</span>
+          <span class="cd-live"><span class="dot"></span> <span data-i18n="how.panel.round">Runde 1 · Boxen</span></span>
+          <span class="cd-time">2:00</span>
         </div>
-        <div class="cd-next" data-i18n="cs.demo.label">Nächste Combo</div>
-        <div class="cd-combo" id="cc-demo-combo" aria-live="polite">Jab · Cross · Low Kick</div>
-        <div class="cd-speedlabel" data-i18n="cs.demo.speed">Combo-Tempo</div>
-        <div class="speed-chips" id="cc-demo-chips" role="group" aria-label="Combo-Tempo wählen">
-          <button class="chip chip--btn" type="button" data-speed="9">9s</button>
-          <button class="chip chip--btn" type="button" data-speed="8">8s</button>
-          <button class="chip chip--btn hot" type="button" data-speed="7">7s</button>
-          <button class="chip chip--btn" type="button" data-speed="6">6s</button>
-          <button class="chip chip--btn" type="button" data-speed="5">5s</button>
-          <button class="chip chip--btn" type="button" data-speed="4">4s</button>
+        <div class="cd-next" data-i18n="how.panel.label">Ansagen der App</div>
+        <ol class="cd-log">
+          <li><span class="t">0:07</span> <span>Jab · Cross</span></li>
+          <li class="now"><span class="t">0:14</span> <span>Double Jab · Cross · Hook</span></li>
+          <li><span class="t">0:21</span> <span>Cross · Hook · Body</span></li>
+          <li><span class="t">0:28</span> <span>Jab · Uppercut · Hook</span></li>
+        </ol>
+        <div class="cd-foot">
+          <div class="cd-foot__label" data-i18n="how.panel.speed">Ansage-Intervall</div>
+          <div class="speed-chips" aria-hidden="true">
+            <span class="chip">9s</span><span class="chip">8s</span><span class="chip hot">7s</span>
+            <span class="chip">6s</span><span class="chip">5s</span><span class="chip">4s</span>
+          </div>
         </div>
-        <div class="demo__controls">
-          <button class="btn btn--primary" type="button" id="cc-demo-start"><span data-i18n="demo.start">Start</span></button>
-          <button class="btn btn--ghost btn--voice" type="button" id="cc-demo-voice" aria-pressed="false" title="Sprachansage an/aus">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg>
-            <span data-i18n="demo.voice">Ansage</span>
-          </button>
-        </div>
-      </div>
+        <figcaption class="cd-foot__label" style="display:block; margin-top:1.1rem; letter-spacing:.06em; text-transform:none; font-size:.75rem;" data-i18n="how.panel.caption">Beispielhafter Ausschnitt aus einer ComboSim-Runde bei 7 Sekunden Intervall.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -740,7 +790,7 @@
               </div>
               <div>
                 <div class="phone phone--img">
-                  <div class="phone__screen"><img src="screenshots/combosim.png" alt="ComboSim – Combo-Timer im Combat Coach" loading="lazy" /></div>
+                  <div class="phone__screen"><img src="screenshots/combosim.png" alt="ComboSim – Combo-Timer im Combat Coach" loading="lazy" width="1179" height="2556" /></div>
                 </div>
               </div>
             </div>
@@ -789,8 +839,8 @@
               <article class="card timer-card"><div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div><h4 data-i18n="ts.c5.h">Drills</h4><p data-i18n="ts.c5.p">Strukturierte Übungseinheiten mit Fokus und Anleitung.</p></article>
             </div>
             <div class="shots" style="margin-top:1.7rem;">
-              <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/stretching.png" alt="Stretching-Timer im Combat Coach" loading="lazy" /></div></div>
-              <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/power_drills.png" alt="Power Drills im Combat Coach" loading="lazy" /></div></div>
+              <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/stretching.png" alt="Stretching-Timer im Combat Coach" loading="lazy" width="1179" height="2556" /></div></div>
+              <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/power_drills.png" alt="Power Drills im Combat Coach" loading="lazy" width="1179" height="2556" /></div></div>
             </div>
           </div>
         </details>
@@ -821,8 +871,8 @@
                 <p data-i18n="f.plans.body2">Ob du dein eigenes Training managst oder als Coach Pläne für deine Athleten baust: Aus Zufall wird Struktur — und aus Struktur Fortschritt.</p>
               </div>
               <div class="shots">
-                <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/trainingplans.png" alt="Trainingspläne im Combat Coach" loading="lazy" /></div></div>
-                <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/single_exercises.png" alt="Einzelübung im Combat Coach" loading="lazy" /></div></div>
+                <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/trainingplans.png" alt="Trainingspläne im Combat Coach" loading="lazy" width="1179" height="2556" /></div></div>
+                <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/single_exercises.png" alt="Einzelübung im Combat Coach" loading="lazy" width="1179" height="2556" /></div></div>
               </div>
             </div>
           </div>
@@ -844,7 +894,7 @@
             <div class="acc__grid">
               <div><p data-i18n="f.coach.body">Der SmartCoach (powered by Google Gemini) beantwortet deine Kampfsport-Fragen rund um die Uhr — zu Technik, Taktik, Training, Ernährung oder Motivation. Dein Chatverlauf wird gespeichert, sodass du jederzeit zurückblättern kannst. Ein Coach, der nie schläft.</p></div>
               <div class="phone phone--img">
-                <div class="phone__screen"><img src="screenshots/smartcoach.png" alt="SmartCoach – KI-Chat im Combat Coach" loading="lazy" /></div>
+                <div class="phone__screen"><img src="screenshots/smartcoach.png" alt="SmartCoach – KI-Chat im Combat Coach" loading="lazy" width="1179" height="2556" /></div>
               </div>
             </div>
           </div>
@@ -879,8 +929,8 @@
   <section class="showcase">
     <div class="container showcase__grid">
       <div class="showcase__media reveal">
-        <img src="https://images.pexels.com/photos/8611942/pexels-photo-8611942.jpeg?auto=compress&cs=tinysrgb&w=1000"
-             alt="Zwei Kampfsportler beim Sparring im Boxgym" loading="lazy" />
+        <img src="/assets/sparring.jpg" alt="Zwei Kampfsportler beim Sparring im Boxgym"
+             width="1200" height="800" loading="lazy" decoding="async" />
       </div>
       <div class="reveal">
         <span class="eyebrow" data-i18n="show.eyebrow">Gebaut für den Ring</span>
@@ -984,7 +1034,7 @@
   <section id="download" class="cta">
     <div class="container">
       <div class="cta__box reveal">
-        <div class="cta__emblem"><img src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" /></div>
+        <div class="cta__emblem"><img loading="lazy" decoding="async" src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" width="333" height="331" /></div>
         <span class="eyebrow" style="justify-content:center;" data-i18n="cta.eyebrow">Mach dich bereit</span>
         <h2 data-i18n="cta.h2">Verfügbar ab Sommer 2026.</h2>
         <p data-i18n="cta.p">Combat Coach kommt in deine Apple- und Android-App-Stores.</p>
@@ -1003,11 +1053,13 @@
   </section>
 
   <!-- ====================== FOOTER ====================== -->
+  </main>
+
   <footer class="site-footer">
     <div class="container">
       <div class="footer__grid">
         <div class="footer__lead reveal">
-          <img class="footer__logo" src="Combat_Coach_FontLogo.png" alt="Combat Coach" />
+          <img class="footer__logo" loading="lazy" decoding="async" src="Combat_Coach_FontLogo.png" alt="Combat Coach" width="497" height="339" />
           <span class="eyebrow" style="display:inline-flex;" data-i18n="foot.eyebrow">Kontakt aufnehmen</span>
           <h2 data-i18n="foot.h2">Wir freuen uns über dein Feedback.</h2>
           <p data-i18n="foot.p">Wenn du Fragen hast oder uns zu neuen Features inspirieren möchtest, melde dich einfach bei uns.</p>
@@ -1054,21 +1106,26 @@
         "hero.h1": "Boxen, Kickboxen &amp; Muay Thai <span class=\"accent\">solo trainieren</span> — mit der App, die dir <span class=\"accent\">Kombinationen ansagt</span>.",
         "hero.sub": "„Jab, Cross, Low Kick“ — du reagierst. Combat Coach übernimmt die Rolle deines Trainers: sagt Kombinationen an, führt deine Runden und treibt dich an.",
         "hero.explore": "Funktionen entdecken",
-        "hero.try": "ComboSim ausprobieren",
+        "hero.try": "So funktioniert’s",
         "aud.beginners": "Für Einsteiger",
         "aud.pros": "Profis",
         "aud.coaches": "&amp; Coaches",
         "mq.box": "Boxen",
         "mq.kick": "Kickboxen",
         "mq.muay": "Muay Thai",
-        "demo.eyebrow": "Live ausprobieren",
-        "demo.h2": "Hör auf zu denken.<br>Fang an zu reagieren.",
-        "demo.p": "So fühlt sich ComboSim an: Drück Start, wähl dein Tempo — und reagiere auf jede Ansage. Genau so ruft dir die App am Sandsack die Combos zu.",
-        "demo.hint": "Tipp: Aktiviere den Ton und die Demo sagt dir die Combos laut an — wie in der App.",
-        "demo.round": "Demo-Runde",
-        "demo.start": "Start",
-        "demo.pause": "Pause",
-        "demo.voice": "Ansage",
+        "how.eyebrow": "Das Prinzip",
+        "how.h2": "Hör auf zu denken.<br>Fang an zu reagieren.",
+        "how.p": "Im Sparring hast du keine Zeit, dir die nächste Kombination zu überlegen — du reagierst. Genau dieses Gefühl bringt ComboSim ins Solo-Training: Die App übernimmt das Denken, du übernimmst die Arbeit.",
+        "how.s1t": "Sportart und Tempo einstellen",
+        "how.s1p": "Boxen, Kickboxen oder Muay Thai — dazu ein Ansage-Intervall zwischen entspannten 9 und kompromisslosen 4 Sekunden. Du legst außerdem fest, was überhaupt angesagt wird: Schläge, Kicks, Blocks, Footwork oder deine eigenen Combos.",
+        "how.s2t": "Runde starten — die Stimme übernimmt",
+        "how.s2p": "Der Timer läuft, und die App ruft dir Kombinationen zu: „Jab, Cross, Low Kick.“ Im Shuffle-Modus zufällig wie im echten Kampf, im Sequenced-Modus strukturiert aufgebaut, wenn du eine Technik gezielt lernen willst.",
+        "how.s3t": "Reagieren statt aufs Handy schauen",
+        "how.s3p": "Weil alles über die Stimme läuft, bleibt dein Blick am Sandsack und deine Hände oben. Runden, Pausen und Tempowechsel laufen automatisch durch — du musst die ganze Einheit lang kein einziges Mal aufs Display tippen.",
+        "how.panel.round": "Runde 1 · Boxen",
+        "how.panel.label": "Ansagen der App",
+        "how.panel.speed": "Ansage-Intervall",
+        "how.panel.caption": "Beispielhafter Ausschnitt aus einer ComboSim-Runde bei 7 Sekunden Intervall.",
         "show.eyebrow": "Gebaut für den Ring",
         "show.h2": "Bleib fokussiert.<br>Trainiere klüger.",
         "show.p": "Combat Coach hält alles an einem Ort, damit du deinen Fokus auf die Arbeit richtest — nicht auf dein Handy.",
@@ -1095,8 +1152,6 @@
         "cs.shuffle.p": "Zufällige Combos aus dem ganzen Pool — du weißt nie, was kommt. Wie echtes Sparring: spontan, reaktiv, ohne Muster.",
         "cs.seq.h": "Sequenced-Modus",
         "cs.seq.p": "Strukturierte Lernsequenzen, Schritt für Schritt aufgebaut: erst Jab, dann Jab–Cross, dann Jab–Cross–Hook. Für gezieltes Techniktraining.",
-        "cs.demo.label": "Nächste Combo",
-        "cs.demo.speed": "Combo-Tempo",
         "cs.filters": "Du wählst, was angesagt wird: <strong>Strikes · Kicks · Blocks · Footwork · eigene Combos</strong>",
         "ts.c1.h": "Countdown", "ts.c1.p": "Klassische Runden mit Pausen — wie im Boxgym.",
         "ts.c2.h": "Intervall", "ts.c2.p": "HIIT-Style: Belastung und Erholung im Wechsel.",
@@ -1157,21 +1212,26 @@
         "hero.h1": "Train boxing, kickboxing &amp; Muay Thai <span class=\"accent\">solo</span> — with the app that <span class=\"accent\">calls out your combos</span>.",
         "hero.sub": "“Jab, cross, low kick” — you react. Combat Coach takes over your trainer's job: calling combinations, running your rounds and pushing your pace.",
         "hero.explore": "Explore Features",
-        "hero.try": "Try ComboSim",
+        "hero.try": "How it works",
         "aud.beginners": "For Beginners",
         "aud.pros": "Professionals",
         "aud.coaches": "&amp; Coaches",
         "mq.box": "Boxing",
         "mq.kick": "Kickboxing",
         "mq.muay": "Muay Thai",
-        "demo.eyebrow": "Try it live",
-        "demo.h2": "Stop thinking.<br>Start reacting.",
-        "demo.p": "This is what ComboSim feels like: hit start, pick your pace — and react to every call. Exactly how the app calls out combos at the bag.",
-        "demo.hint": "Tip: turn on the voice and the demo calls out your combos — just like the app.",
-        "demo.round": "Demo round",
-        "demo.start": "Start",
-        "demo.pause": "Pause",
-        "demo.voice": "Voice",
+        "how.eyebrow": "The principle",
+        "how.h2": "Stop thinking.<br>Start reacting.",
+        "how.p": "In sparring you never get time to plan the next combination — you react. ComboSim brings exactly that feeling into solo training: the app does the thinking, you do the work.",
+        "how.s1t": "Pick your sport and your pace",
+        "how.s1p": "Boxing, kickboxing or Muay Thai — plus a callout interval between a relaxed 9 and a merciless 4 seconds. You also decide what gets called: strikes, kicks, blocks, footwork or your own combos.",
+        "how.s2t": "Start the round — the voice takes over",
+        "how.s2p": "The timer runs and the app calls out combinations: “Jab, cross, low kick.” Shuffle mode keeps it random like a real fight, sequenced mode builds up step by step when you want to drill a technique.",
+        "how.s3t": "React instead of staring at your phone",
+        "how.s3p": "Because everything runs through the voice, your eyes stay on the bag and your hands stay up. Rounds, breaks and pace changes run automatically — you never touch the screen mid-session.",
+        "how.panel.round": "Round 1 · Boxing",
+        "how.panel.label": "What the app calls out",
+        "how.panel.speed": "Callout interval",
+        "how.panel.caption": "Example excerpt from a ComboSim round at a 7-second interval.",
         "show.eyebrow": "Built for the ring",
         "show.h2": "Stay focused.<br>Train smarter.",
         "show.p": "Combat Coach keeps everything in one place so you can keep your eyes on the work, not your phone.",
@@ -1198,8 +1258,6 @@
         "cs.shuffle.p": "Random combos from the whole pool — you never know what's next. Like real sparring: spontaneous, reactive, no patterns.",
         "cs.seq.h": "Sequenced mode",
         "cs.seq.p": "Structured learning sequences, built step by step: jab, then jab–cross, then jab–cross–hook. For focused technique work.",
-        "cs.demo.label": "Next combo",
-        "cs.demo.speed": "Combo speed",
         "cs.filters": "You choose what gets called: <strong>Strikes · Kicks · Blocks · Footwork · your own combos</strong>",
         "ts.c1.h": "Countdown", "ts.c1.p": "Classic rounds with breaks — just like the boxing gym.",
         "ts.c2.h": "Interval", "ts.c2.p": "HIIT style: work and recovery, alternating.",
@@ -1294,84 +1352,6 @@
       if (skip) skip.addEventListener('click', dismiss);
       window.addEventListener('keydown', function (e) { if (e.key === 'Escape') dismiss(); });
       var timer = setTimeout(dismiss, 5600); // eine volle Runde (~5s) + Puffer
-    })();
-
-    // ComboSim-Live-Demo: laufender Rundentimer, wechselnde Combos, wählbares Tempo,
-    // optionale Sprachansage (Web Speech API) — das App-Kernfeature zum Anfassen.
-    (function () {
-      var panel = document.getElementById('cc-demo');
-      if (!panel) return;
-      var comboEl = document.getElementById('cc-demo-combo');
-      var timeEl = document.getElementById('cc-demo-time');
-      var startBtn = document.getElementById('cc-demo-start');
-      var startLbl = startBtn.querySelector('[data-i18n]');
-      var voiceBtn = document.getElementById('cc-demo-voice');
-      var chips = document.getElementById('cc-demo-chips');
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      var COMBOS = [
-        'Jab · Cross', 'Jab · Cross · Hook', 'Double Jab · Cross',
-        'Cross · Hook · Body', 'Jab · Cross · Low Kick', 'Hook · Cross · Elbow',
-        'Jab · Uppercut · Hook', 'Teep · Cross · Hook', 'Jab · Low Kick',
-        'Cross · Uppercut · High Kick'
-      ];
-      var running = false, speed = 7, timeLeft = 120, tick = null, comboTick = null, voice = false, lastIdx = -1;
-
-      function fmt(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
-      function speak(text) {
-        if (!voice || !('speechSynthesis' in window)) return;
-        try {
-          window.speechSynthesis.cancel();
-          var u = new SpeechSynthesisUtterance(text.split('·').join(','));
-          u.lang = 'en-US'; u.rate = 1.05;
-          window.speechSynthesis.speak(u);
-        } catch (e) {}
-      }
-      function nextCombo() {
-        var i; do { i = Math.floor(Math.random() * COMBOS.length); } while (i === lastIdx);
-        lastIdx = i;
-        comboEl.textContent = COMBOS[i];
-        if (!reduce) { comboEl.classList.remove('punch'); void comboEl.offsetWidth; comboEl.classList.add('punch'); }
-        speak(COMBOS[i]);
-      }
-      function setStartLabel() {
-        var key = running ? 'demo.pause' : 'demo.start';
-        startLbl.setAttribute('data-i18n', key);
-        var dict = I18N[document.documentElement.lang] || I18N.de;
-        startLbl.innerHTML = dict[key] || key;
-      }
-      function stopTimers() { clearInterval(tick); clearInterval(comboTick); tick = comboTick = null; }
-      function start() {
-        running = true; panel.classList.add('is-running'); setStartLabel();
-        nextCombo();
-        comboTick = setInterval(nextCombo, speed * 1000);
-        tick = setInterval(function () {
-          timeLeft -= 1;
-          if (timeLeft <= 0) timeLeft = 120; // Demo-Runde loopt
-          timeEl.textContent = fmt(timeLeft);
-        }, 1000);
-      }
-      function pause() {
-        running = false; panel.classList.remove('is-running'); setStartLabel();
-        stopTimers();
-        if ('speechSynthesis' in window) { try { window.speechSynthesis.cancel(); } catch (e) {} }
-      }
-      startBtn.addEventListener('click', function () { running ? pause() : start(); });
-      voiceBtn.addEventListener('click', function () {
-        voice = !voice;
-        voiceBtn.classList.toggle('is-on', voice);
-        voiceBtn.setAttribute('aria-pressed', String(voice));
-        if (voice && running) speak(comboEl.textContent);
-      });
-      chips.addEventListener('click', function (e) {
-        var b = e.target.closest('[data-speed]');
-        if (!b) return;
-        speed = +b.dataset.speed;
-        chips.querySelectorAll('.chip--btn').forEach(function (c) { c.classList.toggle('hot', c === b); });
-        if (running) { clearInterval(comboTick); comboTick = setInterval(nextCombo, speed * 1000); }
-      });
-      // Bei verlassenem Tab pausieren (kein Hintergrund-Gequassel)
-      document.addEventListener('visibilitychange', function () { if (document.hidden && running) pause(); });
     })();
 
     (function () {
