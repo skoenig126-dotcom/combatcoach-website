@@ -201,6 +201,22 @@
               mask-image: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.35) 45%, transparent 80%);
     }
 
+    /* --- Ratgeber-Karten: ganze Karte ist klickbar --- */
+    .card--guide { display: flex; flex-direction: column; color: inherit; }
+    .card--guide:hover { border-color: rgba(228,43,36,0.45); }
+    .card__meta {
+      font-size: .68rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--red); margin-bottom: .9rem;
+    }
+    .card__more {
+      display: inline-flex; align-items: center; gap: .45rem;
+      margin-top: auto; padding-top: 1.4rem;
+      font-size: .85rem; font-weight: 600; color: var(--cream);
+    }
+    .card__more svg { width: 15px; height: 15px; transition: transform .22s ease; }
+    .card--guide:hover .card__more svg { transform: translateX(4px); }
+    @media (prefers-reduced-motion: reduce) { .card--guide:hover .card__more svg { transform: none; } }
+
     /* Skip-Link: für Tastatur-Nutzer, springt über Header/Navigation direkt zum Inhalt */
     .skip-link {
       position: absolute; left: 1rem; top: -100px; z-index: 200;
@@ -506,50 +522,9 @@
     .two-col { display:grid; grid-template-columns:1fr; gap:var(--gap); }
     .spotlight__grid { display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
     .mode-grid { display:grid; grid-template-columns:1fr; gap:var(--gap); }
-    /* ComboSim-Demo-Panel */
-    .combo-demo { position:relative; border:1px solid var(--border-2); border-radius:var(--radius-lg); background:var(--glass); backdrop-filter:blur(10px); padding:clamp(1.6rem,4vw,2.4rem); overflow:hidden; }
-    .combo-demo::before { content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(85% 110% at 50% 0%, rgba(228,43,36,0.20), transparent 60%); }
-    .cd-top { display:flex; justify-content:space-between; align-items:center; color:var(--cream-dim); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; }
-    .cd-time { color:var(--cream); font-weight:700; font-size:1.1rem; letter-spacing:.05em; }
-    .cd-next { margin-top:1.6rem; color:var(--red); font-size:.7rem; letter-spacing:.22em; text-transform:uppercase; font-weight:600; }
-    .cd-combo { margin-top:.45rem; font-weight:700; font-size:clamp(1.5rem,4.6vw,2.1rem); line-height:1.15; color:var(--cream); }
-    .cd-speedlabel { margin-top:1.8rem; color:var(--cream-faint); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; }
-    .speed-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.7rem; }
-    .chip { font-size:.8rem; font-weight:600; padding:.35rem .7rem; border-radius:999px; border:1px solid var(--border-2); color:var(--cream-dim); }
-    .chip.hot { background:var(--red); border-color:var(--red); color:var(--cream); box-shadow:0 6px 20px var(--red-glow); }
     .filters-line { margin-top:1.7rem; padding-top:1.3rem; border-top:1px solid var(--border); color:var(--cream-dim); font-size:.9rem; }
     .filters-line strong { color:var(--cream); }
 
-    /* --- "So funktioniert's": Konzept-Erklärung + statische Ansage-Illustration --- */
-    .how__grid { display:grid; grid-template-columns:1fr; gap:clamp(2rem,5vw,3.5rem); align-items:center; }
-    @media (min-width:900px){ .how__grid { grid-template-columns:1.05fr .95fr; } }
-    .steps { list-style:none; margin-top:2rem; display:grid; gap:1.4rem; }
-    .step { display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:start; }
-    .step__num {
-      width:2.1rem; height:2.1rem; flex:none; border-radius:50%; display:grid; place-items:center;
-      font-size:.85rem; font-weight:700; color:var(--red);
-      border:1px solid var(--red); background:rgba(228,43,36,.10);
-    }
-    .step__t { font-size:1.02rem; font-weight:700; color:var(--cream); line-height:1.3; }
-    .step__p { margin-top:.35rem; color:var(--cream-dim); font-size:.94rem; line-height:1.6; }
-    /* Ansage-Protokoll: zeigt, wie eine Runde klingt — reine Illustration, nichts Interaktives */
-    .cd-live { display:inline-flex; align-items:center; gap:.45rem; }
-    .cd-live .dot { width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 1.9s infinite; }
-    .cd-log { list-style:none; margin-top:1.3rem; display:grid; gap:.55rem; }
-    .cd-log li {
-      display:grid; grid-template-columns:3.2rem 1fr; align-items:baseline; gap:.9rem;
-      padding:.62rem .8rem; border-radius:var(--radius-sm, 10px);
-      border:1px solid transparent; color:var(--cream-dim); font-size:1rem;
-    }
-    .cd-log .t { font-size:.72rem; letter-spacing:.08em; color:var(--cream-faint); font-variant-numeric:tabular-nums; }
-    .cd-log li.now {
-      background:rgba(228,43,36,.12); border-color:var(--red);
-      color:var(--cream); font-weight:700;
-    }
-    .cd-log li.now .t { color:var(--red); }
-    .cd-foot { margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid var(--border); }
-    .cd-foot__label { color:var(--cream-faint); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; }
-    @media (prefers-reduced-motion: reduce) { .cd-live .dot { animation:none; } }
     /* Smartphone-Rahmen für App-Screen-Mockups */
     .phone { position:relative; width:min(320px,82vw); margin-inline:auto; border-radius:44px; padding:13px;
       background:linear-gradient(160deg,#1c1c1f,#0a0a0b); border:1px solid var(--border-2);
@@ -682,7 +657,7 @@
         <h1 data-i18n="hero.h1">Boxen, Kickboxen &amp; Muay Thai <span class="accent">solo trainieren</span> — mit der App, die dir <span class="accent">Kombinationen ansagt</span>.</h1>
         <p class="hero__sub" data-i18n="hero.sub">„Jab, Cross, Low Kick“ — du reagierst. Combat Coach übernimmt die Rolle deines Trainers: sagt Kombinationen an, führt deine Runden und treibt dich an.</p>
         <div class="hero__actions">
-          <a href="#how" class="btn btn--primary" data-i18n="hero.try">So funktioniert’s</a>
+          <a href="#features" class="btn btn--primary" data-i18n="hero.try">So funktioniert’s</a>
           <a href="#features" class="btn btn--ghost" data-i18n="hero.explore">Funktionen entdecken</a>
         </div>
       </div>
@@ -690,7 +665,7 @@
         <img src="CombatCoach_Avata_Logo.png" alt="Combat Coach Boxer-Avatar" width="333" height="331" />
       </div>
     </div>
-    <a href="#how" class="hero__scroll" aria-label="Nach unten scrollen"><span></span></a>
+    <a href="#features" class="hero__scroll" aria-label="Nach unten scrollen"><span></span></a>
   </section>
 
   <!-- ====================== ZIELGRUPPEN-TICKER ====================== -->
@@ -714,64 +689,6 @@
       </div>
     </div>
   </div>
-
-  <!-- ====================== SO FUNKTIONIERT'S (ComboSim-Konzept) ====================== -->
-  <section id="how">
-    <div class="container how__grid">
-      <div class="reveal">
-        <span class="eyebrow" data-i18n="how.eyebrow">Das Prinzip</span>
-        <h2 style="font-size:clamp(1.8rem,4.4vw,2.7rem);" data-i18n="how.h2">Hör auf zu denken.<br>Fang an zu reagieren.</h2>
-        <p style="color:var(--cream-dim); margin-top:1rem;" data-i18n="how.p">Im Sparring hast du keine Zeit, dir die nächste Kombination zu überlegen — du reagierst. Genau dieses Gefühl bringt ComboSim ins Solo-Training: Die App übernimmt das Denken, du übernimmst die Arbeit.</p>
-
-        <ol class="steps">
-          <li class="step">
-            <span class="step__num" aria-hidden="true">1</span>
-            <div>
-              <h3 class="step__t" data-i18n="how.s1t">Sportart und Tempo einstellen</h3>
-              <p class="step__p" data-i18n="how.s1p">Boxen, Kickboxen oder Muay Thai — dazu ein Ansage-Intervall zwischen entspannten 9 und kompromisslosen 4 Sekunden. Du legst außerdem fest, was überhaupt angesagt wird: Schläge, Kicks, Blocks, Footwork oder deine eigenen Combos.</p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">2</span>
-            <div>
-              <h3 class="step__t" data-i18n="how.s2t">Runde starten — die Stimme übernimmt</h3>
-              <p class="step__p" data-i18n="how.s2p">Der Timer läuft, und die App ruft dir Kombinationen zu: „Jab, Cross, Low Kick.“ Im Shuffle-Modus zufällig wie im echten Kampf, im Sequenced-Modus strukturiert aufgebaut, wenn du eine Technik gezielt lernen willst.</p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">3</span>
-            <div>
-              <h3 class="step__t" data-i18n="how.s3t">Reagieren statt aufs Handy schauen</h3>
-              <p class="step__p" data-i18n="how.s3p">Weil alles über die Stimme läuft, bleibt dein Blick am Sandsack und deine Hände oben. Runden, Pausen und Tempowechsel laufen automatisch durch — du musst die ganze Einheit lang kein einziges Mal aufs Display tippen.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-
-      <!-- Illustration: so klingt eine Runde (statische Darstellung, keine Bedienelemente) -->
-      <figure class="combo-demo reveal">
-        <div class="cd-top">
-          <span class="cd-live"><span class="dot"></span> <span data-i18n="how.panel.round">Runde 1 · Boxen</span></span>
-          <span class="cd-time">2:00</span>
-        </div>
-        <div class="cd-next" data-i18n="how.panel.label">Ansagen der App</div>
-        <ol class="cd-log">
-          <li><span class="t">0:07</span> <span>Jab · Cross</span></li>
-          <li class="now"><span class="t">0:14</span> <span>Double Jab · Cross · Hook</span></li>
-          <li><span class="t">0:21</span> <span>Cross · Hook · Body</span></li>
-          <li><span class="t">0:28</span> <span>Jab · Uppercut · Hook</span></li>
-        </ol>
-        <div class="cd-foot">
-          <div class="cd-foot__label" data-i18n="how.panel.speed">Ansage-Intervall</div>
-          <div class="speed-chips" aria-hidden="true">
-            <span class="chip">9s</span><span class="chip">8s</span><span class="chip hot">7s</span>
-            <span class="chip">6s</span><span class="chip">5s</span><span class="chip">4s</span>
-          </div>
-        </div>
-        <figcaption class="cd-foot__label" style="display:block; margin-top:1.1rem; letter-spacing:.06em; text-transform:none; font-size:.75rem;" data-i18n="how.panel.caption">Beispielhafter Ausschnitt aus einer ComboSim-Runde bei 7 Sekunden Intervall.</figcaption>
-      </figure>
-    </div>
-  </section>
 
   <!-- ====================== FUNKTIONEN (Akkordeon) ====================== -->
   <section id="features">
@@ -947,6 +864,37 @@
           </div>
         </details>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== RATGEBER (kostenlose Inhalte, sofort nutzbar) ====================== -->
+  <section id="guides">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="guides.eyebrow">Kostenlose Ratgeber</span>
+        <h2 data-i18n="guides.h2">Anfangen kannst du sofort.</h2>
+        <p data-i18n="guides.intro">Die App kommt im Sommer 2026 — dein Training muss so lange nicht warten. Drei ausführliche Anleitungen, mit denen du direkt loslegst: ohne Anmeldung, ohne Konto, ohne Installation.</p>
+      </div>
+      <div class="features__grid">
+        <a class="card card--guide reveal" href="/boxen-alleine-trainieren.html">
+          <div class="card__meta" data-i18n="guides.c1.meta">Solo-Training · 5 Methoden</div>
+          <h3 data-i18n="guides.c1.h">Boxen alleine trainieren</h3>
+          <p data-i18n="guides.c1.p">Fünf Methoden, die dein Solo-Training wirklich effektiv machen — von Schattenboxen über Sackarbeit bis zum Reaktionstraining. Inklusive 30-Minuten-Beispieleinheit.</p>
+          <span class="card__more"><span data-i18n="guides.more">Zum Ratgeber</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="card card--guide reveal" href="/boxsack-training-anfaenger.html">
+          <div class="card__meta" data-i18n="guides.c2.meta">Sandsack · 20-Min-Workout</div>
+          <h3 data-i18n="guides.c2.h">Boxsack-Training für Anfänger</h3>
+          <p data-i18n="guides.c2.p">Die vier Grundschläge, fünf aufeinander aufbauende Übungen und ein fertiges 20-Minuten-Workout — dazu die Fehler, die am Sack fast jeder Anfänger macht.</p>
+          <span class="card__more"><span data-i18n="guides.more">Zum Ratgeber</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="card card--guide reveal" href="/schattenboxen-kombinationen.html">
+          <div class="card__meta" data-i18n="guides.c3.meta">Ohne Ausrüstung · 15-Min-Workout</div>
+          <h3 data-i18n="guides.c3.h">Schattenboxen: Kombinationen</h3>
+          <p data-i18n="guides.c3.p">Zehn Kombinationen vom Einsteiger bis Fortgeschritten, drei Rundenformate und ein 15-Minuten-Workout. Du brauchst nichts außer ein bisschen Platz.</p>
+          <span class="card__more"><span data-i18n="guides.more">Zum Ratgeber</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
       </div>
     </div>
   </section>
@@ -1139,19 +1087,19 @@
         "mq.box": "Boxen",
         "mq.kick": "Kickboxen",
         "mq.muay": "Muay Thai",
-        "how.eyebrow": "Das Prinzip",
-        "how.h2": "Hör auf zu denken.<br>Fang an zu reagieren.",
-        "how.p": "Im Sparring hast du keine Zeit, dir die nächste Kombination zu überlegen — du reagierst. Genau dieses Gefühl bringt ComboSim ins Solo-Training: Die App übernimmt das Denken, du übernimmst die Arbeit.",
-        "how.s1t": "Sportart und Tempo einstellen",
-        "how.s1p": "Boxen, Kickboxen oder Muay Thai — dazu ein Ansage-Intervall zwischen entspannten 9 und kompromisslosen 4 Sekunden. Du legst außerdem fest, was überhaupt angesagt wird: Schläge, Kicks, Blocks, Footwork oder deine eigenen Combos.",
-        "how.s2t": "Runde starten — die Stimme übernimmt",
-        "how.s2p": "Der Timer läuft, und die App ruft dir Kombinationen zu: „Jab, Cross, Low Kick.“ Im Shuffle-Modus zufällig wie im echten Kampf, im Sequenced-Modus strukturiert aufgebaut, wenn du eine Technik gezielt lernen willst.",
-        "how.s3t": "Reagieren statt aufs Handy schauen",
-        "how.s3p": "Weil alles über die Stimme läuft, bleibt dein Blick am Sandsack und deine Hände oben. Runden, Pausen und Tempowechsel laufen automatisch durch — du musst die ganze Einheit lang kein einziges Mal aufs Display tippen.",
-        "how.panel.round": "Runde 1 · Boxen",
-        "how.panel.label": "Ansagen der App",
-        "how.panel.speed": "Ansage-Intervall",
-        "how.panel.caption": "Beispielhafter Ausschnitt aus einer ComboSim-Runde bei 7 Sekunden Intervall.",
+        "guides.eyebrow": "Kostenlose Ratgeber",
+        "guides.h2": "Anfangen kannst du sofort.",
+        "guides.intro": "Die App kommt im Sommer 2026 — dein Training muss so lange nicht warten. Drei ausführliche Anleitungen, mit denen du direkt loslegst: ohne Anmeldung, ohne Konto, ohne Installation.",
+        "guides.more": "Zum Ratgeber",
+        "guides.c1.meta": "Solo-Training · 5 Methoden",
+        "guides.c1.h": "Boxen alleine trainieren",
+        "guides.c1.p": "Fünf Methoden, die dein Solo-Training wirklich effektiv machen — von Schattenboxen über Sackarbeit bis zum Reaktionstraining. Inklusive 30-Minuten-Beispieleinheit.",
+        "guides.c2.meta": "Sandsack · 20-Min-Workout",
+        "guides.c2.h": "Boxsack-Training für Anfänger",
+        "guides.c2.p": "Die vier Grundschläge, fünf aufeinander aufbauende Übungen und ein fertiges 20-Minuten-Workout — dazu die Fehler, die am Sack fast jeder Anfänger macht.",
+        "guides.c3.meta": "Ohne Ausrüstung · 15-Min-Workout",
+        "guides.c3.h": "Schattenboxen: Kombinationen",
+        "guides.c3.p": "Zehn Kombinationen vom Einsteiger bis Fortgeschritten, drei Rundenformate und ein 15-Minuten-Workout. Du brauchst nichts außer ein bisschen Platz.",
         "show.eyebrow": "Gebaut für den Ring",
         "show.h2": "Bleib fokussiert.<br>Trainiere klüger.",
         "show.p": "Combat Coach hält alles an einem Ort, damit du deinen Fokus auf die Arbeit richtest — nicht auf dein Handy.",
@@ -1245,19 +1193,19 @@
         "mq.box": "Boxing",
         "mq.kick": "Kickboxing",
         "mq.muay": "Muay Thai",
-        "how.eyebrow": "The principle",
-        "how.h2": "Stop thinking.<br>Start reacting.",
-        "how.p": "In sparring you never get time to plan the next combination — you react. ComboSim brings exactly that feeling into solo training: the app does the thinking, you do the work.",
-        "how.s1t": "Pick your sport and your pace",
-        "how.s1p": "Boxing, kickboxing or Muay Thai — plus a callout interval between a relaxed 9 and a merciless 4 seconds. You also decide what gets called: strikes, kicks, blocks, footwork or your own combos.",
-        "how.s2t": "Start the round — the voice takes over",
-        "how.s2p": "The timer runs and the app calls out combinations: “Jab, cross, low kick.” Shuffle mode keeps it random like a real fight, sequenced mode builds up step by step when you want to drill a technique.",
-        "how.s3t": "React instead of staring at your phone",
-        "how.s3p": "Because everything runs through the voice, your eyes stay on the bag and your hands stay up. Rounds, breaks and pace changes run automatically — you never touch the screen mid-session.",
-        "how.panel.round": "Round 1 · Boxing",
-        "how.panel.label": "What the app calls out",
-        "how.panel.speed": "Callout interval",
-        "how.panel.caption": "Example excerpt from a ComboSim round at a 7-second interval.",
+        "guides.eyebrow": "Free guides",
+        "guides.h2": "You can start today.",
+        "guides.intro": "The app arrives in summer 2026 — your training does not have to wait. Three in-depth guides to get you going right now: no sign-up, no account, nothing to install.",
+        "guides.more": "Read the guide",
+        "guides.c1.meta": "Solo training · 5 methods",
+        "guides.c1.h": "How to train boxing alone",
+        "guides.c1.p": "Five methods that make solo sessions genuinely effective — from shadowboxing to bag work to reaction drills. Includes a 30-minute example session.",
+        "guides.c2.meta": "Heavy bag · 20-min workout",
+        "guides.c2.h": "Heavy bag workouts for beginners",
+        "guides.c2.p": "The four basic punches, five drills that build on each other and a ready-made 20-minute workout — plus the mistakes almost every beginner makes on the bag.",
+        "guides.c3.meta": "No equipment · 15-min workout",
+        "guides.c3.h": "Shadowboxing: combinations",
+        "guides.c3.p": "Ten combinations from beginner to advanced, three round formats and a 15-minute workout. You need nothing but a bit of space.",
         "show.eyebrow": "Built for the ring",
         "show.h2": "Stay focused.<br>Train smarter.",
         "show.p": "Combat Coach keeps everything in one place so you can keep your eyes on the work, not your phone.",
