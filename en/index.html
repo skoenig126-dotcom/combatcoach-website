@@ -47,8 +47,34 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://combatcoach.org/#organization",
+      "name": "Combat Coach",
+      "url": "https://combatcoach.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://combatcoach.org/CombatCoach_Avata_Logo.png",
+        "width": 333,
+        "height": 331
+      },
+      "sameAs": [
+        "https://instagram.com/combat.coach_app",
+        "https://bsky.app/profile/combatcoach.bsky.social"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://combatcoach.org/#website",
+      "name": "Combat Coach",
+      "alternateName": ["CombatCoach", "Combat Coach App"],
+      "url": "https://combatcoach.org/",
+      "publisher": { "@id": "https://combatcoach.org/#organization" },
+      "inLanguage": "en"
+    },
+    {
       "@type": "SoftwareApplication",
       "name": "Combat Coach",
+      "publisher": { "@id": "https://combatcoach.org/#organization" },
       "url": "https://combatcoach.org/en/",
       "image": "https://combatcoach.org/og-image.png",
       "applicationCategory": "HealthApplication",
