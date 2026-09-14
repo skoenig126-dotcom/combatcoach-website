@@ -82,6 +82,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/boxing-timer.html" />
   </url>
   <url>
+    <loc>https://combatcoach.org/ueber-uns.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/ueber-uns.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/about.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/about.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/ueber-uns.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/about.html" />
+  </url>
+  <url>
     <loc>https://combatcoach.org/privacy.html</loc>
     <lastmod>2026-08-12</lastmod>
     <changefreq>yearly</changefreq>
