@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Box-Timer online: Runden-Timer mit Combo-Ansage (gratis)</title>
+  <meta name="description" content="Kostenloser Box-Timer im Browser: Runden, Pausen und Vorbereitung frei einstellbar — dazu ein Ansager, der dir Kombinationen zuruft. Für Boxen, Kickboxen & Muay Thai." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="canonical" href="https://combatcoach.org/box-timer.html" />
+  <link rel="alternate" hreflang="de" href="https://combatcoach.org/box-timer.html" />
+  <link rel="alternate" hreflang="en" href="https://combatcoach.org/en/boxing-timer.html" />
+  <link rel="alternate" hreflang="x-default" href="https://combatcoach.org/box-timer.html" />
+  <meta property="og:title" content="Box-Timer online: Runden-Timer mit Combo-Ansage (gratis)" />
+  <meta property="og:description" content="Kostenloser Runden-Timer mit Combo-Ansage für Boxen, Kickboxen und Muay Thai. Ohne Anmeldung, direkt im Browser." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://combatcoach.org/box-timer.html" />
+  <meta property="og:image" content="https://combatcoach.org/og-image.png" />
+  <meta property="og:site_name" content="Combat Coach" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Box-Timer online",
+      "url": "https://combatcoach.org/box-timer.html",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "Any (web browser)",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Kostenloser Runden-Timer mit Combo-Ansage für Boxen, Kickboxen und Muay Thai. Ohne Anmeldung, direkt im Browser.",
+      "inLanguage": "de",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Combat Coach",
+        "url": "https://combatcoach.org/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ist der Box-Timer wirklich kostenlos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Der Timer läuft vollständig in deinem Browser, ohne Anmeldung, ohne Konto und ohne Werbung. Es werden keine Daten an einen Server geschickt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Rundenzeiten sind beim Boxen üblich?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Im Amateurboxen sind 3 Runden à 3 Minuten mit 1 Minute Pause üblich, im Profibereich bis zu 12 Runden. Für das Training zu Hause und für Einsteiger sind 3 bis 5 Runden à 2 Minuten mit 1 Minute Pause der sinnvollere Einstieg."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie funktioniert die Combo-Ansage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der Timer wählt in dem von dir eingestellten Abstand zufällig eine Kombination aus dem Pool deiner Sportart und spricht sie über die Sprachausgabe deines Geräts aus. Gleichzeitig erscheint sie groß im Display — falls du ohne Ton trainierst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funktioniert der Timer auch offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nach dem ersten Laden läuft der Timer ohne Internetverbindung weiter, solange du den Tab geöffnet lässt. Die Sprachausgabe hängt allerdings vom Gerät ab: Manche Systeme laden Stimmen nur online nach."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Combat Coach",
+          "item": "https://combatcoach.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Box-Timer",
+          "item": "https://combatcoach.org/box-timer.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{--red:#E42B24;--cream:#FFFDE4;--cream-dim:rgba(255,253,228,.62);--cream-faint:rgba(255,253,228,.40);
+      --black:#050505;--glass:rgba(255,253,228,.035);--glass-2:rgba(255,253,228,.06);
+      --border:rgba(255,253,228,.09);--border-2:rgba(255,253,228,.16);
+      --font:'Roboto Mono',ui-monospace,monospace;--radius:18px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);background:var(--black);color:var(--cream);line-height:1.75;-webkit-font-smoothing:antialiased}
+    body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background:radial-gradient(90% 60% at 50% -10%,rgba(255,253,228,.05),transparent 60%),
+                 radial-gradient(70% 50% at 85% 110%,rgba(228,43,36,.07),transparent 60%)}
+    .container{width:min(820px,92vw);margin-inline:auto}
+    a{color:var(--red);text-decoration:none}a:hover{text-decoration:underline}
+    .site-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,5,5,.65);border-bottom:1px solid var(--border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:66px;width:min(1100px,92vw);margin-inline:auto}
+    .brand{display:flex;align-items:center;gap:.6rem}
+    .brand img{width:34px;height:34px;object-fit:contain}
+    .brand strong{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream)}
+    .lang-switch{display:inline-flex;gap:.15rem;border:1px solid var(--border-2);border-radius:999px;padding:.2rem;background:var(--glass)}
+    .lang-btn{font-family:var(--font);font-weight:600;font-size:.7rem;letter-spacing:.08em;color:var(--cream-dim);
+      background:transparent;border:none;padding:.32rem .7rem;border-radius:999px}
+    .lang-btn.is-active{background:var(--red);color:var(--cream)}
+    a.lang-btn:hover{text-decoration:none;color:var(--cream)}
+    main{padding:clamp(2rem,5vw,3.4rem) 0 3rem}
+    .crumb{font-size:.78rem;color:var(--cream-dim);margin-bottom:1.4rem}
+    h1{font-size:clamp(1.5rem,4.2vw,2.3rem);line-height:1.25;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:1rem}
+    h1 .accent{color:var(--red)}
+    .lead{font-size:1rem;color:var(--cream-dim);margin-bottom:2.2rem;max-width:64ch}
+    h2{font-size:clamp(1.2rem,2.8vw,1.5rem);line-height:1.3;margin:2.6rem 0 .9rem}
+    h3{font-size:1rem;margin:0;color:var(--cream)}
+    p{color:var(--cream-dim);margin-bottom:1rem}
+    strong{color:var(--cream)}
+    ul{color:var(--cream-dim);padding-left:1.3rem;margin-bottom:1.2rem}
+    li{margin-bottom:.5rem}
+    /* ---- Timer ---- */
+    .timer{border:1px solid var(--border-2);border-radius:26px;background:var(--glass-2);
+      padding:clamp(1.2rem,3.5vw,2rem);margin-bottom:2rem}
+    .timer__phase{text-align:center;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);min-height:1.2em}
+    .timer__clock{text-align:center;font-size:clamp(3.4rem,17vw,7rem);font-weight:700;line-height:1;
+      letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin:.3rem 0}
+    .timer.is-rest .timer__clock{color:var(--cream-dim)}
+    .timer.is-round .timer__clock{color:var(--cream)}
+    .timer.is-prep .timer__clock{color:var(--red)}
+    .timer__rounds{text-align:center;font-size:.85rem;color:var(--cream-dim);min-height:1.4em}
+    .timer__combo{text-align:center;margin:1.1rem 0 .2rem;min-height:2.6em;display:flex;align-items:center;justify-content:center}
+    .timer__combo span{font-size:clamp(1.1rem,4.5vw,1.9rem);font-weight:700;color:var(--red);
+      opacity:0;transform:scale(.96);transition:opacity .18s,transform .18s}
+    .timer__combo span.is-live{opacity:1;transform:scale(1)}
+    .timer__controls{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+    .btn{font-family:var(--font);font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+      border-radius:999px;padding:.85rem 1.9rem;cursor:pointer;border:1px solid transparent;transition:filter .2s,border-color .2s,color .2s}
+    .btn--primary{background:var(--red);color:var(--cream)}
+    .btn--primary:hover{filter:brightness(1.12)}
+    .btn--ghost{background:transparent;color:var(--cream-dim);border-color:var(--border-2)}
+    .btn--ghost:hover{color:var(--cream);border-color:var(--red)}
+    .settings{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem 1.1rem;
+      margin-top:1.8rem;padding-top:1.6rem;border-top:1px solid var(--border)}
+    .field{display:flex;flex-direction:column;gap:.35rem}
+    .field label{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-faint)}
+    .field input,.field select{font-family:var(--font);font-size:.92rem;color:var(--cream);
+      background:rgba(255,253,228,.05);border:1px solid var(--border-2);border-radius:12px;padding:.6rem .75rem;width:100%}
+    .field input:focus,.field select:focus{outline:none;border-color:var(--red)}
+    .field select option{background:#141414;color:var(--cream)}
+    .field--split{display:flex;gap:.4rem;align-items:center}
+    .field--split input{text-align:center}
+    .field--split span{color:var(--cream-faint);font-size:.7rem}
+    .presets{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:1.3rem}
+    .presets>span{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-faint);margin-right:.2rem}
+    .preset{font-family:var(--font);font-size:.74rem;color:var(--cream-dim);background:var(--glass);
+      border:1px solid var(--border-2);border-radius:999px;padding:.4rem .85rem;cursor:pointer}
+    .preset:hover{color:var(--cream);border-color:var(--red)}
+    .note{font-size:.76rem;color:var(--cream-faint);margin-top:1rem;text-align:center}
+    /* ---- FAQ ---- */
+    details{border:1px solid var(--border);border-radius:var(--radius);background:var(--glass);margin-bottom:.9rem}
+    details[open]{border-color:var(--border-2);background:var(--glass-2)}
+    summary{list-style:none;cursor:pointer;padding:1.05rem 1.3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+    summary::-webkit-details-marker{display:none}
+    summary h3{font-size:.95rem}
+    .chev{flex:0 0 auto;width:9px;height:9px;border-right:2px solid var(--cream-dim);border-bottom:2px solid var(--cream-dim);
+      transform:rotate(45deg);transition:transform .25s}
+    details[open] .chev{transform:rotate(-135deg)}
+    details .body{padding:0 1.3rem 1.2rem}
+    details .body p{margin:0}
+    /* ---- CTA ---- */
+    .cta-box{text-align:center;border:1px solid var(--border-2);border-radius:24px;
+      background:linear-gradient(160deg,var(--glass-2),rgba(228,43,36,.06));padding:2.2rem 1.5rem;margin:2.6rem 0 1rem}
+    .cta-box img{width:58px;height:58px;margin-bottom:.9rem}
+    .cta-box h2{margin:0 0 .5rem;font-size:1.25rem}
+    .cta-box p{margin-bottom:1.3rem}
+    .cta-box a{display:inline-block;background:var(--red);color:var(--cream);border-radius:999px;
+      padding:.8rem 1.8rem;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+    .cta-box a:hover{text-decoration:none;filter:brightness(1.12)}
+    footer{border-top:1px solid var(--border);padding:2rem 0 2.6rem;margin-top:2.4rem;font-size:.78rem;color:var(--cream-dim)}
+    footer .container{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+    @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav">
+      <a href="/" class="brand" aria-label="Combat Coach">
+        <img src="/CombatCoach_Avata_Logo.png" alt="Combat Coach" width="333" height="331" />
+        <strong>Combat Coach</strong>
+      </a>
+      <div class="lang-switch" role="group" aria-label="Sprache / Language">
+        <span class="lang-btn is-active">DE</span>
+        <a class="lang-btn" href="/en/boxing-timer.html">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="/">Combat Coach</a> / Box-Timer</nav>
+      <h1>Box-Timer mit <span class="accent">Combo-Ansage</span></h1>
+      <p class="lead">Ein Runden-Timer, der nicht nur die Zeit nimmt, sondern dir auch sagt, was du schlagen sollst. Stell Runden, Pausen und Tempo ein, drück Start — und trainiere, statt auf die Uhr zu schauen. Kostenlos, ohne Anmeldung, direkt im Browser.</p>
+
+      <section class="timer" id="timer" aria-label="Box-Timer">
+        <div class="timer__phase" id="phase"></div>
+        <div class="timer__clock" id="clock">3:00</div>
+        <div class="timer__rounds" id="rounds-label"></div>
+        <div class="timer__combo" id="combo" aria-live="polite"></div>
+
+        <div class="timer__controls">
+          <button class="btn btn--primary" id="btn-start" type="button">Start</button>
+          <button class="btn btn--ghost" id="btn-reset" type="button">Zurücksetzen</button>
+        </div>
+
+        <div class="presets">
+          <span>Vorlagen</span>
+          <button class="preset" type="button" data-rounds="3" data-round="180" data-rest="60">Klassisch 3×3</button>
+          <button class="preset" type="button" data-rounds="5" data-round="120" data-rest="60">HIIT 5×2</button>
+          <button class="preset" type="button" data-rounds="8" data-round="20" data-rest="10">Tabata 8×20s</button>
+        </div>
+
+        <div class="settings">
+          <div class="field">
+            <label for="f-rounds">Runden</label>
+            <input id="f-rounds" type="number" min="1" max="30" step="1" value="3" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="f-round-min">Rundenlänge</label>
+            <div class="field--split">
+              <input id="f-round-min" type="number" min="0" max="59" step="1" value="3" inputmode="numeric" aria-label="Rundenlänge Min" />
+              <span>Min</span>
+              <input id="f-round-sec" type="number" min="0" max="59" step="5" value="0" inputmode="numeric" aria-label="Rundenlänge Sek" />
+              <span>Sek</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-rest-min">Pause</label>
+            <div class="field--split">
+              <input id="f-rest-min" type="number" min="0" max="59" step="1" value="1" inputmode="numeric" aria-label="Pause Min" />
+              <span>Min</span>
+              <input id="f-rest-sec" type="number" min="0" max="59" step="5" value="0" inputmode="numeric" aria-label="Pause Sek" />
+              <span>Sek</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-prep">Vorbereitung (Sek)</label>
+            <input id="f-prep" type="number" min="0" max="120" step="5" value="10" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="f-caller">Combo-Ansage</label>
+            <select id="f-caller">
+              <option value="on">An</option>
+              <option value="off">Aus</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-sport">Sportart</label>
+            <select id="f-sport">
+              <option value="boxing">Boxen</option>
+              <option value="kickboxing">Kickboxen</option>
+              <option value="muaythai">Muay Thai</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-speed">Combo-Tempo (Sek)</label>
+            <select id="f-speed">
+              <option value="9">9</option><option value="8">8</option><option value="7">7</option>
+              <option value="6" selected>6</option><option value="5">5</option><option value="4">4</option>
+            </select>
+          </div>
+        </div>
+        <p class="note" id="note"></p>
+      </section>
+
+      <h2>So benutzt du den Timer</h2>
+      <p>Stell links deine Runden ein und drück Start. Der Timer zählt eine kurze Vorbereitungszeit herunter, startet dann die Runde und meldet sich mit einem Gong bei jedem Wechsel. Läuft die Combo-Ansage mit, ruft dir eine Stimme in festem Abstand eine Kombination zu — du reagierst, statt sie dir selbst auszudenken.</p>
+      <ul>
+        <li><strong>Rundenlänge</strong> — klassisch 3 Minuten im Boxen, 2 Minuten für Einsteiger.</li>
+        <li><strong>Pause</strong> — 1 Minute ist Standard; kürzer heißt intensiver.</li>
+        <li><strong>Combo-Tempo</strong> — von 9 Sekunden (in Ruhe umsetzen) bis 4 Sekunden (reine Reaktion).</li>
+        <li><strong>Sportart</strong> — filtert, was angesagt wird: reine Schlagkombinationen, mit Kicks oder mit Ellbogen und Knien.</li>
+      </ul>
+
+      <h2>Wofür sich der Timer eignet</h2>
+      <p>Am Boxsack, beim Schattenboxen, für Intervall- und Tabata-Einheiten oder als Rundenuhr im Gym. Das Display bleibt auch aus zwei Metern lesbar, und solange der Timer läuft, hält die Seite den Bildschirm wach — du musst zwischen den Runden nicht ans Handy.</p>
+      <p>Passende Ratgeber: <a href="boxen-alleine-trainieren.html">Boxen alleine trainieren</a> · <a href="boxsack-training-anfaenger.html">Boxsack-Übungen für Anfänger</a> · <a href="schattenboxen-kombinationen.html">Schattenboxen: Kombinationen</a></p>
+
+      <h2>Häufige Fragen</h2>
+      <details>
+        <summary><h3>Ist der Box-Timer wirklich kostenlos?</h3><span class="chev" aria-hidden="true"></span></summary>
+        <div class="body"><p>Ja. Der Timer läuft vollständig in deinem Browser, ohne Anmeldung, ohne Konto und ohne Werbung. Es werden keine Daten an einen Server geschickt.</p></div>
+      </details>
+      <details>
+        <summary><h3>Welche Rundenzeiten sind beim Boxen üblich?</h3><span class="chev" aria-hidden="true"></span></summary>
+        <div class="body"><p>Im Amateurboxen sind 3 Runden à 3 Minuten mit 1 Minute Pause üblich, im Profibereich bis zu 12 Runden. Für das Training zu Hause und für Einsteiger sind 3 bis 5 Runden à 2 Minuten mit 1 Minute Pause der sinnvollere Einstieg.</p></div>
+      </details>
+      <details>
+        <summary><h3>Wie funktioniert die Combo-Ansage?</h3><span class="chev" aria-hidden="true"></span></summary>
+        <div class="body"><p>Der Timer wählt in dem von dir eingestellten Abstand zufällig eine Kombination aus dem Pool deiner Sportart und spricht sie über die Sprachausgabe deines Geräts aus. Gleichzeitig erscheint sie groß im Display — falls du ohne Ton trainierst.</p></div>
+      </details>
+      <details>
+        <summary><h3>Funktioniert der Timer auch offline?</h3><span class="chev" aria-hidden="true"></span></summary>
+        <div class="body"><p>Nach dem ersten Laden läuft der Timer ohne Internetverbindung weiter, solange du den Tab geöffnet lässt. Die Sprachausgabe hängt allerdings vom Gerät ab: Manche Systeme laden Stimmen nur online nach.</p></div>
+      </details>
+
+      <div class="cta-box">
+        <img src="/CombatCoach_Avata_Logo.png" alt="Combat Coach" width="333" height="331" />
+        <h2>Mehr als ein Timer</h2>
+        <p>Combat Coach macht daraus ein komplettes Trainingssystem: Combos nach Level gefiltert, eigene Trainingspläne, Technikvideos und ein KI-Coach. Ab Oktober 2026 für iOS &amp; Android.</p>
+        <a href="/#download">Zur App</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span>&copy; 2026 Combat Coach</span>
+      <span><a href="/">Startseite</a> · <a href="/privacy.html">Datenschutz</a> · <a href="/legal.html">Impressum</a></span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var COMBOS = {"boxing": ["Jab", "Jab – Cross", "Doppel-Jab – Cross", "Jab – Cross – Haken", "Cross – Haken – Cross", "Jab – Körperhaken", "Haken – Cross", "Jab – Cross – Aufwärtshaken", "Meiden – Cross", "Jab – Cross – Haken – Cross"], "kickboxing": ["Jab – Cross – Low Kick", "Jab – Low Kick", "Cross – Low Kick", "High Kick", "Frontkick", "Jab – Cross – High Kick", "Knie", "Low Kick", "Jab – Frontkick", "Cross – Haken – Low Kick"], "muaythai": ["Teep", "Ellbogen", "Jab – Cross – Ellbogen", "Clinch-Knie", "Jab – Teep", "Cross – Ellbogen", "Low Kick – Teep", "Jab – Cross – Knie", "Ellbogen – Knie", "Cross – Low Kick – Teep"]};
+    var SPEECH_LANG = 'de-DE';
+    var T = {"prep": "Vorbereitung", "round": "Runde", "rest": "Pause", "done": "Fertig", "start": "Start", "pause": "Pause", "resume": "Weiter", "of": "von", "ready": "Bereit wenn du es bist.", "nospeech": "Dein Browser unterstützt keine Sprachausgabe — der Timer läuft trotzdem, die Combos erscheinen im Display."};
+
+    var $ = function (id) { return document.getElementById(id); };
+    var elClock = $('clock'), elPhase = $('phase'), elRounds = $('rounds-label'),
+        elCombo = $('combo'), elStart = $('btn-start'), elReset = $('btn-reset'),
+        wrap = $('timer'), note = $('note');
+
+    var cfg = { rounds: 3, roundSec: 180, restSec: 60, prepSec: 10,
+                caller: true, sport: 'boxing', comboSec: 6 };
+
+    // ---------- Audio: Gong ohne externe Datei ----------
+    var ac = null;
+    function audio() {
+      if (!ac) { var C = window.AudioContext || window.webkitAudioContext; if (C) ac = new C(); }
+      if (ac && ac.state === 'suspended') ac.resume();
+      return ac;
+    }
+    function bell(times) {
+      var a = audio(); if (!a) return;
+      for (var n = 0; n < (times || 1); n++) {
+        var t0 = a.currentTime + n * 0.42;
+        [784, 1174, 1568].forEach(function (f, i) {
+          var o = a.createOscillator(), g = a.createGain();
+          o.type = 'sine'; o.frequency.value = f;
+          g.gain.setValueAtTime(0.0001, t0);
+          g.gain.exponentialRampToValueAtTime(0.32 / (i + 1), t0 + 0.01);
+          g.gain.exponentialRampToValueAtTime(0.0001, t0 + 1.1);
+          o.connect(g); g.connect(a.destination); o.start(t0); o.stop(t0 + 1.2);
+        });
+      }
+    }
+    function tick() {
+      var a = audio(); if (!a) return;
+      var o = a.createOscillator(), g = a.createGain(), t0 = a.currentTime;
+      o.type = 'square'; o.frequency.value = 880;
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.12, t0 + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.12);
+      o.connect(g); g.connect(a.destination); o.start(t0); o.stop(t0 + 0.14);
+    }
+
+    // ---------- Sprachausgabe ----------
+    var canSpeak = 'speechSynthesis' in window;
+    if (!canSpeak && note) note.textContent = T.nospeech;
+    function say(text) {
+      if (!canSpeak) return;
+      try {
+        window.speechSynthesis.cancel();
+        var u = new SpeechSynthesisUtterance(text.replace(/–/g, ','));
+        u.lang = SPEECH_LANG; u.rate = 1.0; u.pitch = 1.0;
+        window.speechSynthesis.speak(u);
+      } catch (e) {}
+    }
+
+    // ---------- Bildschirm wach halten ----------
+    var wake = null;
+    function keepAwake(on) {
+      try {
+        if (on && 'wakeLock' in navigator && !wake) {
+          navigator.wakeLock.request('screen').then(function (w) {
+            wake = w; w.addEventListener('release', function () { wake = null; });
+          }).catch(function () {});
+        } else if (!on && wake) { wake.release(); wake = null; }
+      } catch (e) {}
+    }
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'visible' && running && !paused) keepAwake(true);
+    });
+
+    // ---------- Zustand ----------
+    var running = false, paused = false, phase = 'idle', round = 1;
+    var phaseEndsAt = 0, remainMs = 0, nextComboAt = 0, ticker = null;
+
+    // Bewusst setInterval statt requestAnimationFrame: rAF pausiert, sobald der
+    // Tab in den Hintergrund geht - ein Trainingstimer muss weiterlaufen.
+    // Alle Zeiten kommen aus performance.now(), Drosselung erzeugt daher keinen Drift.
+    function startLoop() { stopLoop(); ticker = setInterval(loop, 100); loop(); }
+    function stopLoop() { if (ticker) { clearInterval(ticker); ticker = null; } }
+
+    function fmt(ms) {
+      var s = Math.max(0, Math.ceil(ms / 1000));
+      return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
+    }
+    function setPhase(p) {
+      phase = p;
+      wrap.classList.remove('is-prep', 'is-round', 'is-rest');
+      if (p === 'prep') { wrap.classList.add('is-prep'); elPhase.textContent = T.prep; }
+      else if (p === 'round') { wrap.classList.add('is-round'); elPhase.textContent = T.round + ' ' + round; }
+      else if (p === 'rest') { wrap.classList.add('is-rest'); elPhase.textContent = T.rest; }
+      else if (p === 'done') { elPhase.textContent = T.done; }
+      else elPhase.textContent = '';
+      elRounds.textContent = (p === 'idle' || p === 'done') ? '' : (T.round + ' ' + round + ' ' + T.of + ' ' + cfg.rounds);
+    }
+    function showCombo(text) {
+      elCombo.innerHTML = '<span>' + text + '</span>';
+      var sp = elCombo.firstChild;
+      setTimeout(function () { sp.classList.add('is-live'); }, 16);
+    }
+    function pickCombo() {
+      var pool = COMBOS[cfg.sport] || COMBOS.boxing;
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+    function startPhase(p, seconds) {
+      setPhase(p);
+      phaseEndsAt = performance.now() + seconds * 1000;
+      if (p === 'round') {
+        bell(1);
+        nextComboAt = performance.now() + 1200;
+      } else if (p === 'rest') { bell(2); elCombo.innerHTML = ''; }
+      else if (p === 'prep') { elCombo.innerHTML = ''; }
+    }
+    function advance() {
+      if (phase === 'prep') { startPhase('round', cfg.roundSec); }
+      else if (phase === 'round') {
+        if (round >= cfg.rounds) { finish(); }
+        else { startPhase('rest', cfg.restSec); }
+      } else if (phase === 'rest') { round++; startPhase('round', cfg.roundSec); }
+    }
+    function finish() {
+      bell(3); running = false; paused = false; setPhase('done');
+      elClock.textContent = '0:00'; elCombo.innerHTML = '';
+      elStart.textContent = T.start; keepAwake(false);
+      stopLoop();
+    }
+    function loop() {
+      if (!running || paused) return;
+      var now = performance.now(), left = phaseEndsAt - now;
+      elClock.textContent = fmt(left);
+      if (phase === 'prep' && left > 0 && left <= 3200 && Math.ceil(left / 1000) !== loop._last) {
+        loop._last = Math.ceil(left / 1000); tick();
+      }
+      if (phase === 'round' && cfg.caller && now >= nextComboAt && left > 800) {
+        var c = pickCombo(); showCombo(c); say(c);
+        nextComboAt = now + cfg.comboSec * 1000;
+      }
+      if (left <= 0) advance();
+    }
+
+    function readConfig() {
+      cfg.rounds = clamp(+$('f-rounds').value || 3, 1, 30);
+      cfg.roundSec = clamp((+$('f-round-min').value || 0) * 60 + (+$('f-round-sec').value || 0), 5, 3600);
+      cfg.restSec = clamp((+$('f-rest-min').value || 0) * 60 + (+$('f-rest-sec').value || 0), 0, 1800);
+      cfg.prepSec = clamp(+$('f-prep').value || 0, 0, 120);
+      cfg.caller = $('f-caller').value === 'on';
+      cfg.sport = $('f-sport').value;
+      cfg.comboSec = clamp(+$('f-speed').value || 6, 3, 15);
+    }
+    function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+
+    elStart.addEventListener('click', function () {
+      audio();
+      if (!running) {
+        readConfig(); running = true; paused = false; round = 1;
+        elStart.textContent = T.pause; keepAwake(true);
+        startPhase(cfg.prepSec > 0 ? 'prep' : 'round', cfg.prepSec > 0 ? cfg.prepSec : cfg.roundSec);
+        startLoop();
+      } else if (!paused) {
+        paused = true; remainMs = phaseEndsAt - performance.now();
+        elStart.textContent = T.resume; keepAwake(false); stopLoop();
+        if (canSpeak) window.speechSynthesis.cancel();
+      } else {
+        paused = false; phaseEndsAt = performance.now() + remainMs;
+        nextComboAt = performance.now() + 800;
+        elStart.textContent = T.pause; keepAwake(true); startLoop();
+      }
+    });
+    elReset.addEventListener('click', function () {
+      running = false; paused = false; round = 1; stopLoop();
+      if (canSpeak) window.speechSynthesis.cancel();
+      keepAwake(false); setPhase('idle');
+      readConfig(); elClock.textContent = fmt(cfg.roundSec * 1000);
+      elCombo.innerHTML = ''; elStart.textContent = T.start;
+      elPhase.textContent = T.ready;
+    });
+
+    document.querySelectorAll('.preset').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var d = b.dataset;
+        $('f-rounds').value = d.rounds;
+        $('f-round-min').value = Math.floor(d.round / 60); $('f-round-sec').value = d.round % 60;
+        $('f-rest-min').value = Math.floor(d.rest / 60); $('f-rest-sec').value = d.rest % 60;
+        elReset.click();
+      });
+    });
+    ['f-rounds','f-round-min','f-round-sec','f-rest-min','f-rest-sec','f-prep','f-caller','f-sport','f-speed']
+      .forEach(function (id) { $(id).addEventListener('change', function () { if (!running) elReset.click(); }); });
+
+    // Startzustand
+    readConfig();
+    elClock.textContent = fmt(cfg.roundSec * 1000);
+    elPhase.textContent = T.ready;
+  })();
+  </script>
+</body>
+</html>

@@ -20,7 +20,7 @@
        ========================================================= -->
   <title>Combat Coach – Boxing Training App with Combo Callouts &amp; Timer</title>
   <meta name="description"
-        content="The app that calls out your combos: train boxing, kickboxing & Muay Thai solo – with a full timer suite, AI coach & training plans. Coming summer 2026." />
+        content="The app that calls out your combos: train boxing, kickboxing & Muay Thai solo – with a full timer suite, AI coach & training plans. Coming October 2026." />
   <meta name="theme-color" content="#000000" />
   <link rel="canonical" href="https://combatcoach.org/en/" />
   <link rel="alternate" hreflang="de" href="https://combatcoach.org/" />
@@ -87,7 +87,7 @@
       "releasedEvent": {
         "@type": "PublicationEvent",
         "name": "App store release",
-        "startDate": "2026-07"
+        "startDate": "2026-10"
       }
     },
     {
@@ -499,6 +499,23 @@
     .cta__emblem img { width: 100%; height: 100%; object-fit: contain; }
     .cta h2 { font-size: clamp(1.7rem, 4.4vw, 2.6rem); }
     .cta p { color: var(--cream-dim); margin-top: 0.9rem; font-size: 1.05rem; }
+    /* Warteliste */
+    .waitlist { margin-top: 2rem; }
+    .waitlist__row { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; max-width: 520px; margin: 0.9rem auto 0; }
+    .waitlist__input {
+      flex: 1 1 240px; min-width: 0; font-family: var(--font); font-size: 0.92rem;
+      color: var(--cream); background: rgba(255,253,228,0.05);
+      border: 1px solid var(--border-2); border-radius: 999px; padding: 0.85rem 1.2rem;
+      transition: border-color .2s, background .2s;
+    }
+    .waitlist__input::placeholder { color: var(--cream-faint); }
+    .waitlist__input:focus { outline: none; border-color: var(--red); background: rgba(255,253,228,0.08); }
+    .waitlist__btn { flex: 0 0 auto; cursor: pointer; border: none; }
+    .waitlist__note { margin-top: 0.9rem; font-size: 0.74rem; color: var(--cream-faint); }
+    .waitlist__status { margin-top: 0.7rem; font-size: 0.82rem; color: var(--cream); min-height: 1.2em; }
+    .waitlist__status.is-error { color: var(--red); }
+    @media (max-width: 420px) { .waitlist__row { flex-direction: column; } .waitlist__btn { width: 100%; } }
+
     .store-badges { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
     .store-badge {
       display: inline-flex; align-items: center; gap: 0.7rem; padding: 0.75rem 1.35rem;
@@ -674,7 +691,7 @@
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__copy reveal">
-        <span class="hero__badge"><span class="dot"></span> <span data-i18n="hero.badge">Coming Soon · Summer 2026</span></span>
+        <span class="hero__badge"><span class="dot"></span> <span data-i18n="hero.badge">Coming Soon · October 2026</span></span>
         <h1 data-i18n="hero.h1">Train boxing, kickboxing &amp; Muay Thai <span class="accent">solo</span> — with the app that <span class="accent">calls out your combos</span>.</h1>
         <p class="hero__sub" data-i18n="hero.sub">“Jab, cross, low kick” — you react. Combat Coach takes over your trainer's job: calling combinations, running your rounds and pushing your pace.</p>
         <div class="hero__actions">
@@ -895,7 +912,7 @@
       <div class="section-head reveal">
         <span class="eyebrow" data-i18n="guides.eyebrow">Free guides</span>
         <h2 data-i18n="guides.h2">You can start today.</h2>
-        <p data-i18n="guides.intro">The app arrives in summer 2026 — your training does not have to wait. Three in-depth guides to get you going right now: no sign-up, no account, nothing to install.</p>
+        <p data-i18n="guides.intro">The app arrives in October 2026 — your training does not have to wait. Three in-depth guides and a free round timer to get you going right now: no sign-up, no account, nothing to install.</p>
       </div>
       <div class="features__grid">
         <a class="card card--guide reveal" href="/en/train-boxing-alone.html">
@@ -905,15 +922,21 @@
           <span class="card__more"><span data-i18n="guides.more">Read the guide</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="card card--guide reveal" href="/en/heavy-bag-training-beginners.html">
-          <div class="card__meta" data-i18n="guides.c2.meta">Heavy bag · 20-min workout</div>
+          <div class="card__meta" data-i18n="guides.c2.meta">Heavy bag · 10 drills</div>
           <h3 data-i18n="guides.c2.h">Heavy bag workouts for beginners</h3>
-          <p data-i18n="guides.c2.p">The four basic punches, five drills that build on each other and a ready-made 20-minute workout — plus the mistakes almost every beginner makes on the bag.</p>
+          <p data-i18n="guides.c2.p">The four basic punches, ten drills that build on each other and a ready-made 20-minute workout — plus the mistakes almost every beginner makes on the bag.</p>
           <span class="card__more"><span data-i18n="guides.more">Read the guide</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
         <a class="card card--guide reveal" href="/en/shadowboxing-combinations.html">
           <div class="card__meta" data-i18n="guides.c3.meta">No equipment · 15-min workout</div>
           <h3 data-i18n="guides.c3.h">Shadowboxing: combinations</h3>
           <p data-i18n="guides.c3.p">Ten combinations from beginner to advanced, three round formats and a 15-minute workout. You need nothing but a bit of space.</p>
+          <span class="card__more"><span data-i18n="guides.more">Read the guide</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="card card--guide reveal" href="/en/boxing-timer.html">
+          <div class="card__meta" data-i18n="guides.c4.meta">Free tool · Runs in your browser</div>
+          <h3 data-i18n="guides.c4.h">Boxing timer with combo callouts</h3>
+          <p data-i18n="guides.c4.p">Set rounds, rest and pace freely — plus a voice calling combinations at you. For boxing, kickboxing and Muay Thai, no sign-up.</p>
           <span class="card__more"><span data-i18n="guides.more">Read the guide</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </a>
       </div>
@@ -1031,8 +1054,19 @@
       <div class="cta__box reveal">
         <div class="cta__emblem"><img loading="lazy" decoding="async" src="/CombatCoach_Avata_Logo.png" alt="Combat Coach boxer avatar" width="333" height="331" /></div>
         <span class="eyebrow" style="justify-content:center;" data-i18n="cta.eyebrow">Get ready</span>
-        <h2 data-i18n="cta.h2">Available in summer 2026.</h2>
+        <h2 data-i18n="cta.h2">Available in October 2026.</h2>
         <p data-i18n="cta.p">Combat Coach is coming to your Apple and Android app stores.</p>
+        <form class="waitlist" id="cc-waitlist" novalidate>
+          <span class="waitlist__label" data-i18n="wl.label">Be the first to know when the app launches.</span>
+          <div class="waitlist__row">
+            <input class="waitlist__input" id="cc-wl-email" type="email" name="email" required
+                   autocomplete="email" data-i18n-ph="wl.placeholder" placeholder="you@email.com"
+                   aria-label="Email address" />
+            <button class="btn btn--primary waitlist__btn" type="submit" data-i18n="wl.cta">Join the waitlist</button>
+          </div>
+          <p class="waitlist__note" data-i18n="wl.note">One single email at launch. No marketing, unsubscribe anytime.</p>
+          <p class="waitlist__status" id="cc-wl-status" role="status" aria-live="polite"></p>
+        </form>
         <div class="store-badges">
           <a href="#" class="store-badge" aria-label="App Store (bald)">
             <svg viewBox="0 0 24 24" fill="#FFFDE4"><path d="M16.365 1.43c.08 1.02-.32 2.03-.99 2.77-.7.77-1.85 1.37-2.96 1.28-.1-1 .39-2.04 1.02-2.7.71-.76 1.94-1.32 2.93-1.35zM20.5 17.27c-.55 1.27-.82 1.83-1.53 2.95-.99 1.56-2.39 3.5-4.12 3.51-1.54.01-1.93-1-4.02-.99-2.09.01-2.52 1.01-4.06.99-1.73-.02-3.05-1.78-4.04-3.34C-.42 16.07-.94 11.1 1.16 8.42c.99-1.27 2.55-2.07 4.02-2.07 1.5 0 2.44 1 3.68 1 1.2 0 1.93-1 3.67-1 1.31 0 2.7.71 3.69 1.94-3.24 1.78-2.71 6.4.6 7.98z"/></svg>
@@ -1096,7 +1130,7 @@
   <script>
     const I18N = {
       de: {
-        "hero.badge": "Bald verfügbar · Sommer 2026",
+        "hero.badge": "Bald verfügbar · Oktober 2026",
         "doc.title": "Combat Coach – Boxtraining-App mit Combo-Ansage & Timer",
         "hero.h1": "Boxen, Kickboxen &amp; Muay Thai <span class=\"accent\">solo trainieren</span> — mit der App, die dir <span class=\"accent\">Kombinationen ansagt</span>.",
         "hero.sub": "„Jab, Cross, Low Kick“ — du reagierst. Combat Coach übernimmt die Rolle deines Trainers: sagt Kombinationen an, führt deine Runden und treibt dich an.",
@@ -1110,14 +1144,17 @@
         "mq.muay": "Muay Thai",
         "guides.eyebrow": "Kostenlose Ratgeber",
         "guides.h2": "Anfangen kannst du sofort.",
-        "guides.intro": "Die App kommt im Sommer 2026 — dein Training muss so lange nicht warten. Drei ausführliche Anleitungen, mit denen du direkt loslegst: ohne Anmeldung, ohne Konto, ohne Installation.",
+        "guides.intro": "Die App kommt im Oktober 2026 — dein Training muss so lange nicht warten. Drei ausführliche Anleitungen und ein kostenloser Runden-Timer, mit denen du direkt loslegst: ohne Anmeldung, ohne Konto, ohne Installation.",
+        "guides.c4.meta": "Kostenloses Tool · Direkt im Browser",
+        "guides.c4.h": "Box-Timer mit Combo-Ansage",
+        "guides.c4.p": "Runden, Pausen und Tempo frei einstellbar — und eine Stimme, die dir Kombinationen zuruft. Für Boxen, Kickboxen und Muay Thai, ohne Anmeldung.",
         "guides.more": "Zum Ratgeber",
         "guides.c1.meta": "Solo-Training · 5 Methoden",
         "guides.c1.h": "Boxen alleine trainieren",
         "guides.c1.p": "Fünf Methoden, die dein Solo-Training wirklich effektiv machen — von Schattenboxen über Sackarbeit bis zum Reaktionstraining. Inklusive 30-Minuten-Beispieleinheit.",
-        "guides.c2.meta": "Sandsack · 20-Min-Workout",
+        "guides.c2.meta": "Sandsack · 10 Übungen",
         "guides.c2.h": "Boxsack-Training für Anfänger",
-        "guides.c2.p": "Die vier Grundschläge, fünf aufeinander aufbauende Übungen und ein fertiges 20-Minuten-Workout — dazu die Fehler, die am Sack fast jeder Anfänger macht.",
+        "guides.c2.p": "Die vier Grundschläge, zehn aufeinander aufbauende Übungen und ein fertiges 20-Minuten-Workout — dazu die Fehler, die am Sack fast jeder Anfänger macht.",
         "guides.c3.meta": "Ohne Ausrüstung · 15-Min-Workout",
         "guides.c3.h": "Schattenboxen: Kombinationen",
         "guides.c3.p": "Zehn Kombinationen vom Einsteiger bis Fortgeschritten, drei Rundenformate und ein 15-Minuten-Workout. Du brauchst nichts außer ein bisschen Platz.",
@@ -1127,8 +1164,19 @@
         "show.li1": "Kontrastreiches UI, lesbar mitten im Training",
         "show.li2": "KI-gestützte Pläne, abgestimmt auf Level & Sportart",
         "show.li3": "Präzise Timer & Combo-Sims, die nie aus dem Takt geraten",
+        "wl.label": "Erfahre als Erste:r, wenn die App startet.",
+        "wl.placeholder": "deine@mail.de",
+        "wl.cta": "Auf die Warteliste",
+        "wl.note": "Eine einzige Mail zum Launch. Keine Werbung, jederzeit abbestellbar.",
+        "wl.invalid": "Bitte gib eine gültige E-Mail-Adresse ein.",
+        "wl.sending": "Wird gesendet …",
+        "wl.ok": "Danke — du stehst auf der Warteliste.",
+        "wl.err": "Das hat nicht geklappt. Schreib uns gern direkt an info@combatcoach.org.",
+        "wl.mailOpened": "Dein E-Mail-Programm öffnet sich — schick die Mail einfach ab.",
+        "wl.mailSubject": "Warteliste Combat Coach",
+        "wl.mailBody": "Bitte setzt mich auf die Warteliste für Combat Coach. Meine E-Mail-Adresse:",
         "cta.eyebrow": "Mach dich bereit",
-        "cta.h2": "Verfügbar ab Sommer 2026.",
+        "cta.h2": "Verfügbar ab Oktober 2026.",
         "cta.p": "Combat Coach kommt in deine Apple- und Android-App-Stores.",
         "cta.soon": "Demnächst bei",
         "foot.eyebrow": "Kontakt aufnehmen",
@@ -1202,7 +1250,7 @@
         "foot.photos": "Fotos via <a href=\"https://www.pexels.com\" style=\"color:var(--cream);\">Pexels</a> (RDNE, Glebkrs)"
       },
       en: {
-        "hero.badge": "Coming Soon · Summer 2026",
+        "hero.badge": "Coming Soon · October 2026",
         "doc.title": "Combat Coach – Boxing Training App with Combo Callouts & Timer",
         "hero.h1": "Train boxing, kickboxing &amp; Muay Thai <span class=\"accent\">solo</span> — with the app that <span class=\"accent\">calls out your combos</span>.",
         "hero.sub": "“Jab, cross, low kick” — you react. Combat Coach takes over your trainer's job: calling combinations, running your rounds and pushing your pace.",
@@ -1216,14 +1264,17 @@
         "mq.muay": "Muay Thai",
         "guides.eyebrow": "Free guides",
         "guides.h2": "You can start today.",
-        "guides.intro": "The app arrives in summer 2026 — your training does not have to wait. Three in-depth guides to get you going right now: no sign-up, no account, nothing to install.",
+        "guides.intro": "The app arrives in October 2026 — your training does not have to wait. Three in-depth guides and a free round timer to get you going right now: no sign-up, no account, nothing to install.",
+        "guides.c4.meta": "Free tool · Runs in your browser",
+        "guides.c4.h": "Boxing timer with combo callouts",
+        "guides.c4.p": "Set rounds, rest and pace freely — plus a voice calling combinations at you. For boxing, kickboxing and Muay Thai, no sign-up.",
         "guides.more": "Read the guide",
         "guides.c1.meta": "Solo training · 5 methods",
         "guides.c1.h": "How to train boxing alone",
         "guides.c1.p": "Five methods that make solo sessions genuinely effective — from shadowboxing to bag work to reaction drills. Includes a 30-minute example session.",
-        "guides.c2.meta": "Heavy bag · 20-min workout",
+        "guides.c2.meta": "Heavy bag · 10 drills",
         "guides.c2.h": "Heavy bag workouts for beginners",
-        "guides.c2.p": "The four basic punches, five drills that build on each other and a ready-made 20-minute workout — plus the mistakes almost every beginner makes on the bag.",
+        "guides.c2.p": "The four basic punches, ten drills that build on each other and a ready-made 20-minute workout — plus the mistakes almost every beginner makes on the bag.",
         "guides.c3.meta": "No equipment · 15-min workout",
         "guides.c3.h": "Shadowboxing: combinations",
         "guides.c3.p": "Ten combinations from beginner to advanced, three round formats and a 15-minute workout. You need nothing but a bit of space.",
@@ -1233,8 +1284,19 @@
         "show.li1": "High-contrast UI you can read mid-workout",
         "show.li2": "AI-powered plans tailored to your level & sport",
         "show.li3": "Precise timers & combo sims that never miss a beat",
+        "wl.label": "Be the first to know when the app launches.",
+        "wl.placeholder": "you@email.com",
+        "wl.cta": "Join the waitlist",
+        "wl.note": "One single email at launch. No marketing, unsubscribe anytime.",
+        "wl.invalid": "Please enter a valid email address.",
+        "wl.sending": "Sending …",
+        "wl.ok": "Thanks — you are on the waitlist.",
+        "wl.err": "That did not work. Feel free to email us at info@combatcoach.org.",
+        "wl.mailOpened": "Your email app is opening — just hit send.",
+        "wl.mailSubject": "Combat Coach waitlist",
+        "wl.mailBody": "Please add me to the Combat Coach waitlist. My email address:",
         "cta.eyebrow": "Get ready",
-        "cta.h2": "Available in summer 2026.",
+        "cta.h2": "Available in October 2026.",
         "cta.p": "Combat Coach is coming to your Apple and Android app stores.",
         "cta.soon": "Coming soon to",
         "foot.eyebrow": "Get in touch",
@@ -1317,6 +1379,10 @@
         var v = I18N[lang][el.getAttribute('data-i18n')];
         if (v != null) el.innerHTML = v;
       });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
+        var v = I18N[lang][el.getAttribute('data-i18n-ph')];
+        if (v != null) el.setAttribute('placeholder', v);
+      });
       document.querySelectorAll('.lang-btn').forEach(function (b) {
         b.classList.toggle('is-active', b.dataset.lang === lang);
       });
@@ -1393,6 +1459,48 @@
         }, { threshold: 0.12 });
         els.forEach(function (el) { io.observe(el); });
       }
+    })();
+
+    // Warteliste: sendet an WAITLIST_ENDPOINT, sonst vorbereitete E-Mail als Rueckfallebene
+    (function () {
+      // Formspree-Endpunkt hier eintragen, z. B. 'https://formspree.io/f/abcdwxyz'.
+      // Solange leer, oeffnet das Formular eine vorausgefuellte E-Mail an info@combatcoach.org.
+      var WAITLIST_ENDPOINT = '';
+
+      var form = document.getElementById('cc-waitlist');
+      if (!form) return;
+      var input = document.getElementById('cc-wl-email');
+      var status = document.getElementById('cc-wl-status');
+
+      function t(key) {
+        var lang = document.documentElement.lang || 'de';
+        return (I18N[lang] && I18N[lang][key]) || (I18N.de && I18N.de[key]) || '';
+      }
+      function say(key, isError) {
+        status.textContent = t(key);
+        status.classList.toggle('is-error', !!isError);
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = (input.value || '').trim();
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) {
+          say('wl.invalid', true); input.focus(); return;
+        }
+        if (!WAITLIST_ENDPOINT) {
+          window.location.href = 'mailto:info@combatcoach.org'
+            + '?subject=' + encodeURIComponent(t('wl.mailSubject'))
+            + '&body=' + encodeURIComponent(t('wl.mailBody') + '\n\n' + email);
+          say('wl.mailOpened', false);
+          return;
+        }
+        say('wl.sending', false);
+        fetch(WAITLIST_ENDPOINT, {
+          method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
+        }).then(function (r) {
+          if (r.ok) { form.reset(); say('wl.ok', false); } else { say('wl.err', true); }
+        }).catch(function () { say('wl.err', true); });
+      });
     })();
   </script>
 

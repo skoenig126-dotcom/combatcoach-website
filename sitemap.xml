@@ -66,6 +66,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/shadowboxing-combinations.html" />
   </url>
   <url>
+    <loc>https://combatcoach.org/box-timer.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/box-timer.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/boxing-timer.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/boxing-timer.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/box-timer.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/boxing-timer.html" />
+  </url>
+  <url>
     <loc>https://combatcoach.org/privacy.html</loc>
     <lastmod>2026-08-12</lastmod>
     <changefreq>yearly</changefreq>
