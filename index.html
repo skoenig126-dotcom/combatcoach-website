@@ -1040,6 +1040,8 @@
         <h2 data-i18n="cta.h2">Verfügbar ab Oktober 2026.</h2>
         <p data-i18n="cta.p">Combat Coach kommt in deine Apple- und Android-App-Stores.</p>
         <form class="waitlist" id="cc-waitlist" novalidate>
+          <input type="hidden" name="_subject" value="Neue Warteliste-Anmeldung – Combat Coach" />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <span class="waitlist__label" data-i18n="wl.label">Erfahre als Erste:r, wenn die App startet.</span>
           <div class="waitlist__row">
             <input class="waitlist__input" id="cc-wl-email" type="email" name="email" required
@@ -1455,7 +1457,7 @@
     (function () {
       // Formspree-Endpunkt hier eintragen, z. B. 'https://formspree.io/f/abcdwxyz'.
       // Solange leer, oeffnet das Formular eine vorausgefuellte E-Mail an info@combatcoach.org.
-      var WAITLIST_ENDPOINT = '';
+      var WAITLIST_ENDPOINT = 'https://formspree.io/f/maeyrnnj';
 
       var form = document.getElementById('cc-waitlist');
       if (!form) return;
