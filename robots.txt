@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /reveal.html
+Disallow: /tools/
 
 Sitemap: https://combatcoach.org/sitemap.xml
