@@ -162,6 +162,16 @@
     h1 .accent { color: var(--red); }
     .byline { font-size: .78rem; color: var(--cream-faint); margin: -0.6rem 0 1.6rem; }
     .byline a { color: var(--cream-dim); }
+    .toc { border: 1px solid var(--border-2); border-radius: var(--radius); background: var(--glass); padding: 1.1rem 1.4rem 1rem; margin: 0 0 2.4rem; }
+    .toc__title { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-faint); margin: 0 0 .6rem; font-weight: 600; }
+    .toc ol { margin: 0; padding-left: 1.2rem; color: var(--cream-faint); }
+    .toc li { margin: .25rem 0; font-size: .88rem; }
+    .toc ol ol { list-style: none; margin: .3rem 0 .5rem; padding-left: .9rem; }
+    .toc ol ol li { font-size: .82rem; margin: .12rem 0; }
+    @media (min-width: 640px) { .toc ol.toc__many { columns: 2; column-gap: 1.6rem; } .toc ol.toc__many li { break-inside: avoid; } }
+    .toc a { color: var(--cream-dim); }
+    .toc a:hover { color: var(--red); }
+    h2[id], h3[id] { scroll-margin-top: 84px; }
     .lead { font-size: 1.04rem; color: var(--cream-dim); margin-bottom: 2.6rem; }
     h2 { font-size: clamp(1.25rem, 3vw, 1.6rem); line-height: 1.3; margin: 2.8rem 0 1rem; }
     h3 { font-size: 1.05rem; margin: 2rem 0 0.7rem; color: var(--cream); }
@@ -235,10 +245,31 @@
       <p class="byline">By the <a href="/en/about.html">founder &amp; developer</a> of Combat Coach · Updated 14 September 2026</p>
       <p class="lead">No equipment, no space needed, no excuses: shadowboxing is the most honest training in fight sports — it exposes every technical weakness. Here you get 10 combinations from beginner to advanced, three round formats and a ready-made 15-minute workout.</p>
 
-      <h2>Why shadowboxing is so effective</h2>
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc__title">In this guide</p>
+        <ol>
+          <li><a href="#why-shadowboxing-is-so-effective">Why shadowboxing is so effective</a></li>
+          <li><a href="#the-basics-how-to-punch-clean-air-safely">The basics: how to punch clean air safely</a></li>
+          <li><a href="#the-number-system-the-language-of-combinations">The number system: the language of combinations</a></li>
+          <li><a href="#your-4-week-plan-learning-shadowboxing-step-by-step">Your 4-week plan: learning shadowboxing step by step</a></li>
+          <li><a href="#10-shadowboxing-combos-from-beginner-to-advanced">10 shadowboxing combos from beginner to advanced</a></li>
+          <li><a href="#structuring-your-training-3-round-formats">Structuring your training: 3 round formats</a></li>
+          <li><a href="#example-15-minute-shadowboxing-workout">Example: 15-minute shadowboxing workout</a></li>
+          <li><a href="#common-shadowboxing-mistakes">Common shadowboxing mistakes</a></li>
+          <li><a href="#frequently-asked-questions">Frequently asked questions</a>
+            <ol>
+              <li><a href="#1-technique-rounds">1. Technique rounds</a></li>
+              <li><a href="#2-reaction-rounds">2. Reaction rounds</a></li>
+              <li><a href="#3-conditioning-rounds">3. Conditioning rounds</a></li>
+            </ol>
+          </li>
+        </ol>
+      </nav>
+
+      <h2 id="why-shadowboxing-is-so-effective">Why shadowboxing is so effective</h2>
       <p>In shadowboxing there's no bag to swallow your mistakes: every sloppy punch path, every dropped guard, every planted foot is visible. That's exactly why pros use it in every session — as a warm-up, as a technique block and as a standalone workout. It trains <strong>technique, footwork, coordination and conditioning at the same time</strong> and works anywhere: living room, hotel, park.</p>
 
-      <h2>The basics: how to punch clean air safely</h2>
+      <h2 id="the-basics-how-to-punch-clean-air-safely">The basics: how to punch clean air safely</h2>
       <ul>
         <li><strong>Stance:</strong> shoulder-width, rear heel slightly raised, knees soft.</li>
         <li><strong>Guard:</strong> both hands at the chin — and straight back after every punch.</li>
@@ -247,10 +278,22 @@
         <li><strong>Visualize an opponent:</strong> you're not punching air — you're boxing someone. Distance, timing and guard only make sense with that image.</li>
       </ul>
 
-      <h2>The number system: the language of combinations</h2>
+      <h2 id="the-number-system-the-language-of-combinations">The number system: the language of combinations</h2>
       <p>In boxing, the basic punches have numbers — that's how combinations are called out fast: <strong>1 = jab, 2 = cross, 3 = lead hook, 4 = rear hook, 5 = lead uppercut, 6 = rear uppercut</strong>. A "1-2-3" is jab–cross–hook. Learn the numbers — every good combo callout builds on them.</p>
 
-      <h2>10 shadowboxing combos from beginner to advanced</h2>
+      <h2 id="your-4-week-plan-learning-shadowboxing-step-by-step">Your 4-week plan: learning shadowboxing step by step</h2>
+      <p>Three to four sessions a week of 15 minutes each is plenty. Only move on to the next week when the current movement runs without thinking — speed follows once the technique is solid.</p>
+      <table class="workout">
+        <thead><tr><th>Week</th><th>Focus</th><th>Content</th></tr></thead>
+        <tbody>
+          <tr><td>Week 1</td><td>Stance &amp; guard</td><td>Stance, guard and the jab (1). 3 rounds of 2 minutes with 1 minute rest — jab and footwork only.</td></tr>
+          <tr><td>Week 2</td><td>The one-two</td><td>The cross (2) joins in and the hips rotate with it. Combination 1-2, slow first, then out of movement.</td></tr>
+          <tr><td>Week 3</td><td>Hooks &amp; slipping</td><td>Lead hook (3) and a simple slip. Combinations 1-2-3 and 2-3-2.</td></tr>
+          <tr><td>Week 4</td><td>Reaction</td><td>Have combinations called out and execute them immediately: one technique, one reaction and one conditioning round (see below).</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="10-shadowboxing-combos-from-beginner-to-advanced">10 shadowboxing combos from beginner to advanced</h2>
       <p>Boxers call them combos, coaches call them combinations — same thing. Learn them by their numbers so a called-out “1-2-3” turns into movement without you having to translate it first.</p>
       <table class="workout">
         <thead><tr><th>Level</th><th>Combination</th><th>Focus</th></tr></thead>
@@ -268,21 +311,21 @@
         </tbody>
       </table>
 
-      <h2>Structuring your training: 3 round formats</h2>
+      <h2 id="structuring-your-training-3-round-formats">Structuring your training: 3 round formats</h2>
 
-      <h3>1. Technique rounds</h3>
+      <h3 id="1-technique-rounds">1. Technique rounds</h3>
       <p>2–3 minutes, one focus per round: jab only, head movement only, or one combination from slow motion to full speed. Quality over pace — this is where you build the punch paths you'll later recall automatically.</p>
 
-      <h3>2. Reaction rounds</h3>
+      <h3 id="2-reaction-rounds">2. Reaction rounds</h3>
       <p>The biggest weakness of solo shadowboxing: you always know what's coming next. The fix is <strong>called-out combinations</strong> — you hear "1-2-3" and throw without thinking. That simulates reacting in sparring and keeps every round unpredictable.</p>
       <div class="callout">
         <p>That's exactly what the ComboSim timer in the <a href="/en/#features">Combat Coach app</a> does: it calls out combinations by voice — random like a real fight in shuffle mode, structured for learning in sequenced mode. Pace from 9 down to 4 seconds, filtered for boxing, kickboxing or Muay Thai.</p>
       </div>
 
-      <h3>3. Conditioning rounds</h3>
+      <h3 id="3-conditioning-rounds">3. Conditioning rounds</h3>
       <p>Last round of the session: high pace, light punches, constant movement — or 20/10 Tabata intervals with punch flurries. Here output counts, not precision.</p>
 
-      <h2>Example: 15-minute shadowboxing workout</h2>
+      <h2 id="example-15-minute-shadowboxing-workout">Example: 15-minute shadowboxing workout</h2>
       <table class="workout">
         <thead><tr><th>Time</th><th>Block</th><th>Content</th></tr></thead>
         <tbody>
@@ -296,7 +339,7 @@
         </tbody>
       </table>
 
-      <h2>Common shadowboxing mistakes</h2>
+      <h2 id="common-shadowboxing-mistakes">Common shadowboxing mistakes</h2>
       <ul>
         <li><strong>Hyperextending the arms</strong> — decelerate with control instead of "whipping" into the air.</li>
         <li><strong>Boxing without an opponent in mind</strong> — otherwise it's gymnastics, not fight training.</li>
@@ -305,7 +348,7 @@
         <li><strong>Always the same combination</strong> — without variation your brain switches off; have them called out.</li>
       </ul>
 
-      <h2>Frequently asked questions</h2>
+      <h2 id="frequently-asked-questions">Frequently asked questions</h2>
       <details>
         <summary><h3>Is shadowboxing a good workout?</h3><span class="chev" aria-hidden="true"></span></summary>
         <div class="body"><p>Yes — shadowboxing trains technique, footwork, coordination and conditioning at the same time, with zero equipment. Structured into rounds with rest, it easily reaches the intensity of an interval workout.</p></div>

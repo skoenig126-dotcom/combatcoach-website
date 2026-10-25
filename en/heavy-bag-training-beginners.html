@@ -178,6 +178,16 @@
     h1 .accent { color: var(--red); }
     .byline { font-size: .78rem; color: var(--cream-faint); margin: -0.6rem 0 1.6rem; }
     .byline a { color: var(--cream-dim); }
+    .toc { border: 1px solid var(--border-2); border-radius: var(--radius); background: var(--glass); padding: 1.1rem 1.4rem 1rem; margin: 0 0 2.4rem; }
+    .toc__title { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cream-faint); margin: 0 0 .6rem; font-weight: 600; }
+    .toc ol { margin: 0; padding-left: 1.2rem; color: var(--cream-faint); }
+    .toc li { margin: .25rem 0; font-size: .88rem; }
+    .toc ol ol { list-style: none; margin: .3rem 0 .5rem; padding-left: .9rem; }
+    .toc ol ol li { font-size: .82rem; margin: .12rem 0; }
+    @media (min-width: 640px) { .toc ol.toc__many { columns: 2; column-gap: 1.6rem; } .toc ol.toc__many li { break-inside: avoid; } }
+    .toc a { color: var(--cream-dim); }
+    .toc a:hover { color: var(--red); }
+    h2[id], h3[id] { scroll-margin-top: 84px; }
     .lead { font-size: 1.04rem; color: var(--cream-dim); margin-bottom: 2.6rem; }
     h2 { font-size: clamp(1.25rem, 3vw, 1.6rem); line-height: 1.3; margin: 2.8rem 0 1rem; }
     h3 { font-size: 1.05rem; margin: 2rem 0 0.7rem; color: var(--cream); }
@@ -247,11 +257,37 @@
     <div class="container">
       <nav class="crumb" aria-label="Breadcrumb"><a href="/en/">Combat Coach</a> / Guide</nav>
 
-      <h1>Heavy bag training for beginners: drills, combos &amp; how to <span class="accent">get started</span></h1>
+      <h1>Heavy bag drills for beginners: 10 drills, 3 workouts &amp; a <span class="accent">weekly routine</span></h1>
       <p class="byline">By the <a href="/en/about.html">founder &amp; developer</a> of Combat Coach · Updated 14 September 2026</p>
-      <p class="lead">The bag is hanging, the gloves are ready — now what? Most beginners just swing away and quit after ten minutes, exhausted and frustrated. Here's the structured way in: basic punches, five drills and a ready-made 20-minute workout.</p>
+      <p class="lead">The bag is hanging, the gloves are ready — now what? Most beginners just swing away and quit after ten minutes, exhausted and frustrated. Here's the structured way in: basic punches, ten drills and ready-made workouts.</p>
 
-      <h2>What you actually need (and what you don't)</h2>
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc__title">In this guide</p>
+        <ol>
+          <li><a href="#what-you-actually-need-and-what-you-don-t">What you actually need (and what you don't)</a></li>
+          <li><a href="#the-basic-punches-on-the-heavy-bag">The basic punches on the heavy bag</a></li>
+          <li><a href="#10-heavy-bag-drills-for-beginners">10 heavy bag drills for beginners</a></li>
+          <li><a href="#heavy-bag-workouts-for-beginners-10-20-and-30-minutes">Heavy bag workouts for beginners: 10, 20 and 30 minutes</a></li>
+          <li><a href="#a-weekly-heavy-bag-routine-for-beginners">A weekly heavy bag routine for beginners</a></li>
+          <li><a href="#common-beginner-mistakes-on-the-heavy-bag">Common beginner mistakes on the heavy bag</a></li>
+          <li><a href="#frequently-asked-questions">Frequently asked questions</a>
+            <ol class="toc__many">
+              <li><a href="#1-round-conditioning-3x2-minutes-easy">1. Round conditioning: 3×2 minutes easy</a></li>
+              <li><a href="#2-single-punch-repeats">2. Single-punch repeats</a></li>
+              <li><a href="#3-the-jab-cross-foundation">3. The jab-cross foundation</a></li>
+              <li><a href="#4-the-combination-ladder">4. The combination ladder</a></li>
+              <li><a href="#5-level-changes-body-and-head">5. Level changes: body and head</a></li>
+              <li><a href="#6-have-your-combinations-called-out">6. Have your combinations called out</a></li>
+              <li><a href="#7-footwork-around-the-bag">7. Footwork around the bag</a></li>
+              <li><a href="#8-catch-and-counter">8. Catch and counter</a></li>
+              <li><a href="#9-power-intervals">9. Power intervals</a></li>
+              <li><a href="#10-the-finishing-sprint">10. The finishing sprint</a></li>
+            </ol>
+          </li>
+        </ol>
+      </nav>
+
+      <h2 id="what-you-actually-need-and-what-you-don-t">What you actually need (and what you don't)</h2>
       <ul>
         <li><strong>Hand wraps</strong> — non-negotiable. They stabilize wrists and knuckles.</li>
         <li><strong>Boxing gloves</strong> — 10–14 oz for bag work. Heavier gloves protect your hands and train your shoulders.</li>
@@ -259,7 +295,7 @@
         <li><em>Not needed:</em> expensive shoes, compression gear, added weights. Technique first, gear later.</li>
       </ul>
 
-      <h2>The basic punches on the heavy bag</h2>
+      <h2 id="the-basic-punches-on-the-heavy-bag">The basic punches on the heavy bag</h2>
 
       <h3>Jab — the lead hand</h3>
       <p>The straight punch with your front hand. Short, fast, back to guard. The jab is your metronome: it measures distance and opens almost every combination.</p>
@@ -273,44 +309,44 @@
       <h3>Body hook</h3>
       <p>Like the hook, but aimed low with bent knees. Trains legs and core — and lands with a deeply satisfying thud on the bag.</p>
 
-      <h2>10 heavy bag drills for beginners</h2>
+      <h2 id="10-heavy-bag-drills-for-beginners">10 heavy bag drills for beginners</h2>
 
       <p>Work through them in order — the first drills build the punch, the later ones build the boxer. You don't need all ten in one session: pick two or three per workout.</p>
 
-      <h3>1. Round conditioning: 3&times;2 minutes easy</h3>
+      <h3 id="1-round-conditioning-3x2-minutes-easy">1. Round conditioning: 3&times;2 minutes easy</h3>
       <p>The goal isn't power, it's rhythm: light jabs and crosses, keep moving between punches, survive the round. Working with 2-minute rounds in your first weeks builds technique instead of bad habits.</p>
 
-      <h3>2. Single-punch repeats</h3>
+      <h3 id="2-single-punch-repeats">2. Single-punch repeats</h3>
       <p>One punch, one minute, nothing else. Jab for 60 seconds, then cross, then lead hook. With no combination to think about, all your attention goes to the two things beginners get wrong most: rotating the hips into the punch, and bringing the hand straight back to the chin. Boring, and the fastest technique fix there is.</p>
 
-      <h3>3. The jab-cross foundation</h3>
+      <h3 id="3-the-jab-cross-foundation">3. The jab-cross foundation</h3>
       <p>The "one-two" is the foundation of everything: jab–cross, back to guard, move briefly, repeat. Only when the one-two is clean do hooks and longer <strong>beginner boxing combinations</strong> come in.</p>
 
-      <h3>4. The combination ladder</h3>
+      <h3 id="4-the-combination-ladder">4. The combination ladder</h3>
       <p>Build combinations one punch at a time: throw the jab clean for 30 seconds, then jab–cross, then jab–cross–hook, then add the body hook. Each step only comes once the one before it feels automatic. This is how you learn <strong>heavy bag combos</strong> that hold up under fatigue instead of falling apart after the second punch.</p>
 
-      <h3>5. Level changes: body and head</h3>
+      <h3 id="5-level-changes-body-and-head">5. Level changes: body and head</h3>
       <p>Alternate targets rather than hammering one spot: jab to the head, cross to the body, hook back to the head. Bend your knees for the body shots instead of leaning down — that keeps your guard up and trains your legs at the same time. Most beginners punch exclusively at head height and lose half the target area.</p>
 
-      <h3>6. Have your combinations called out</h3>
+      <h3 id="6-have-your-combinations-called-out">6. Have your combinations called out</h3>
       <p>The jump from practicing to training: instead of inventing combinations yourself, have them <strong>called out</strong> and react — like having a trainer standing next to the bag. It keeps your mind switched on and stops you from sliding into autopilot patterns.</p>
       <div class="callout">
         <p>In the <a href="/en/#features">Combat Coach app</a>, the ComboSim timer does exactly that: it calls out combinations by voice, matched to your level — as a beginner you start with short 2-punch combos at a relaxed pace, and the app grows with you.</p>
       </div>
 
-      <h3>7. Footwork around the bag</h3>
+      <h3 id="7-footwork-around-the-bag">7. Footwork around the bag</h3>
       <p>The bag doesn't stand still — neither should you. Circle the bag, punch out of movement, change angles. Standing square in front of the bag trains punching power, but not boxing.</p>
 
-      <h3>8. Catch and counter</h3>
+      <h3 id="8-catch-and-counter">8. Catch and counter</h3>
       <p>Push the bag away, then punch it as it swings back at you. Suddenly the bag has timing — you have to read the distance and pick the moment instead of hitting a static target. It is the closest a heavy bag gets to an opponent moving toward you, and it teaches you not to punch into the swing.</p>
 
-      <h3>9. Power intervals</h3>
+      <h3 id="9-power-intervals">9. Power intervals</h3>
       <p>To finish a round: 10 seconds all-out punching, 20 seconds easy movement, repeated six times. That trains exactly the explosiveness that defines fight sports.</p>
 
-      <h3>10. The finishing sprint</h3>
+      <h3 id="10-the-finishing-sprint">10. The finishing sprint</h3>
       <p>The last 30 seconds of every round: maximum punch output, technique second, breathing through it. Rounds are won at the end, and this is where conditioning actually happens. Stop when the round signal goes — not when you feel like it.</p>
 
-      <h2>Heavy bag workouts for beginners: 10, 20 and 30 minutes</h2>
+      <h2 id="heavy-bag-workouts-for-beginners-10-20-and-30-minutes">Heavy bag workouts for beginners: 10, 20 and 30 minutes</h2>
       <p>Three ready-made sessions. All of them use 2-minute rounds with 1 minute of rest — the format beginners should stay with for the first months.</p>
 
       <h3>The 10-minute express workout</h3>
@@ -359,7 +395,7 @@
         </tbody>
       </table>
 
-      <h2>A weekly heavy bag routine for beginners</h2>
+      <h2 id="a-weekly-heavy-bag-routine-for-beginners">A weekly heavy bag routine for beginners</h2>
       <p>Three sessions a week with a rest day between them is the sweet spot for beginners — enough stimulus to improve, enough recovery for wrists and shoulders to adapt.</p>
       <table class="workout">
         <thead><tr><th>Day</th><th>Session</th><th>Focus</th></tr></thead>
@@ -373,7 +409,7 @@
         </tbody>
       </table>
 
-      <h2>Common beginner mistakes on the heavy bag</h2>
+      <h2 id="common-beginner-mistakes-on-the-heavy-bag">Common beginner mistakes on the heavy bag</h2>
       <ul>
         <li><strong>Punching without wraps</strong> — the fastest shortcut to forced time off.</li>
         <li><strong>Only hitting hard</strong> — power without technique cements mistakes and burns you out in minutes.</li>
@@ -382,7 +418,7 @@
         <li><strong>Training without rounds</strong> — fixed rounds with rest are the rhythm of the sport.</li>
       </ul>
 
-      <h2>Frequently asked questions</h2>
+      <h2 id="frequently-asked-questions">Frequently asked questions</h2>
       <details>
         <summary><h3>How often should a beginner train on the heavy bag?</h3><span class="chev" aria-hidden="true"></span></summary>
         <div class="body"><p>Two to three times a week with at least one rest day in between. As a beginner, your shoulders, wrists and knuckles need time to adapt to the load — recovery is part of the training.</p></div>
