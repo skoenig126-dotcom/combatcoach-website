@@ -511,6 +511,8 @@
     .waitlist__input:focus { outline: none; border-color: var(--red); background: rgba(255,253,228,0.08); }
     .waitlist__btn { flex: 0 0 auto; cursor: pointer; border: none; }
     .waitlist__note { margin-top: 0.9rem; font-size: 0.74rem; color: var(--cream-faint); }
+    .waitlist__note a { color: var(--cream-dim); text-decoration: underline; text-underline-offset: 2px; }
+    .waitlist__note a:hover { color: var(--red); }
     .waitlist__status { margin-top: 0.7rem; font-size: 0.82rem; color: var(--cream); min-height: 1.2em; }
     .waitlist__status.is-error { color: var(--red); }
     @media (max-width: 420px) { .waitlist__row { flex-direction: column; } .waitlist__btn { width: 100%; } }
@@ -1066,7 +1068,7 @@
                    aria-label="Email address" />
             <button class="btn btn--primary waitlist__btn" type="submit" data-i18n="wl.cta">Join the waitlist</button>
           </div>
-          <p class="waitlist__note" data-i18n="wl.note">One single email at launch. No marketing, unsubscribe anytime.</p>
+          <p class="waitlist__note" data-i18n="wl.note">One single email at launch, no marketing. By signing up you consent to your email address being processed as described in the <a href="/privacy.html#website">privacy policy</a> — withdraw anytime.</p>
           <p class="waitlist__status" id="cc-wl-status" role="status" aria-live="polite"></p>
         </form>
         <div class="store-badges">
@@ -1172,7 +1174,7 @@
         "wl.label": "Erfahre als Erste:r, wenn die App startet.",
         "wl.placeholder": "deine@mail.de",
         "wl.cta": "Auf die Warteliste",
-        "wl.note": "Eine einzige Mail zum Launch. Keine Werbung, jederzeit abbestellbar.",
+        "wl.note": "Eine einzige Mail zum Launch, keine Werbung. Mit dem Eintragen willigst du in die Verarbeitung deiner E-Mail-Adresse gemäß <a href=\"/privacy.html#website\">Datenschutzerklärung</a> ein — Widerruf jederzeit.",
         "wl.invalid": "Bitte gib eine gültige E-Mail-Adresse ein.",
         "wl.sending": "Wird gesendet …",
         "wl.ok": "Danke — du stehst auf der Warteliste.",
@@ -1295,7 +1297,7 @@
         "wl.label": "Be the first to know when the app launches.",
         "wl.placeholder": "you@email.com",
         "wl.cta": "Join the waitlist",
-        "wl.note": "One single email at launch. No marketing, unsubscribe anytime.",
+        "wl.note": "One single email at launch, no marketing. By signing up you consent to your email address being processed as described in the <a href=\"/privacy.html#website\">privacy policy</a> — withdraw anytime.",
         "wl.invalid": "Please enter a valid email address.",
         "wl.sending": "Sending …",
         "wl.ok": "Thanks — you are on the waitlist.",
