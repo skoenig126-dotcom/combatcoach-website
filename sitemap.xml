@@ -82,6 +82,54 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/boxing-timer.html" />
   </url>
   <url>
+    <loc>https://combatcoach.org/muay-thai-timer.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/muay-thai-timer.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/muay-thai-timer.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/muay-thai-timer.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/muay-thai-timer.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/muay-thai-timer.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/mma-timer.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/mma-timer.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/mma-timer.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/mma-timer.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/mma-timer.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/mma-timer.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/tabata-timer.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/tabata-timer.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/tabata-timer.html" />
+  </url>
+  <url>
+    <loc>https://combatcoach.org/en/tabata-timer.html</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://combatcoach.org/tabata-timer.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://combatcoach.org/en/tabata-timer.html" />
+  </url>
+  <url>
     <loc>https://combatcoach.org/ueber-uns.html</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>yearly</changefreq>
