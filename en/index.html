@@ -10,7 +10,8 @@
       try {
         var seen = sessionStorage.getItem('cc_splash_shown');
         var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (!seen && !reduce) document.documentElement.classList.add('cc-splash-on');
+        var direct = !document.referrer; // Besucher aus Suche oder Links sehen sofort den Inhalt, das Intro bleibt fuer Direktaufrufe
+        if (!seen && !reduce && direct) document.documentElement.classList.add('cc-splash-on');
       } catch (e) {}
     })();
   </script>
@@ -656,6 +657,7 @@
       .reveal { opacity: 1; transform: none; }
     }
   </style>
+  <script type="speculationrules">{"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>
 </head>
 
 <body>

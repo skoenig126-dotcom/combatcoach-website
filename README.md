@@ -32,3 +32,14 @@ All links are relative — open `index.html` in a browser or serve the folder as
 ## License
 
 © Combat Coach. All rights reserved.
+
+## Werkzeuge (`tools/`)
+
+Reproduzierbare Helfer, nicht Teil der Website (per `robots.txt` von der Indexierung ausgenommen). Aufruf jeweils aus dem Repo-Root:
+
+| Skript | Zweck |
+|---|---|
+| `tools/optimize_images.py` | erzeugt WebP-Screenshots und das 128-px-Logo aus den PNG-Originalen (nur Pillow) |
+| `tools/add_toc.py` | Inhaltsverzeichnis mit Sprungmarken in den Ratgeberseiten (idempotent) |
+| `tools/gen_timer_formats.py` | erzeugt die Format-Timer (Muay Thai, MMA, Tabata; DE+EN) aus den Basis-Timern — überschreibt die Zielseiten |
+| `tools/update_sitemap.py` | setzt `lastmod` in `sitemap.xml` aus dem Git-Verlauf |

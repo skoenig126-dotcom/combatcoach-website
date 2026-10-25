@@ -1,0 +1,37 @@
+# Combat Coach
+
+> Combat Coach is a training app for boxing, kickboxing and Muay Thai (iOS and Android, launching October 2026). Its ComboSim timer calls out combinations by voice, runs the rounds and sets the pace for solo training. This website offers free, in-depth training guides and free browser-based round timers. Content is available in German and English (/en/).
+
+Built in Berlin by a martial artist with 10+ years of training experience. Contact: info@combatcoach.org
+
+## Training guides (English)
+- [How to train boxing alone](https://combatcoach.org/en/train-boxing-alone.html): five solo-training methods and a 30-minute workout
+- [Heavy bag drills for beginners](https://combatcoach.org/en/heavy-bag-training-beginners.html): ten named drills, 10/20/30-minute workouts, weekly routine
+- [Shadowboxing combinations](https://combatcoach.org/en/shadowboxing-combinations.html): punch-number system, 4-week beginner plan, ten combinations
+- [Kickboxing for beginners](https://combatcoach.org/en/kickboxing-training.html): techniques, ten combinations by level, 20-minute workout
+- [Muay Thai for beginners](https://combatcoach.org/en/muay-thai-training.html): teep, roundhouse, elbows, knees, ten combinations
+- [All guides](https://combatcoach.org/en/guides.html)
+
+## Free tools (English)
+- [Boxing timer with combo callouts](https://combatcoach.org/en/boxing-timer.html): configurable rounds, rest and combo pace; shareable links
+- [Muay Thai timer (5x3)](https://combatcoach.org/en/muay-thai-timer.html)
+- [MMA timer (3x5 / 5x5)](https://combatcoach.org/en/mma-timer.html)
+- [Tabata timer (20/10)](https://combatcoach.org/en/tabata-timer.html)
+
+## Trainingsratgeber (Deutsch)
+- [Boxen alleine trainieren](https://combatcoach.org/boxen-alleine-trainieren.html)
+- [Boxsack-Training für Anfänger](https://combatcoach.org/boxsack-training-anfaenger.html)
+- [Schattenboxen für Anfänger](https://combatcoach.org/schattenboxen-kombinationen.html)
+- [Kickboxen für Anfänger](https://combatcoach.org/kickboxen-training.html)
+- [Muay Thai Training für Anfänger](https://combatcoach.org/muay-thai-training.html)
+- [Alle Ratgeber](https://combatcoach.org/ratgeber.html)
+
+## Kostenlose Timer (Deutsch)
+- [Box-Timer mit Combo-Ansage](https://combatcoach.org/box-timer.html)
+- [Muay-Thai-Timer](https://combatcoach.org/muay-thai-timer.html)
+- [MMA-Timer](https://combatcoach.org/mma-timer.html)
+- [Tabata-Timer](https://combatcoach.org/tabata-timer.html)
+
+## About
+- [About (EN)](https://combatcoach.org/en/about.html) · [Über uns (DE)](https://combatcoach.org/ueber-uns.html)
+- [Privacy / Datenschutz](https://combatcoach.org/privacy.html)
