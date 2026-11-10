@@ -1,6 +1,6 @@
 # Combat Coach
 
-> Combat Coach is a training app for boxing, kickboxing and Muay Thai (iOS and Android, launching October 2026). Its ComboSim timer calls out combinations by voice, runs the rounds and sets the pace for solo training. This website offers free, in-depth training guides and free browser-based round timers. Content is available in German and English (/en/).
+> Combat Coach is a training app for boxing, kickboxing and Muay Thai (iOS and Android, launching soon). Its ComboSim timer calls out combinations by voice, runs the rounds and sets the pace for solo training. This website offers free, in-depth training guides and free browser-based round timers. Content is available in German and English (/en/).
 
 Built in Berlin by a martial artist with 10+ years of training experience. Contact: info@combatcoach.org
 
