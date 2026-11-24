@@ -110,7 +110,8 @@
             "@type": "Question",
             "name": "Kann Combat Coach Trainingspläne erstellen?",
             "acceptedAnswer": { "@type": "Answer", "text": "Ja, auf zwei Wegen: Du baust eigene Pläne aus ComboSim, Timern und Drills, speicherst sie und durchläufst sie im geführten Workout-Flow. Oder du lässt den KI-Generator einen fertigen Plan bauen — sag, was du willst, etwa „30 Minuten Muay Thai, Fokus Kondition“, und die App erstellt die Session." }
-          }
+          },
+          { "@type": "Question", "name": "Ist Combat Coach kostenlos?", "acceptedAnswer": { "@type": "Answer", "text": "Du kannst Combat Coach kostenlos nutzen: ComboSim, Sparring, Timer-Suite, Drills und der Learning Path stehen in Free zur Verfügung. Pro schaltet SmartCoach, Strike Lab, den KI-Trainingsplan-Generator und weitere Einstellungen frei. Preise zeigt die App vor dem Kauf an. Die Ratgeber und der Box-Timer im Browser sind kostenlos." } }
         ]
       }
     ]
@@ -758,6 +759,25 @@
           </div>
         </details>
 
+        <!-- f.spar -->
+        <details class="acc__item" name="cc-acc">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></span>
+              <span class="acc__titles">
+                <h3 class="acc__t" data-i18n="f.spar.t">Sparring &amp; Technique Rounds — dein digitaler Gegner</h3>
+                <span class="acc__pre" data-i18n="f.spar.pre">Reagiere wie im Sparring — oder schleife eine Technik ein.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="acc__grid">
+              <div><p data-i18n="f.spar.body">Der Bereich Sparring hat zwei Modi. Im Sparring reagierst du auf angesagte Kombinationen, ohne festes Muster — wie in einer echten Runde. In den Technique Rounds nimmst du dir eine Technik oder Kombination vor und wiederholst sie Runde für Runde, bis sie sitzt.</p></div>
+            </div>
+          </div>
+        </details>
+
         <!-- Combat Camp -->
         <details class="acc__item" name="cc-acc">
           <summary class="acc__sum">
@@ -772,7 +792,7 @@
           </summary>
           <div class="acc__body">
             <div class="acc__grid">
-              <div><p data-i18n="f.camp.body">Combat Camp ist deine Technik-Akademie: kuratierte Kurse zu Grund- und Fortgeschrittenen-Techniken, klar strukturiert und Schritt für Schritt aufgebaut. Statt nur zu reagieren, siehst du genau, wie eine Technik korrekt aussieht — in eigens produzierten 3D-Lernvideos.</p></div>
+              <div><p data-i18n="f.camp.body">Combat Camp ist deine Technik-Akademie: kuratierte Kurse zu Grund- und Fortgeschrittenen-Techniken, klar strukturiert und Schritt für Schritt aufgebaut. Statt nur zu reagieren, siehst du genau, wie eine Technik korrekt aussieht — in eigens produzierten 3D-Lernvideos. Der Learning Path führt dich durch 7 Level, und du kannst jeden Meilenstein jederzeit auswählen.</p></div>
               <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
               <!-- Screenshot ersetzen: <img src="screenshots/combat_camp.png" alt="" style="width:100%;border-radius:18px;"> -->
             </div>
@@ -829,12 +849,31 @@
                   <li data-i18n="f.plans.li4"><strong>Kalender</strong> — plane, wann und was du trainierst</li>
                   <li data-i18n="f.plans.li5"><strong>KI-Plan-Generator</strong> — sag, was du willst, und erhalte den fertigen Plan</li>
                 </ul>
-                <p data-i18n="f.plans.body2">Ob du dein eigenes Training managst oder als Coach Pläne für deine Athleten baust: Aus Zufall wird Struktur — und aus Struktur Fortschritt.</p>
+                <p data-i18n="f.plans.body2">Ob du dein eigenes Training managst oder als Coach Pläne für deine Athleten baust: Aus Zufall wird Struktur — und aus Struktur Fortschritt. In Free speicherst du eine Trainingssession, mit Pro mehrere.</p>
               </div>
               <div class="shots">
                 <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/trainingplans.webp" alt="Trainingspläne im Combat Coach" loading="lazy" width="640" height="1387" /></div></div>
                 <div class="phone phone--img"><div class="phone__screen"><img src="screenshots/single_exercises.webp" alt="Einzelübung im Combat Coach" loading="lazy" width="640" height="1387" /></div></div>
               </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- f.strike -->
+        <details class="acc__item" name="cc-acc">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg></span>
+              <span class="acc__titles">
+                <h3 class="acc__t" data-i18n="f.strike.t">Strike Lab — KI-Technikanalyse (Pro)</h3>
+                <span class="acc__pre" data-i18n="f.strike.pre">Lade ein Video hoch und bekomm Feedback zu deiner Technik.</span>
+              </span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body">
+            <div class="acc__grid">
+              <div><p data-i18n="f.strike.body">Mit Strike Lab analysiert die KI ein Video deiner Technik und gibt dir Feedback zur Ausführung. Du findest Strike Lab auch im Learning Path. Die Analyse ist Teil von Pro: In Free kannst du den Bereich öffnen und ansehen, die Analyse selbst startest du mit Pro. KI-Feedback ersetzt kein Coaching vor Ort.</p></div>
             </div>
           </div>
         </details>
@@ -853,7 +892,7 @@
           </summary>
           <div class="acc__body">
             <div class="acc__grid">
-              <div><p data-i18n="f.coach.body">Der SmartCoach (powered by Google Gemini) beantwortet deine Kampfsport-Fragen rund um die Uhr — zu Technik, Taktik, Training, Ernährung oder Motivation. Dein Chatverlauf wird gespeichert, sodass du jederzeit zurückblättern kannst. Ein Coach, der nie schläft.</p></div>
+              <div><p data-i18n="f.coach.body">Der SmartCoach (powered by Google Gemini) beantwortet deine Kampfsport-Fragen rund um die Uhr — zu Technik, Taktik, Training, Ernährung oder Motivation. Dein Chatverlauf wird gespeichert, sodass du jederzeit zurückblättern kannst. Ein Coach, der nie schläft. SmartCoach ist Teil von Pro: In Free kannst du den Bereich öffnen und ansehen, Fragen sendest du mit Pro.</p></div>
               <div class="phone phone--img">
                 <div class="phone__screen"><img src="screenshots/smartcoach.webp" alt="SmartCoach – KI-Chat im Combat Coach" loading="lazy" width="640" height="1387" /></div>
               </div>
@@ -875,7 +914,7 @@
           </summary>
           <div class="acc__body">
             <div class="acc__grid">
-              <div><p data-i18n="f.plan.body">Beschreibe dein Ziel — „30 Minuten Muay Thai, Fokus Kondition, mittleres Level“ — und die KI baut dir daraus einen durchstrukturierten Trainingsplan, den du direkt durchlaufen kannst. Personalisiertes Coaching auf Knopfdruck.</p></div>
+              <div><p data-i18n="f.plan.body">Beschreibe dein Ziel — „30 Minuten Muay Thai, Fokus Kondition, mittleres Level“ — und die KI baut dir daraus einen durchstrukturierten Trainingsplan, den du direkt durchlaufen kannst. Personalisiertes Coaching auf Knopfdruck. Der KI-Trainingsplan-Generator ist Teil von Pro.</p></div>
               <div class="shot" data-i18n="shot.soon">Screenshot folgt</div>
               <!-- Screenshot ersetzen: <img src="screenshots/ai_plan.png" alt="" style="width:100%;border-radius:18px;"> -->
             </div>
@@ -883,6 +922,42 @@
         </details>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ====================== FREE & PRO ====================== -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="price.eyebrow">Free &amp; Pro</span>
+        <h2 data-i18n="price.h2">Kostenlos starten. Mit Pro mehr freischalten.</h2>
+        <p data-i18n="price.intro">Du kannst Combat Coach kostenlos nutzen. Pro erweitert die App um KI-Funktionen und weitere Einstellungen. Preise und Laufzeiten siehst du vor dem Kauf im App Store bzw. bei Google Play.</p>
+      </div>
+      <div class="features__grid">
+        <article class="card reveal">
+          <h3 data-i18n="price.free.h">Free</h3>
+          <ul style="list-style:none;display:grid;gap:.6rem;margin-top:1rem;padding:0">
+            <li data-i18n="price.free.1">ComboSim, Sparring und Technique Rounds</li>
+            <li data-i18n="price.free.2">Timer-Suite: Countdown, Intervall, Tabata, Stretching</li>
+            <li data-i18n="price.free.3">Drills mit Video, Timer und Anleitung</li>
+            <li data-i18n="price.free.4">Combat Camp: Learning Path mit 3D-Lernvideos</li>
+            <li data-i18n="price.free.5">Eine gespeicherte Trainingssession</li>
+            <li data-i18n="price.free.6">SmartCoach und Strike Lab öffnen und ansehen</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <h3 data-i18n="price.pro.h">Pro</h3>
+          <ul style="list-style:none;display:grid;gap:.6rem;margin-top:1rem;padding:0">
+            <li data-i18n="price.pro.1">Alles aus Free</li>
+            <li data-i18n="price.pro.2">SmartCoach: KI-Chat zu Technik, Taktik und Training</li>
+            <li data-i18n="price.pro.3">Strike Lab: KI-Technikanalyse per Video</li>
+            <li data-i18n="price.pro.4">KI-Trainingsplan-Generator</li>
+            <li data-i18n="price.pro.5">Mehr gespeicherte Sessions und alle Pro-Einstellungen, zum Beispiel schnelleres Combo-Tempo</li>
+          </ul>
+        </article>
+      </div>
+      <p class="reveal" style="margin-top:1.5rem;color:var(--cream-dim);max-width:60ch" data-i18n="price.note">Wechselst du von Pro zu Free, gelten für deine Trainings wieder die Free-Grenzen. Pro-Einstellungen sind dann nicht mehr nutzbar. Details stehen in den Nutzungsbedingungen.</p>
+      <p class="reveal" style="margin-top:.8rem"><a href="/legal.html#terms" data-i18n="price.link">Nutzungsbedingungen lesen</a></p>
     </div>
   </section>
 
@@ -1024,6 +1099,15 @@
             <span class="acc__chev" aria-hidden="true"></span>
           </summary>
           <div class="acc__body"><p data-i18n="faq.a5">Ja, auf zwei Wegen: Du baust eigene Pläne aus ComboSim, Timern und Drills, speicherst sie und durchläufst sie im geführten Workout-Flow. Oder du lässt den KI-Generator einen fertigen Plan bauen — sag, was du willst, etwa „30 Minuten Muay Thai, Fokus Kondition“, und die App erstellt die Session.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary class="acc__sum">
+            <span class="acc__head">
+              <span class="acc__titles"><h3 class="acc__t" data-i18n="faq.q6">Ist Combat Coach kostenlos?</h3></span>
+            </span>
+            <span class="acc__chev" aria-hidden="true"></span>
+          </summary>
+          <div class="acc__body"><p data-i18n="faq.a6">Du kannst Combat Coach kostenlos nutzen: ComboSim, Sparring, Timer-Suite, Drills und der Learning Path stehen in Free zur Verfügung. Pro schaltet SmartCoach, Strike Lab, den KI-Trainingsplan-Generator und weitere Einstellungen frei. Preise zeigt die App vor dem Kauf an. Die Ratgeber und der Box-Timer im Browser sind kostenlos.</p></div>
         </details>
       </div>
     </div>
@@ -1216,7 +1300,7 @@
         "f.combosim.pre": "Dein digitaler Sparringspartner ruft dir Kombinationen zu — du reagierst, schlägst, wiederholst.",
         "f.camp.t": "Combat Camp — 3D-Lernvideos",
         "f.camp.pre": "Lerne jede Technik richtig — mit eigens produzierten 3D-Videos.",
-        "f.camp.body": "Combat Camp ist deine Technik-Akademie: kuratierte Kurse zu Grund- und Fortgeschrittenen-Techniken, klar strukturiert und Schritt für Schritt aufgebaut. Statt nur zu reagieren, siehst du genau, wie eine Technik korrekt aussieht — in eigens produzierten 3D-Lernvideos.",
+        "f.camp.body": "Combat Camp ist deine Technik-Akademie: kuratierte Kurse zu Grund- und Fortgeschrittenen-Techniken, klar strukturiert und Schritt für Schritt aufgebaut. Statt nur zu reagieren, siehst du genau, wie eine Technik korrekt aussieht — in eigens produzierten 3D-Lernvideos. Der Learning Path führt dich durch 7 Level, und du kannst jeden Meilenstein jederzeit auswählen.",
         "f.timers.t": "Box-Timer, Intervall &amp; Tabata — die Timer-Suite",
         "f.timers.pre": "Countdown, Intervall, Tabata, Stretching & Drills — jedes Workout-Format in einer App.",
         "f.plans.t": "Trainingspläne & Kalender",
@@ -1227,13 +1311,39 @@
         "f.plans.li3": "<strong>Timer-Presets</strong> — deine Einstellungen für jedes Format auf Abruf",
         "f.plans.li4": "<strong>Kalender</strong> — plane, wann und was du trainierst",
         "f.plans.li5": "<strong>KI-Plan-Generator</strong> — sag, was du willst, und erhalte den fertigen Plan",
-        "f.plans.body2": "Ob du dein eigenes Training managst oder als Coach Pläne für deine Athleten baust: Aus Zufall wird Struktur — und aus Struktur Fortschritt.",
+        "f.plans.body2": "Ob du dein eigenes Training managst oder als Coach Pläne für deine Athleten baust: Aus Zufall wird Struktur — und aus Struktur Fortschritt. In Free speicherst du eine Trainingssession, mit Pro mehrere.",
         "f.coach.t": "SmartCoach — dein KI-Coach",
         "f.coach.pre": "Ein KI-Chatcoach, der jede Frage zu Technik, Taktik und Training beantwortet.",
-        "f.coach.body": "Der SmartCoach (powered by Google Gemini) beantwortet deine Kampfsport-Fragen rund um die Uhr — zu Technik, Taktik, Training, Ernährung oder Motivation. Dein Chatverlauf wird gespeichert, sodass du jederzeit zurückblättern kannst. Ein Coach, der nie schläft.",
+        "f.coach.body": "Der SmartCoach (powered by Google Gemini) beantwortet deine Kampfsport-Fragen rund um die Uhr — zu Technik, Taktik, Training, Ernährung oder Motivation. Dein Chatverlauf wird gespeichert, sodass du jederzeit zurückblättern kannst. Ein Coach, der nie schläft. SmartCoach ist Teil von Pro: In Free kannst du den Bereich öffnen und ansehen, Fragen sendest du mit Pro.",
         "f.plan.t": "KI-Trainingsplan-Generator",
         "f.plan.pre": "Sag, was du willst — und bekomm deinen maßgeschneiderten Plan.",
-        "f.plan.body": "Beschreibe dein Ziel — „30 Minuten Muay Thai, Fokus Kondition, mittleres Level“ — und die KI baut dir daraus einen durchstrukturierten Trainingsplan, den du direkt durchlaufen kannst. Personalisiertes Coaching auf Knopfdruck.",
+        "f.plan.body": "Beschreibe dein Ziel — „30 Minuten Muay Thai, Fokus Kondition, mittleres Level“ — und die KI baut dir daraus einen durchstrukturierten Trainingsplan, den du direkt durchlaufen kannst. Personalisiertes Coaching auf Knopfdruck. Der KI-Trainingsplan-Generator ist Teil von Pro.",
+        "f.spar.t": "Sparring & Technique Rounds — dein digitaler Gegner",
+        "f.spar.pre": "Reagiere wie im Sparring — oder schleife eine Technik ein.",
+        "f.spar.body": "Der Bereich Sparring hat zwei Modi. Im Sparring reagierst du auf angesagte Kombinationen, ohne festes Muster — wie in einer echten Runde. In den Technique Rounds nimmst du dir eine Technik oder Kombination vor und wiederholst sie Runde für Runde, bis sie sitzt.",
+        "f.strike.t": "Strike Lab — KI-Technikanalyse (Pro)",
+        "f.strike.pre": "Lade ein Video hoch und bekomm Feedback zu deiner Technik.",
+        "f.strike.body": "Mit Strike Lab analysiert die KI ein Video deiner Technik und gibt dir Feedback zur Ausführung. Du findest Strike Lab auch im Learning Path. Die Analyse ist Teil von Pro: In Free kannst du den Bereich öffnen und ansehen, die Analyse selbst startest du mit Pro. KI-Feedback ersetzt kein Coaching vor Ort.",
+        "price.eyebrow": "Free & Pro",
+        "price.h2": "Kostenlos starten. Mit Pro mehr freischalten.",
+        "price.intro": "Du kannst Combat Coach kostenlos nutzen. Pro erweitert die App um KI-Funktionen und weitere Einstellungen. Preise und Laufzeiten siehst du vor dem Kauf im App Store bzw. bei Google Play.",
+        "price.free.h": "Free",
+        "price.free.1": "ComboSim, Sparring und Technique Rounds",
+        "price.free.2": "Timer-Suite: Countdown, Intervall, Tabata, Stretching",
+        "price.free.3": "Drills mit Video, Timer und Anleitung",
+        "price.free.4": "Combat Camp: Learning Path mit 3D-Lernvideos",
+        "price.free.5": "Eine gespeicherte Trainingssession",
+        "price.free.6": "SmartCoach und Strike Lab öffnen und ansehen",
+        "price.pro.h": "Pro",
+        "price.pro.1": "Alles aus Free",
+        "price.pro.2": "SmartCoach: KI-Chat zu Technik, Taktik und Training",
+        "price.pro.3": "Strike Lab: KI-Technikanalyse per Video",
+        "price.pro.4": "KI-Trainingsplan-Generator",
+        "price.pro.5": "Mehr gespeicherte Sessions und alle Pro-Einstellungen, zum Beispiel schnelleres Combo-Tempo",
+        "price.note": "Wechselst du von Pro zu Free, gelten für deine Trainings wieder die Free-Grenzen. Pro-Einstellungen sind dann nicht mehr nutzbar. Details stehen in den Nutzungsbedingungen.",
+        "price.link": "Nutzungsbedingungen lesen",
+        "faq.q6": "Ist Combat Coach kostenlos?",
+        "faq.a6": "Du kannst Combat Coach kostenlos nutzen: ComboSim, Sparring, Timer-Suite, Drills und der Learning Path stehen in Free zur Verfügung. Pro schaltet SmartCoach, Strike Lab, den KI-Trainingsplan-Generator und weitere Einstellungen frei. Preise zeigt die App vor dem Kauf an. Die Ratgeber und der Box-Timer im Browser sind kostenlos.",
         "foot.copyright": "© 2026 Combat Coach. Alle Rechte vorbehalten.",
         "foot.photos": "Fotos via <a href=\"https://www.pexels.com\" style=\"color:var(--cream);\">Pexels</a> (RDNE, Glebkrs)"
       },
@@ -1339,7 +1449,7 @@
         "f.combosim.pre": "Your digital sparring partner calls out combinations — you react, strike, repeat.",
         "f.camp.t": "Combat Camp — 3D learning videos",
         "f.camp.pre": "Learn every technique properly — with custom-made 3D videos.",
-        "f.camp.body": "Combat Camp is your technique academy: curated courses on basic and advanced techniques, clearly structured and built step by step. Instead of just reacting, you see exactly how a technique is supposed to look — in custom-made 3D learning videos.",
+        "f.camp.body": "Combat Camp is your technique academy: curated courses on basic and advanced techniques, clearly structured and built step by step. Instead of just reacting, you see exactly how a technique is supposed to look — in custom-made 3D learning videos. The Learning Path takes you through 7 levels, and you can open any milestone at any time.",
         "f.timers.t": "Boxing timer, interval &amp; Tabata — the timer suite",
         "f.timers.pre": "Countdown, Interval, Tabata, Stretching & Drills — every workout format in one app.",
         "f.plans.t": "Training plans & calendar",
@@ -1350,13 +1460,39 @@
         "f.plans.li3": "<strong>Timer presets</strong> — your settings for every format, on demand",
         "f.plans.li4": "<strong>Calendar</strong> — plan when and what you train",
         "f.plans.li5": "<strong>AI plan generator</strong> — say what you want and get a ready-made plan",
-        "f.plans.body2": "Whether you manage your own training or build plans for your athletes as a coach: chance becomes structure — and structure becomes progress.",
+        "f.plans.body2": "Whether you manage your own training or build plans for your athletes as a coach: chance becomes structure — and structure becomes progress. In Free you can save one training session; with Pro you can save more.",
         "f.coach.t": "SmartCoach — your AI coach",
         "f.coach.pre": "An AI chat coach that answers every question on technique, tactics and training.",
-        "f.coach.body": "The SmartCoach (powered by Google Gemini) answers your martial arts questions around the clock — on technique, tactics, training, nutrition or motivation. Your chat history is saved so you can scroll back anytime. A coach that never sleeps.",
+        "f.coach.body": "The SmartCoach (powered by Google Gemini) answers your martial arts questions around the clock — on technique, tactics, training, nutrition or motivation. Your chat history is saved so you can scroll back anytime. A coach that never sleeps. SmartCoach is part of Pro: in Free you can open and browse it, and you send questions with Pro.",
         "f.plan.t": "AI training plan generator",
         "f.plan.pre": "Say what you want — and get your tailored plan.",
-        "f.plan.body": "Describe your goal — “30 minutes Muay Thai, focus conditioning, intermediate level” — and the AI builds a fully structured training plan you can run right away. Personalized coaching at the push of a button.",
+        "f.plan.body": "Describe your goal — “30 minutes Muay Thai, focus conditioning, intermediate level” — and the AI builds a fully structured training plan you can run right away. Personalized coaching at the push of a button. The AI training plan generator is part of Pro.",
+        "f.spar.t": "Sparring & Technique Rounds — your digital opponent",
+        "f.spar.pre": "React like in sparring — or drill one technique.",
+        "f.spar.body": "The Sparring area has two modes. In Sparring you react to called-out combinations with no fixed pattern — like a real round. In Technique Rounds you pick one technique or combination and repeat it round after round until it sticks.",
+        "f.strike.t": "Strike Lab — AI technique analysis (Pro)",
+        "f.strike.pre": "Upload a video and get feedback on your technique.",
+        "f.strike.body": "With Strike Lab the AI analyzes a video of your technique and gives you feedback on your form. You will also find Strike Lab inside the Learning Path. The analysis is part of Pro: in Free you can open and browse the area, and you start the analysis itself with Pro. AI feedback does not replace in-person coaching.",
+        "price.eyebrow": "Free & Pro",
+        "price.h2": "Start free. Unlock more with Pro.",
+        "price.intro": "You can use Combat Coach for free. Pro adds AI features and further settings. You see prices and billing periods before you buy, in the App Store or on Google Play.",
+        "price.free.h": "Free",
+        "price.free.1": "ComboSim, Sparring and Technique Rounds",
+        "price.free.2": "Timer suite: countdown, interval, Tabata, stretching",
+        "price.free.3": "Drills with video, timer and instructions",
+        "price.free.4": "Combat Camp: Learning Path with 3D learning videos",
+        "price.free.5": "One saved training session",
+        "price.free.6": "Open and browse SmartCoach and Strike Lab",
+        "price.pro.h": "Pro",
+        "price.pro.1": "Everything in Free",
+        "price.pro.2": "SmartCoach: AI chat on technique, tactics and training",
+        "price.pro.3": "Strike Lab: AI technique analysis from video",
+        "price.pro.4": "AI training plan generator",
+        "price.pro.5": "More saved sessions and all Pro settings, for example faster combo speed",
+        "price.note": "If you switch from Pro to Free, the Free limits apply to your trainings again. Pro settings are then no longer available. Details are in the terms of use.",
+        "price.link": "Read the terms of use",
+        "faq.q6": "Is Combat Coach free?",
+        "faq.a6": "You can use Combat Coach for free: ComboSim, Sparring, the timer suite, drills and the Learning Path are available in Free. Pro unlocks SmartCoach, Strike Lab, the AI training plan generator and further settings. The app shows prices before you buy. The guides and the boxing timer in your browser are free.",
         "foot.copyright": "© 2026 Combat Coach. All rights reserved.",
         "foot.photos": "Photos via <a href=\"https://www.pexels.com\" style=\"color:var(--cream);\">Pexels</a> (RDNE, Glebkrs)"
       }
